@@ -1,0 +1,17 @@
+<apex:page controller="VPROF_GASAccountDetailsControllerExt">
+<apex:messages style="color:red"/>
+	<apex:pageBlock title="{!$Setup.GAS_Hierarchical_Setting__c.Summary_View_Page_Title__c}">
+        <style>
+            body .bPageBlock .pbBody .clrclass .pbSubheader{
+                background-color:{!$Setup.GAS_Hierarchical_Setting__c.Summary_View_Section_Background_Color__c};
+            }
+       	</style>
+     <apex:outputPanel styleClass="clrclass" layout="block">
+          <apex:pageBlockSection title="{!$Setup.GAS_Hierarchical_Setting__c.Summary_View_Section_Title__c}">
+              <apex:repeat value="{!fields}" var="f">
+                  <apex:outputField value="{!acct[f.fieldPath]}"/>
+              </apex:repeat>
+          </apex:pageBlockSection>
+      </apex:outputPanel>
+	</apex:pageBlock>
+</apex:page>

@@ -1,0 +1,14 @@
+<apex:page standardController="Account_Plan_vod__c">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+      var acctPlanName = "{!URLENCODE(Account_Plan_vod__c.Name)}";
+      var acctID = '{!Account_Plan_vod__c.Id}';
+      var acccountId = '{!Account_Plan_vod__c.Account_vod__c}';
+
+      var queryParams = "&ACCTPLANID=" +acctID +"&PLNNAME=" +acctPlanName + "&accID=" +acccountId + "&lgtvf=true";
+
+      com.vod309.redirect.redirect("prdplan", queryParams);
+  </script>
+
+</apex:page>

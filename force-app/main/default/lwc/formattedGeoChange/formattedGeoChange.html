@@ -1,0 +1,17 @@
+<template>
+    <template if:false={hasNoChange}>
+        <span if:true={numGeosAdded}>
+            +<lightning-formatted-number value={numGeosAdded}></lightning-formatted-number>
+        </span>
+    
+        <span if:true={hasAddedAndDroppedGeos}> / </span>
+    
+        <span if:true={numGeosDropped}>
+            -<lightning-formatted-number value={numGeosDropped}></lightning-formatted-number>
+        </span>
+    </template>
+
+    <span if:true={hasNoChange}>
+        {noChangeLabel}
+    </span>
+</template>

@@ -1,0 +1,31 @@
+/* Allows nesting modals within modals */
+.slds-modal__container {
+    transform: none;
+}
+
+.max-height-content {
+    height: inherit;
+}
+
+/* Allows dropdowns to be visible past modal's bottom border */
+/* Used in non-standard record pages i.e pop-up dialogs */
+.override-overflow {
+    overflow: initial;
+}
+
+.veeva-modal__container--veeva-small {
+    width: 35rem;
+    max-width: 35rem;
+}
+
+.veeva-modal__container--veeva-smaller {
+    width: 25rem;
+    max-width: 25rem;
+    max-height: 35rem;
+}
+
+.veeva-modal__container--veeva-tiny {
+    width: 20rem;
+    max-width: 20rem;
+    max-height: 20rem;
+}

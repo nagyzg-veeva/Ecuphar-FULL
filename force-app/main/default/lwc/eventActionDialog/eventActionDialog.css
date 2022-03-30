@@ -1,0 +1,19 @@
+.reschedule-slot-height {
+    min-height: 300px;
+}
+
+.approver-lookup + .comments-field {
+    padding-top: 0.5rem;
+}
+
+.error-alert, .warning-alert {
+    display: flex;
+    justify-content: center;
+    border-radius: 2px;
+    padding: 10px 0;
+    margin-bottom: 5px;
+}
+
+.error-alert:last-child, .warning-alert:last-child {
+    margin-bottom: 10px;
+}

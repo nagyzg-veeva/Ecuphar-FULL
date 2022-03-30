@@ -1,0 +1,50 @@
+<apex:page >
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script>
+
+        <!-- Put your queryparms here.  Format is &<tag>=value -->
+
+        var myqueryparms = "&taburl=" + "{!URLENCODE($CurrentPage.URL)}";
+
+
+        var param = "{!$CurrentPage.parameters.view}";
+        if (param != ''){
+            myqueryparms += "&view=" + param;
+        }
+
+        param = "{!$CurrentPage.parameters.weekend}";
+        if (param != ''){
+            myqueryparms += "&weekend=" + param;
+        }
+
+        param = "{!$CurrentPage.parameters.date}";
+        if (param != ''){
+            myqueryparms += "&date=" + param;
+        }
+
+        param = "{!$CurrentPage.parameters.userid}";
+        if (param != ''){
+            myqueryparms += "&userid=" + param;
+        }
+
+        param = "{!$CurrentPage.parameters.nweek}";
+        if (param != ''){
+            myqueryparms += "&nweek=" + param;
+        }
+
+        param = "{!$CurrentPage.parameters.highlight}";
+        if (param != ''){
+            myqueryparms += "&highlight=" + param;
+        }
+
+        //flag that determines if frame is in lightning enabled visualforce page
+        myqueryparms += "&lgtvf=true";
+        myqueryparms += "&minframeheight=800";
+        //flag that determines if we are in lightning or classic mode
+        if ("{!$User.UIThemeDisplayed}" === "Theme4d") {
+            myqueryparms += "&user-theme=true";
+        }
+        com.vod309.redirect.redirect("callplan",myqueryparms);
+
+    </script>
+</apex:page>

@@ -1,0 +1,19 @@
+<template>
+    <c-veeva-modal if:true={show} size={size} onclose={handleModalClose} hide-header={hasHeader}>
+        <div slot="header" if:true={title}>{title}</div>
+        <div slot="content">
+            <lightning-layout horizontal-align={messageHorizontalAlign}>
+                <div if:true={messages} class="slds-var-m-around_small">
+                    <template for:each={messages} for:item="message">
+                        <p key={message}>{message}</p>
+                    </template>
+                </div>
+            </lightning-layout>
+        </div>
+        <div slot="footer">
+            <lightning-layout horizontal-align="end">
+                <lightning-button class="slds-m-horizontal_x-small" label={okayButtonLabel} variant="brand" onclick={handleModalConfirm}></lightning-button>
+            </lightning-layout>
+        </div>
+    </c-veeva-modal>
+</template>

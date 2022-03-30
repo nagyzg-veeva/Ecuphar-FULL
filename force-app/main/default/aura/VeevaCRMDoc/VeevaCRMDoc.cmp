@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <c:VeevaLgtnService aura:id="vodService" />
+    <div class="slds-card slds-box">
+        <a href="javascript:void(0)" onclick="{!c.openCRMDocInNewWindow}">{!$Label.c.Veeva_CRM_Doc_vod}</a>
+    </div>
+</aura:component>

@@ -1,0 +1,14 @@
+/* "overrides" the default color for disabled buttons, and sets a default offset for use in sizing the data table */
+:host {
+    --lwc-colorTextButtonDefaultDisabled: var(--sds-c-card-text-color, #000000);
+    --vertical-offset: 400px;
+}
+
+.table-title {
+    display: inline;
+}
+
+/* Ensures table does not grow beyond the viewport */
+.table-container {
+    height: calc(100vh - var(--vertical-offset));
+}

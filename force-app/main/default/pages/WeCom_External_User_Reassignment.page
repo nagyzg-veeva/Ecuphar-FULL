@@ -1,0 +1,54 @@
+<apex:page controller="WeChat_Reassignment_Controller">
+  <apex:form >
+    <apex:pageBlock title="{!reassignmentRecordsMessage}" id="reassignment_list">
+      <apex:pageBlockButtons location="top">
+        <apex:commandButton action="{! processReassignment }" value="{! importFileMessage}"
+                            onclick="validateProcessStatus();" reRender="reassignmentTable"/>
+      </apex:pageBlockButtons>
+      <script>
+          function validateProcessStatus() {
+              if ({!displayAlert})
+              {
+                  alert('{!onlineAlertMessage}' + '\n\n' + '{!ongoingReassignmentMessage}')
+                  return false
+              }
+          }
+      </script>
+      <apex:pageBlockTable value="{!reassignmentResultList}" var="item" id="reassignmentTable">
+        <apex:column headerValue="{!startTimeMessage}" value="{!item.formattedStartTime}"/>
+        <apex:column headerValue="{!finishTimeMessage}" value="{!item.formattedEndTime}"/>
+        <apex:column headerValue="{!userMessage}" value="{!item.operationUser}"/>
+        <apex:column headerValue="{!statusMessage}" value="{!item.status}"/>
+        <apex:column headerValue="{!totalMessage}" value="{!item.totalProcessed}"/>
+        <apex:column headerValue="{!successFailMessage}">
+            <apex:outputText value="{!item.reassignedMessage}"></apex:outputText>
+          <apex:commandLink rendered="{!item.hasDeniedList}" style="color:#007aff; padding-left:10px;"
+                            oncomplete="window.open('{!deniedList}');"
+                            value="{!downloadDetailsMessage}" rel="noopener noreferrer">
+            <apex:param name="currentSelectedDeniedId" value="{!item.id}" assignTo="{!currentSelectedDeniedId}"/>
+          </apex:commandLink>
+        </apex:column>
+        <apex:column headerValue="{!errorSummaryMessage}">
+          <apex:outputText value="{!item.exceptionMessage}"></apex:outputText>
+          <apex:commandLink rendered="{!item.hasExceptionList}" style="color:#007aff; padding-left:10px;"
+                            oncomplete="window.open('{!exceptionList}');"
+                            value="{!downloadDetailsMessage}" rel="noopener noreferrer">
+            <apex:param name="currentSelectedExceptionId" value="{!item.id}" assignTo="{!currentSelectedExceptionId}"/>
+          </apex:commandLink>
+        </apex:column>
+      </apex:pageBlockTable>
+
+      <table style="width: 100%">
+        <tr>
+          <td align="center">
+            <apex:commandLink action="{! previous }" value="« Previous" rendered="{! hasPrevious }" reRender="reassignment_list"/>
+            <apex:outputText style="color: #ccc;" value="« Previous" rendered="{! NOT(hasPrevious) }"/>
+            &nbsp;&nbsp; 
+            <apex:commandLink action="{! next }" value="Next »" rendered="{! hasNext }" reRender="reassignment_list"/>
+            <apex:outputText style="color: #ccc;" value="Next »" rendered="{! NOT(hasNext) }"/>
+          </td>
+        </tr>
+      </table>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

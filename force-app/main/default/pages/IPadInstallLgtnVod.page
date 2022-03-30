@@ -1,0 +1,8 @@
+<apex:page controller="VODRedirectController">
+	<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+	<script>
+		//flag that determines if frame is in lightning enabled visualforce page
+		var queryParams = "&iAppID={!IRepAppId}&iVersion={!IPadVersion}&lgtvf=true";
+	  	com.vod309.redirect.redirect("IpadInstall", queryParams);  
+  </script>
+</apex:page>

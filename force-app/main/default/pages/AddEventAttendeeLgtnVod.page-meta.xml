@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>The Add Attendee button is a custom button that allows users to search across Person Accounts, Contacts, and Users via a single search mechanism</description>
+    <label>Add_Event_Attendee</label>
+</ApexPage>

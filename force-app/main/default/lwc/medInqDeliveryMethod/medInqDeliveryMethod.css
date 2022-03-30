@@ -1,0 +1,9 @@
+.veeva-checkbox-flex-container {
+    display:flex;
+    flex-direction: column;
+}
+
+.slds-m-top_xx-small {
+    display:flex;
+    flex-direction: column;
+}

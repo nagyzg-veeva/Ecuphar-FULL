@@ -1,0 +1,8 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <span slot="readonlyText">
+            <lightning-formatted-rich-text value={value}></lightning-formatted-rich-text>
+            <div class="calculate-on-save-msg slds-text-body_small slds-m-top_xxx-small" if:true={isActionEdit}>{calcOnSaveMsg}</div>
+        </span>
+    </c-veeva-field-generic>
+</template>

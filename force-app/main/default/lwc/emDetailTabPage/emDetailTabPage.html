@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-tabs_card slds-theme_default slds-p-top_x-small slds-p-horizontal_small">
+        <lightning-tabset class="flexipage-tabset">
+            <lightning-tab class="slds-p-top_x-small slds-p-bottom_none" label={detailLabel.data}>
+                <c-veeva-detail-page object-api-name={objectApiName} record-id={recordId}></c-veeva-detail-page>
+            </lightning-tab>
+            <template if:true={hasRelatedLists} for:each={relatedLists} for:item="relatedList">
+                <lightning-tab class="slds-p-top_x-small slds-p-bottom_none" label={relatedList.label} key={relatedList.relationship} onactive={handleActive}>
+                    <c-veeva-related-list-table meta={relatedList} parent-id={recordId} page-ctrl={pageCtrl}></c-veeva-related-list-table>
+                </lightning-tab>
+            </template>
+        </lightning-tabset>
+    </div>
+</template>

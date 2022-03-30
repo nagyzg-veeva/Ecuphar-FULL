@@ -1,0 +1,21 @@
+.search-result-container{
+    background-color:#fafaf9;
+    position:relative;
+    height:100%;
+    overflow:hidden;
+}
+
+.search-result-container lightning-layout{
+    height:100%;
+}
+
+.datatable-container {
+    height:100%;
+}
+
+.no-results-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

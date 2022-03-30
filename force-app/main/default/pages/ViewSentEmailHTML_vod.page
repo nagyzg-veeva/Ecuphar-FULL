@@ -1,0 +1,13 @@
+<apex:page standardController="Sent_Email_vod__c" lightningStylesheets="true">
+    <style type="text/css">
+        .disable-link a {
+            color: currentColor;
+            display: inline-block;  /* For IE11/ MS Edge bug */
+            pointer-events: none;
+            cursor: not-allowed;    
+        }
+    </style>
+    <div class="disable-link">
+        <apex:outputText value="{!Sent_Email_vod__c.Email_Content_vod__c + Sent_Email_vod__c.Email_Content2_vod__c}" escape="false"/>
+    </div>
+</apex:page>

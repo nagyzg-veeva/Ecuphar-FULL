@@ -1,0 +1,22 @@
+<apex:page standardController="Inventory_Monitoring_vod__c" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+        var queryparams = "&inventoryid=" + "{!Inventory_Monitoring_vod__c.id}";
+        queryparams += '&mode=v';
+
+        //flag that determines if frame is in lightning enabled visualforce page
+        queryparams += "&lgtvf=true";
+
+        com.vod309.redirect.redirect("inventory", queryparams);
+
+        (function removeSLDS() {
+            document.querySelector('body').classList.remove('slds-scope');
+        })();
+
+    </script>
+
+    <apex:stylesheet value="{!$Resource.vod_lightning_style_overrides}" />
+
+    <c:FilesAttachmentsRelatedListVod objectType="{!Inventory_Monitoring_vod__c}" />
+
+</apex:page>

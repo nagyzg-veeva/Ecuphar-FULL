@@ -1,0 +1,6 @@
+<template>
+    <template iterator:btn={customButtons}>
+        <c-veeva-custom-button meta={btn.value} page-ctrl={pageCtrl} key={btn.value.name}
+            class='slds-m-right_x-small' variant='base'></c-veeva-custom-button>
+    </template>
+</template>

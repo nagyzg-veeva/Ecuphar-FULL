@@ -1,0 +1,23 @@
+<!-- known issue: Components that override the "New" action are cached 
+https://success.salesforce.com/issues_view?id=a1p3A000000JWUgQAO -->
+<aura:component implements="force:hasRecordId,lightning:actionOverride,lightning:isUrlAddressable,lightning:availableForFlowScreens">
+    
+    <aura:attribute name="objectApiName" type="String"/>
+    <aura:attribute name="rtId" type="String"/>
+    <aura:attribute name="defaultFieldValues" type="String"/>
+    <aura:attribute name="flowContext" type="String"/>
+    <aura:attribute name="isFlowScreen" type="Boolean"/>
+    <aura:attribute name="inContextOfRef" type="Object"/>
+
+    <lightning:navigation aura:id="navService"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <aura:attribute name="pageRefSetInternally" type="Boolean"/>
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.onPageReferenceChange}"/>
+    
+    <aura:if isTrue="{!and(v.pageReference, v.objectApiName)}">
+        <c:veevaNewPage pageReference="{!v.pageReference}" objectApiName="{!v.objectApiName}" isFlowScreen="{!v.isFlowScreen}" onclose="{!c.handleCloseEvent}">
+        </c:veevaNewPage>
+    </aura:if>
+</aura:component>

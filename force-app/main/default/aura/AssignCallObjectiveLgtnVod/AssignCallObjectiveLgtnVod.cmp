@@ -1,0 +1,38 @@
+<aura:component controller="AssignCallObjectiveLgtnController"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" >
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="objectiveList" type="List" />
+    <aura:attribute name="fieldNames" type="Map" />
+    <aura:attribute name="displayObjectiveList" type="List" />
+    <aura:attribute name="searchText" type="String"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:handler name="change" value="{!v.searchText}" action="{!c.doSearch}"/>
+
+    <div class="slds-modal__content slds-p-around_medium">
+        <lightning:input type="text" value="{!v.searchText}"/>
+        <div class="slds-popover__body slds-popover__body_small" >
+            <table>
+                <tbody>
+                    <tr>
+                        <th>{!v.fieldNames.name_vod__c}</th>
+                        <th>{!v.fieldNames.to_date_vod__c}</th>
+                        <th>{!v.fieldNames.RecordType}</th>
+                        <th>{!v.fieldNames.from_date_vod__c}</th>
+                    </tr>
+                    <aura:iteration items="{! v.displayObjectiveList }" var="row" indexVar="key">
+                        <tr>
+                            <td><a href="javascript:void(0)" onclick="{!c.assignToTactic}" id="{!row.Id}">{!row.Name_vod__c}</a></td>
+                            <td>{!row.To_Date_vod__c}</td>
+                            <td>{!row.RecordType.Name}</td>
+                            <td>{!row.From_Date_vod__c}</td>
+                        </tr>
+                    </aura:iteration>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="slds-modal__footer">
+        <lightning:button label="Cancel" title="{!v.fieldNames.cancel}" onclick="{! c.handleCancelClick }"/>
+    </footer>
+
+</aura:component>

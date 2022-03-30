@@ -1,0 +1,21 @@
+<apex:page standardController="Order_vod__c" recordSetVar="orders" standardStylesheets="true">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">  
+    var queryparams = "&acctid=" + "{!URLENCODE($CurrentPage.parameters.acctid)}";
+    queryparams += '&mode=n';
+    var multiRecipients = "{!URLENCODE($CurrentPage.parameters.multiRecipients)}";
+    if(multiRecipients) {
+        queryparams += "&multiRecipients=" + multiRecipients;
+        queryparams += "&recipientIds=" + "{!URLENCODE($CurrentPage.parameters.recipientIds)}";
+    }
+    var retURL = "{!URLENCODE($CurrentPage.parameters.retURL)}";
+    if (retURL) {
+        queryparams += "&retURL=" + retURL;
+    }
+
+    //flag that determines if frame is in visualforce page
+    queryparams += "&lgtvf=true";
+    
+    com.vod309.redirect.redirect("order", queryparams);
+</script>
+</apex:page>

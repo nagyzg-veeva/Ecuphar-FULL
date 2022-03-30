@@ -1,0 +1,8 @@
+.admin-content {
+    background: var(--lwc-colorBackground);
+    height: 100%;
+}
+
+.no-access {
+    height: 100%;
+}

@@ -1,0 +1,14 @@
+.veeva-link_text {
+    color: var(--lwc-brandTextLink,rgb(1, 118, 211));
+    text-decoration: none;
+    transition: color .1s linear;
+}
+
+.veeva-link_text:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.veeva-name_link {
+    padding: 0px 8px;
+}

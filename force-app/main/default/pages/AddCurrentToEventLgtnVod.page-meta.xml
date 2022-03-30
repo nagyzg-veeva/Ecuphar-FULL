@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>The Add My Attendance button is as a quick tool button that can add the user that is performing the click event as an Event Attendee to the current Medical Event</description>
+    <label>Add_Current_To_Event</label>
+</ApexPage>

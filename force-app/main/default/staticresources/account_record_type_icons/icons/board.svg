@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <linearGradient id="hzw3v18y3b" x1="50%" x2="50%" y1="-53.99%" y2="54.012%">
+            <stop offset="0%" stop-color="#CDCDCD"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </linearGradient>
+        <linearGradient id="7ia020rx0d" x1="-222.472%" x2="69.663%" y1="49.985%" y2="49.985%">
+            <stop offset="0%" stop-color="#A0A0A0"/>
+            <stop offset="100%" stop-color="#E0E0E0"/>
+        </linearGradient>
+        <linearGradient id="1q3da7f3se" x1="2.661%" x2="102.384%" y1="50.112%" y2="50.112%">
+            <stop offset="0%" stop-color="#EAEAEA"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+        <linearGradient id="mko2mcqh4f" x1="106.837%" x2="6.627%" y1="50.019%" y2="50.019%">
+            <stop offset="0%" stop-color="#EAEAEA"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+        <radialGradient id="mvqhpqp9ia" cx="-78.807%" cy="50.918%" r="134.368%" fx="-78.807%" fy="50.918%">
+            <stop offset="0%" stop-color="#CDCDCD"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </radialGradient>
+        <radialGradient id="miqgz0rlbc" cx="-78.841%" cy="50.942%" r="134.384%" fx="-78.841%" fy="50.942%">
+            <stop offset="0%" stop-color="#CDCDCD"/>
+            <stop offset="100%" stop-color="#EAEAEA"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g fill-rule="nonzero">
+            <g transform="translate(-56 -412) translate(56 412)">
+                <circle cx="32" cy="32" r="32" fill="#007A7F"/>
+                <circle cx="31.84" cy="25.35" r="9.26" fill="url(#mvqhpqp9ia)"/>
+                <path fill="url(#hzw3v18y3b)" d="M32 58.25c6.778.008 13.295-2.616 18.175-7.32-1.001-7.346-6.284-13.387-13.43-15.36-3.093 1.52-6.717 1.52-9.81 0-7.056 1.94-12.305 7.858-13.39 15.095C18.453 55.532 25.088 58.259 32 58.25z"/>
+                <circle cx="50.04" cy="27.795" r="6.9" fill="url(#miqgz0rlbc)"/>
+                <circle cx="13.95" cy="27.475" r="6.9" fill="#EAEAEA"/>
+                <path fill="url(#7ia020rx0d)" d="M32 55.685L28.885 52.4 32 39.44 35.115 52.4z"/>
+                <path fill="url(#1q3da7f3se)" d="M13.95 36c-1.267 0-2.518-.29-3.655-.85-1.446.397-2.816 1.03-4.055 1.875.821 4.207 2.664 8.147 5.365 11.475 1.443-5.004 4.686-9.298 9.105-12.055-.979-.553-2.021-.985-3.105-1.285-1.138.555-2.389.842-3.655.84z"/>
+                <path fill="url(#mko2mcqh4f)" d="M57.71 37.325c-1.226-.826-2.577-1.45-4-1.85-2.305 1.133-5.005 1.133-7.31 0-1.027.284-2.017.687-2.95 1.2 4.305 2.804 7.438 7.084 8.81 12.035 2.717-3.294 4.588-7.203 5.45-11.385z"/>
+            </g>
+        </g>
+    </g>
+</svg>

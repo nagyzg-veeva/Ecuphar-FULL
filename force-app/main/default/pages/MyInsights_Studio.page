@@ -1,0 +1,6 @@
+<apex:page controller="VeevaMyInsightsStudioController">
+    <apex:pageBlock >
+        <apex:slds />
+        <apex:outputLink value="{!url}">{!openStudioMessage}</apex:outputLink>
+    </apex:pageBlock>
+</apex:page>

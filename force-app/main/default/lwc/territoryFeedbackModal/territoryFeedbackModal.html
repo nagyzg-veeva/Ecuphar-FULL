@@ -1,0 +1,32 @@
+<template>
+    <c-veeva-modal if:true={displayModal} onclose={handleCancelCommand}>
+        <span slot='header'>{modalTitle}</span>
+
+        <div slot='content' class="slds-text-align--center slds-p-vertical--small">
+            <template for:each={modalMessages} for:item="message">
+                <p key={message}>{message}</p>
+            </template>
+        </div>
+
+        <div slot='footer'>
+            <lightning-button-group if:true={showConfirmationModal}>
+                <lightning-button name='yes' label={yesMessage} variant="brand" onclick={handleConfirmCommand}></lightning-button>
+                <lightning-button name='no' label={noMessage} onclick={handleCancelCommand}></lightning-button>
+            </lightning-button-group>
+
+            <lightning-layout if:true={showPendingChallengesModal} horizontal-align="spread">
+                <lightning-layout-item>
+                    <lightning-button name='cancel' label={cancelMessage} onclick={handleCancelCommand}></lightning-button>
+                </lightning-layout-item>
+
+                <lightning-layout-item>
+                    <lightning-button-group>
+                        <lightning-button name='approve' label={approveAllMessage} variant="brand" onclick={handleConfirmCommand}></lightning-button>
+                        <lightning-button name='reject' label={rejectAllMessage} onclick={handleConfirmCommand}></lightning-button>
+                        <lightning-button if:true={showReviewButton} name='review' label={reviewMessage} onclick={handleConfirmCommand}></lightning-button>
+                    </lightning-button-group>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </c-veeva-modal>
+</template>

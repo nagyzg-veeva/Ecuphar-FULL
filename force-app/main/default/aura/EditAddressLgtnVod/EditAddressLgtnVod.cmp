@@ -1,0 +1,8 @@
+<aura:component implements="lightning:actionOverride,force:lightningQuickAction,force:hasRecordId,lightning:isUrlAddressable" controller="VeevaDCRAccessController" >
+    <aura:handler name="render" value="{!this}" action="{!c.render}"/>
+    <c:VeevaLgtnService aura:id="vodService"/>
+    <lightning:navigation aura:id="navService"/>
+    <div class="slds-is-relative slds-align_absolute-center" style="height: 15em;">
+        <lightning:spinner variant="brand" alternativeText="Loading" size="large" />
+    </div>
+</aura:component>

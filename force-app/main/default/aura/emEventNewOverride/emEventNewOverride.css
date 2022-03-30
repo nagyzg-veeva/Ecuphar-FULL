@@ -1,0 +1,10 @@
+.THIS .slds-modal .countrySelectorWrapper .slds-form-element__label {
+    font-weight: var(--lwc-fontWeightLight,400);
+    font-size: 1.25rem;
+    line-height: var(--lwc-lineHeightHeading,1.25);
+}
+
+/* Fixes a gap between dropdown and scrollbar on Windows */
+.THIS .slds-modal .countrySelectorWrapper .slds-dropdown_length-with-icon-7 {
+    border-right: inset;
+}

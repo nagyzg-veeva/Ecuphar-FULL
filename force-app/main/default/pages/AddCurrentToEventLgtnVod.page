@@ -1,0 +1,9 @@
+<apex:page standardController="Medical_Event_vod__c" standardStylesheets="true" showHeader="false" sidebar="false">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script type="text/javascript">
+      var queryParams = '&lgtvf=true&event=addUser&Id={!$User.Id}&medID={!Medical_Event_vod__c.Id}&UserName={!JSENCODE(URLENCODE($User.FirstName))} {!JSENCODE(URLENCODE($User.LastName))}'; 
+      com.vod309.redirect.redirect("eAttendee",queryParams);
+    </script>
+    
+</apex:page>

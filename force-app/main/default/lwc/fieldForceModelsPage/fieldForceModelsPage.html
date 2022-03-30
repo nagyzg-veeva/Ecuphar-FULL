@@ -1,0 +1,87 @@
+<template>
+    <c-veeva-page-header if:false={hidePageContent} icon-name="standard:proposition" title={fieldPlan.name}>
+        <lightning-breadcrumbs slot="breadcrumbs">
+            <lightning-breadcrumb label={fieldPlansMessage} onclick={handleFieldPlanNavigation}></lightning-breadcrumb>
+        </lightning-breadcrumbs>
+    </c-veeva-page-header> 
+
+    <div if:true={loading} class="spinner-container">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </div>
+
+    <c-territory-feedback-error-handler message-service={messageService}></c-territory-feedback-error-handler>
+
+    <!-- For the MVP, block table and tabs from rendering if an async process is running against user's data -->
+    <template if:false={hidePageContent}>
+        <div>
+            <lightning-layout class="body-container slds-p-top_small">
+                <lightning-layout-item size={territoryTableSize}>
+                    <!-- If multiple field forces, then nest the table view within the tabset -->
+                    <lightning-tabset if:false={isSingleFieldForceModel} active-tab-value={activeFieldForceId}>
+                        <template for:each={fieldPlan.fieldForceModels} for:item="fieldForceModel">
+                            <lightning-tab key={fieldForceModel.id} value={fieldForceModel.id} title={fieldForceModel.name} label={fieldForceModel.name} end-icon-name={fieldForceModel.statusIconName} onactive={handleFieldForceTabChange}>
+                                <c-territory-models-table
+                                    message-service={messageService}
+                                    child-territories={childTerritories}
+                                    territory-table-metadata={activeFieldForceTableMetadata}
+                                    sort-direction={sortDirection}
+                                    sorted-by={sortedBy}
+                                    onnavigatetoterritory={handleChildNavigationEvent}
+                                    onnavigatetoparent={handleParentNavigationEvent}
+                                    oncommand={handleCommand}
+                                    onviewgeochange={handleGeoChangeEvent}
+                                    onupdatesortparams={handleUpdateSortParamsEvent}
+                                    onnavigatetoaccounts={handleAccountsNavigationEvent}
+                                    onupdateactions={updateAvailableActionsForActiveParent}>
+
+                                    <span slot="buttons">
+                                        <lightning-button-menu if:true={availableActionsForActiveParent.length} variant="border-filled" icon-name="utility:automate" menu-alignment="auto" onselect={handleParentMoreActionsEvent} class="slds-m-left_small">
+                                            <template for:each={availableActionsForActiveParent} for:item="action">
+                                                <lightning-menu-item key={action.name} value={action.name} label={action.label}></lightning-menu-item>
+                                            </template>
+                                        </lightning-button-menu>
+            
+                                        <lightning-button-icon variant="border-filled" icon-name="utility:info" title={moreInfoMessage} class="slds-m-left_small" onclick={handleInfoEvent}></lightning-button-icon>
+                                    </span>
+                                </c-territory-models-table>
+                            </lightning-tab>
+                        </template>
+                    </lightning-tabset>
+
+                    <!-- Show the table without the tabset if exactly one field force -->
+                    <c-territory-models-table 
+                        if:true={isSingleFieldForceModel} 
+                        message-service={messageService}
+                        child-territories={childTerritories}
+                        territory-table-metadata={activeFieldForceTableMetadata}
+                        sort-direction={sortDirection}
+                        sorted-by={sortedBy}
+                        onnavigatetoterritory={handleChildNavigationEvent}
+                        onnavigatetoparent={handleParentNavigationEvent}
+                        oncommand={handleCommand}
+                        onviewgeochange={handleGeoChangeEvent}
+                        onupdatesortparams={handleUpdateSortParamsEvent}
+                        onnavigatetoaccounts={handleAccountsNavigationEvent}
+                        onupdateactions={updateAvailableActionsForActiveParent}>
+
+                        <span slot="buttons">
+                            <lightning-button-menu if:true={availableActionsForActiveParent.length} variant="border-filled" icon-name="utility:automate" menu-alignment="auto" onselect={handleParentMoreActionsEvent} class="slds-m-left_small">
+                                <template for:each={availableActionsForActiveParent} for:item="action">
+                                    <lightning-menu-item key={action.name} value={action.name} label={action.label}></lightning-menu-item>
+                                </template>
+                            </lightning-button-menu>
+
+                            <lightning-button-icon variant="border-filled" icon-name="utility:info" title={moreInfoMessage} class="slds-m-left_small" onclick={handleInfoEvent}></lightning-button-icon>
+                        </span>
+                    </c-territory-models-table>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="3" class={sidePanelClass}>
+                    <c-field-plan-info-panel message-service={messageService} onclose={handlePanelCloseEvent}></c-field-plan-info-panel>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </template>
+
+    <c-territory-feedback-modal message-service={messageService} onconfirm={handleConfirmCommand} oncancel={handleCancelCommand}></c-territory-feedback-modal>
+</template>

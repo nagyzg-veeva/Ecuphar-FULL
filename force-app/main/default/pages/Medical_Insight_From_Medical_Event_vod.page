@@ -1,0 +1,33 @@
+<apex:page standardController="Medical_Event_vod__c" extensions="Medical_Event_Extension_vod">
+    <c:VOD_EMBED skipVeevaPage="{!$User.UIThemeDisplayed == 'Theme4d' || $User.UIThemeDisplayed == 'Theme4u'}" veevaModule="kmi" veevaPage="{!IF(skipAcctSelector,'medical-insight-edit','select-account')}" objectType="Medical_Insight_vod__c" queryParams="eventId={!Medical_Event_vod__c.Id}"/>
+    <script type="text/javascript">
+        if (typeof VeevaFlowUtils !== "undefined") {       
+            var inputVariables = [
+                VeevaFlowUtils.createFlowVariable("objectApiName", "Medical_Insight_vod__c", "String")
+            ];
+            
+            var defaultFieldValues = {
+                "Medical_Event_vod__c": {
+                    "displayValue": "{!Medical_Event_vod__c.Name}",
+                    "value": "{!Medical_Event_vod__c.Id}"
+                },
+                "Date_vod__c": {
+                    "value": new Date("{!Medical_Event_vod__c.Start_Date_vod__c}")
+                }
+            };
+            inputVariables.push(VeevaFlowUtils.createFlowVariable("defaultFieldValues", JSON.stringify(defaultFieldValues),
+                "String"));
+            
+            var inContextOfRef = {
+                "type": "standard__recordPage",
+                "attributes": {
+                    "recordId": "{!Medical_Event_vod__c.Id}",
+                    "actionName": "view",
+                    "objectApiName": "Medical_Event_vod__c"
+                }
+            };
+            
+            VeevaFlowUtils.createFlowComponent('VeevaMedEventAccountSelectorFlow', inputVariables, inContextOfRef);
+        }
+    </script>
+</apex:page>

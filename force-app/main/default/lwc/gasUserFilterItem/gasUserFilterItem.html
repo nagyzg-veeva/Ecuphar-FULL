@@ -1,0 +1,7 @@
+<template>
+    <div class="slds-var-p-around_small">
+        <lightning-combobox label={label} options={options} onchange={addSelectedOption}></lightning-combobox>
+        <lightning-pill-container items={selectedOptions} onitemremove={removeSelectedOption}>
+        </lightning-pill-container>
+    </div>
+</template>

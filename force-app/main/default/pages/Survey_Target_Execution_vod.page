@@ -1,0 +1,3 @@
+<apex:page standardController="Survey_Target_vod__c" extensions="Survey_Target_Extension_vod">
+    <c:VOD_EMBED veevaModule="survey" objectType="Survey_Target_vod__c" veevaPage="view-survey-target" queryParams="{!queryParamsStr}"/>
+</apex:page>

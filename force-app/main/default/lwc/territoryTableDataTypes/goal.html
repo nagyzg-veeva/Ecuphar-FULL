@@ -1,0 +1,14 @@
+<template>
+    <!-- If {value} is not null, then should render as: `{value} (+{difference})` -->
+    <span class={typeAttributes.classes}>
+        <template if:false={typeAttributes.isNull}>
+            <lightning-formatted-number value={value}></lightning-formatted-number>
+    
+            <template if:true={typeAttributes.difference}>
+                <span> (<template if:true={typeAttributes.differenceIsPositive}>+</template><lightning-formatted-number value={typeAttributes.difference}></lightning-formatted-number>)</span>
+            </template>
+        </template>
+        
+        <lightning-formatted-text if:true={typeAttributes.isNull} value="-"></lightning-formatted-text>
+    </span>
+</template>

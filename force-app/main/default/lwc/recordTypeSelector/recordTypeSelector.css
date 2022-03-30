@@ -1,0 +1,60 @@
+.forceChangeRecordType .changeRecordTypeRow {
+    margin-top: var(--lwc-spacingLarge,1.5rem);
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.forceChangeRecordType .changeRecordTypeLeftColumn {
+    float: left;
+    text-align: right;
+    padding-right: var(--lwc-spacingLarge,1.5rem);
+    width: 35%;
+    /* originally font-size: var(--lwc-fontSizeMedium,0.8125rem); */
+    font-size: 0.8125rem;
+    color: rgb(62, 62, 60);
+}
+
+.forceChangeRecordType .changeRecordTypeRightColumn {
+    float: right;
+    text-align: left;
+    width: 65%;
+}
+
+.forceChangeRecordType .changeRecordTypeLeftRightContent legend {
+    margin-left: auto;
+    margin-right: 0;
+    text-align: right;
+}
+
+.forceChangeRecordType .changeRecordTypeOptionLeftColumn {
+    width: 10%;
+    float: left;
+}
+
+.forceChangeRecordType .changeRecordTypeOptionRightColumn {
+    width: 90%;
+    float: right;
+    text-align: left;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.forceChangeRecordType .changeRecordTypeItemDescription {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: var(--lwc-spacingSmall,0.75rem);
+    padding-left: var(--lwc-spacingLarge,1.5rem);
+    word-wrap: break-word;
+}
+
+.forceChangeRecordType .clearall {
+    clear: both;
+}
+
+.forceChangeRecordType .insufficientPrivilegesMsg {
+    margin-top: var(--lwc-spacingLarge,1.0rem);
+    margin-bottom: var(--lwc-spacingLarge,1.0rem);
+    margin-left: 0;
+    margin-right: 0;
+}

@@ -1,0 +1,117 @@
+.forceContentVirtualRelatedListStencil {
+    list-style:none; 
+    background-color:#ffffff
+}
+
+.forceContentVirtualRelatedListStencil.desktop {
+    background-color:transparent
+}
+
+.forceContentVirtualRelatedListStencil .cover {
+    display:none; 
+    height:100%; 
+    position:absolute; 
+    width:100%; 
+    z-index:80; 
+    top:0
+}
+
+.forceContentVirtualRelatedListStencil a, .forceContentVirtualRelatedListStencil a:hover, .forceContentVirtualRelatedListStencil a:focus {
+    text-decoration:none;
+}
+
+.forceContentVirtualRelatedListStencil.light {
+    border-bottom:1px solid var(--lwc-colorBorderSeparator,rgb(250, 250, 249));
+}
+
+.forceContentVirtualRelatedListStencil.dark {
+    border-bottom:1px solid var(--lwc-colorBorderSeparatorAlt,rgb(221, 219, 218));
+}
+
+.forceContentVirtualRelatedListStencil:last-child {
+    border-bottom:0
+}
+
+.forceContentVirtualRelatedListStencil .itemTitle {
+    display:block; 
+    white-space:nowrap;
+     overflow:hidden; 
+    text-overflow:ellipsis;
+}
+
+.forceContentVirtualRelatedListStencil .openFolderIcon {
+    display:table-cell; 
+    vertical-align:middle; 
+    text-align:right;
+    color:var(--lwc-colorTextDefault,rgb(8, 7, 7)); 
+    font-size:0.75rem;
+}
+
+.forceContentVirtualRelatedListStencil .secondaryFields {
+    color:var(--lwc-colorTextWeak,rgb(62, 62, 60));
+     display:inline-block;
+}
+
+.forceContentVirtualRelatedListStencil .titleCol .secondaryFields.flexDisplay {
+    display:-webkit-flex; 
+    display:inline-flex;
+}
+
+.forceContentVirtualRelatedListStencil .secondaryFields span:after {
+    content:"\2022"; 
+    margin:0 5px;
+}
+
+.forceContentVirtualRelatedListStencil .secondaryFields span:last-child:after, .forceContentVirtualRelatedListStencil .secondaryFields .fileSizeAmount:after, .forceContentVirtualRelatedListStencil .secondaryFields .itemRows:after {
+    content:''; 
+    margin:0;
+}
+
+.forceContentVirtualRelatedListStencil .filerow {
+    display:table; 
+    table-layout:fixed;
+    width:100%;
+}
+
+.forceContentVirtualRelatedListStencil .filerowdisable {
+    opacity:0.5; cursor:default; 
+    display:table; 
+    table-layout:fixed; 
+    width:100%;
+}
+
+.forceContentVirtualRelatedListStencil .nohighlight {
+    opacity:0.5;
+}
+
+.forceContentVirtualRelatedListStencil .checkBoxContainer {
+    display:none; 
+    vertical-align:middle;
+    width:28px; 
+    padding-right:var(--lwc-spacingSmall,0.75rem);
+}
+
+.forceContentVirtualRelatedListStencil .itemRows {
+    -webkit-flex:0 1000000 auto;
+}
+
+.forceContentVirtualRelatedListStencil .thumbnailContainer {
+    display:table;
+    margin:0 auto;
+}
+
+.forceContentVirtualRelatedListStencil .itemLabel {
+    -webkit-flex:0 100 auto;
+}
+
+.forceContentVirtualRelatedListStencil .repositoryIcon {
+    width:12px; 
+    vertical-align:middle
+}
+
+.forceContentVirtualRelatedListStencil .thumbnailImg.medium {
+    height:auto; 
+    min-width:30px; 
+    max-width:30px; 
+    max-height:35px;
+}

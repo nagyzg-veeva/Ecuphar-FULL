@@ -1,0 +1,21 @@
+<template>
+    <c-veeva-modal if:true={modal.show} onclose={handleModalClose} hide-header={hideHeader}>
+        <div slot="header" if:true={modal.title}>{modal.title}</div>
+        <div slot="content">
+            <div if:true={modal.messages} class="slds-var-m-around_small">
+                <template for:each={modal.messages} for:item="message">
+                    <p key={message}>{message}</p>
+                </template>
+            </div>
+        </div>
+        <div slot="footer">
+            <lightning-layout horizontal-align="center">
+                <lightning-button onclick={handleModalClose} class="slds-m-horizontal_x-small"
+                    label={defaultVeevaMessages.no}></lightning-button>
+                <lightning-button onclick={handleModalAccept} class="slds-m-horizontal_x-small"
+                    label={defaultVeevaMessages.yes} variant="brand">
+                </lightning-button>
+            </lightning-layout>
+        </div>
+    </c-veeva-modal>
+</template>

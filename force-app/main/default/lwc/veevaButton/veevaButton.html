@@ -1,0 +1,8 @@
+<template>
+    <c-veeva-button-delete data-veeva-id={name} meta={button} page-ctrl={pageCtrl} if:true={btnDelete}></c-veeva-button-delete>
+    <c-veeva-button-edit data-veeva-id={name} meta={button} page-ctrl={pageCtrl} if:true={btnEdit}></c-veeva-button-edit>
+    <c-veeva-custom-button data-veeva-id={name} meta={button} page-ctrl={pageCtrl} if:true={showVeevaCustomButton}></c-veeva-custom-button>
+    <c-veeva-button-unlock data-veeva-id={name} meta={button} page-ctrl={pageCtrl} if:true={btnUnlock}></c-veeva-button-unlock>
+    <c-veeva-button-save data-veeva-id={name} meta={button} record-id={recordId} page-mode={pageMode} if:true={isModalSave} disable-button={disableButton}></c-veeva-button-save>
+    <c-veeva-button-cancel data-veeva-id={name} meta={button} if:true={btnCancel} disable-button={disableButton}></c-veeva-button-cancel>
+</template>

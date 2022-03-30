@@ -1,0 +1,62 @@
+<template>
+    <c-veeva-page-header if:false={hidePageContent} icon-name="standard:collection" title={fieldPlansHeader}></c-veeva-page-header> 
+
+    <div if:true={loading} class="spinner-container">
+        <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+    </div>
+
+    <c-territory-feedback-error-handler message-service={messageService}></c-territory-feedback-error-handler>
+
+    <lightning-layout if:false={hidePageContent} class="slds-m-top_small slds-m-bottom_small" vertical-align="stretch" multiple-rows>
+        <template for:each={fieldPlans} for:item="fieldPlan">
+            <lightning-layout-item flexibility="no-grow" key={fieldPlan.id} class="slds-m-right_small slds-m-bottom_small">
+                <div class="card-container slds-box">
+                    <lightning-card variant="narrow" icon-name="standard:proposition">
+                        <lightning-button slot="title" value={fieldPlan.id} title={fieldPlan.name} class="truncate-text" variant="base" label={fieldPlan.name} onclick={handleTerritoryNavigation}></lightning-button>
+                        
+                        <dl class="slds-dl_horizontal slds-card__body_inner">
+                            <dt class="slds-dl_horizontal__label card-label slds-m-bottom_xx-small" title={dueLabel}>{dueLabel}:</dt>
+                            <dd class="slds-dl_horizontal__detail slds-tile__meta slds-m-bottom_xx-small" title={dueLabel}>
+                                <lightning-formatted-date-time
+                                    if:true={fieldPlan.hasDueDate}
+                                    value={fieldPlan.dueDate}
+                                    time-zone="UTC"
+                                    year="numeric"
+                                    month="numeric"
+                                    day="numeric">
+                                </lightning-formatted-date-time>
+
+                                <lightning-formatted-text if:false={fieldPlan.hasDueDate} value="-"></lightning-formatted-text>
+                            </dd>
+    
+                            <dt if:true={fieldPlan.hasCycle} class="slds-dl_horizontal__label card-label" title={cycleLabel}>{cycleLabel}:</dt>
+                            <dd if:true={fieldPlan.hasCycle} class="slds-dl_horizontal__detail slds-tile__meta" title={cycleLabel}>
+                                <lightning-formatted-date-time
+                                    value={fieldPlan.cycleStartDate}
+                                    time-zone="UTC"
+                                    year="numeric"
+                                    month="numeric"
+                                    day="numeric">
+                                </lightning-formatted-date-time>
+
+                                <lightning-formatted-text value=" - "></lightning-formatted-text>
+
+                                <lightning-formatted-date-time
+                                    value={fieldPlan.cycleEndDate}
+                                    time-zone="UTC"
+                                    year="numeric"
+                                    month="numeric"
+                                    day="numeric">
+                                </lightning-formatted-date-time>
+                            </dd>
+                            
+                            <!-- Ensure all tiles are the same height, even if there's no cycle information. -->
+                            <dt if:false={fieldPlan.hasCycle} class="slds-dl_horizontal__label"></dt>
+                            <dd if:false={fieldPlan.hasCycle} class="slds-dl_horizontal__detail slds-tile__meta"><br/></dd>
+                        </dl>
+                    </lightning-card>
+                </div>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>

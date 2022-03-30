@@ -1,0 +1,9 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <div slot="control">
+            <lightning-input type={ctrl.inputType} value={value} variant='label-hidden' onchange={handleChange}
+                date-style='short' step={step} required={ctrl.required} disabled={ctrl.disabled} maxlength={ctrl.maxlength}>
+            </lightning-input>
+        </div>
+    </c-veeva-field-generic>
+</template>

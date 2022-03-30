@@ -1,0 +1,16 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <div slot="readonlyText">
+            <lightning-formatted-text value={value} if:true={isText}></lightning-formatted-text>
+            <lightning-formatted-rich-text if:true={isRichText} value={value}></lightning-formatted-rich-text>
+            <lightning-formatted-number value={value} minimum-fraction-digits={ctrl.digits} if:true={isNumber}
+                format-style={formatter}>
+            </lightning-formatted-number>
+            <lightning-formatted-phone value={value} if:true={isPhone}></lightning-formatted-phone>
+            <lightning-formatted-email value={value} if:true={isEmail} hide-icon=true></lightning-formatted-email>
+            <lightning-formatted-date-time value={value} if:true={dateTimeNeedsFormatting} year="numeric" month="numeric" 
+                day="numeric" hour={timeFormat} minute={timeFormat} time-zone={timeZone}>
+            </lightning-formatted-date-time>
+        </div>
+    </c-veeva-field-generic>
+</template>

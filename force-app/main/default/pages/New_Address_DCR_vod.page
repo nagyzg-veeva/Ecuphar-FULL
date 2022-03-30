@@ -1,0 +1,17 @@
+<apex:page standardController="Address_vod__c" standardStylesheets="true" recordSetVar="addresses">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+       var queryParams = "&mode=n";
+
+       queryParams += "&acctId=";
+       queryParams += "{!URLENCODE(CASESAFEID($CurrentPage.parameters.id))}";
+
+       if ("{!URLENCODE(CASESAFEID($CurrentPage.parameters.RecordType))}".length > 1) {
+            queryParams += "&recordTypeId=";
+            queryParams += "{!URLENCODE(CASESAFEID($CurrentPage.parameters.RecordType))}";
+       }
+       
+       queryParams += "&lgtvf=true";
+       com.vod309.redirect.redirect("networkEnabledAddress", queryParams);
+    </script>
+</apex:page>

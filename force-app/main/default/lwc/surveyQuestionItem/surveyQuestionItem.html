@@ -1,0 +1,43 @@
+<template>
+    <lightning-layout class="slds-m-around_medium">
+        <lightning-layout-item size="1" padding="horizontal-small">
+            <div if:false={question.isDescription} class="slds-text-align_right">
+                <abbr class="slds-required" if:true={question.required}>*</abbr>{question.number}.
+            </div>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="3">
+            <p>{question.text}</p>
+        </lightning-layout-item>
+
+        <lightning-layout-item if:true={inputType} size="8">
+            <lightning-input type={inputType} required={question.required} label={surveyQuestionLabel} variant="label-hidden"
+                onchange={handleChange}></lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item if:true={question.isLongText} size="8">
+            <lightning-textarea required={question.required} label={surveyQuestionLabel} variant="label-hidden"
+                onchange={handleChange}>
+            </lightning-textarea>
+        </lightning-layout-item>
+
+        <lightning-layout-item if:true={question.isRadio} size="8">
+            <lightning-radio-group label={surveyQuestionLabel} options={question.options} value={question.value}
+                variant="label-hidden" type="radio" required={question.required} onchange={handleChange}>
+            </lightning-radio-group>
+        </lightning-layout-item>
+
+        <lightning-layout-item if:true={question.isMultiselect} size="8">
+            <lightning-dual-listbox source-label="Available" selected-label="Selected" options={question.options}
+                value={question.value} label={surveyQuestionLabel} required={question.required} variant="label-hidden"
+                disable-reordering onchange={handleChange}>
+            </lightning-dual-listbox>
+        </lightning-layout-item>
+
+        <lightning-layout-item if:true={question.isPicklist} size="8">
+            <lightning-combobox label={surveyQuestionLabel} value={question.value} options={question.options}
+                variant="label-hidden" required={question.required} onchange={handleChange}>
+            </lightning-combobox>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

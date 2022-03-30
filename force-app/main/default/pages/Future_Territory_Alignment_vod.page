@@ -1,0 +1,11 @@
+<apex:page controller="Future_Territory_Alignment_vod">
+    <apex:outputText rendered="{!NoFeedback}"><b>{!errorMessage}</b></apex:outputText>
+    <apex:iframe id="align_iframe" scrolling="true" width="100%" src="{!FeedbackUrl}" frameborder="false" rendered="{!NOT(NoFeedback)}"/>
+    <c:Veeva_Resize_Component_vod />
+    <script>
+        var vodIframe = document.getElementById("align_iframe");
+        com.vod309.resize.init(vodIframe);
+        com.vod309.resize.setIFrameWindowSize(vodIframe);
+        com.vod309.resize.watchScrollPosition(vodIframe);
+    </script>
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/> 
+    <script>
+        var myqueryparams = "&lgtvf=true";
+        com.vod309.redirect.redirect("aadmin", myqueryparams); 
+    </script>
+</apex:page>

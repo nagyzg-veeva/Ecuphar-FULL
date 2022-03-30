@@ -1,0 +1,10 @@
+<apex:page standardController="Cycle_Plan_vod__c" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+        var queryparams = "&id=" + "{!Cycle_Plan_vod__c.id}";
+        queryparams += '&mode=v';
+        queryparams += '&lgtvf=true';
+        queryparams += '&minframeheight=3000';
+        com.vod309.redirect.redirect("cycleplan", queryparams);
+    </script>
+</apex:page>

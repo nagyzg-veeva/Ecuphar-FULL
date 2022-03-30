@@ -1,0 +1,10 @@
+<apex:page standardController="Account">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+      var date = new Date();
+      var queryParams = "&ACCTID={!Account.Id}&ACCRECID={!Account.RecordTypeId}&cacheSuffix="+date.getTime()+"&minframeheight=640";
+      com.vod309.redirect.redirect("ratings", queryParams);
+  </script>
+
+</apex:page>

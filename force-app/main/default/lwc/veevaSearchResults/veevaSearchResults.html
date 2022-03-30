@@ -1,0 +1,39 @@
+<template>
+    <lightning-layout multiple-rows=true>
+        <slot name="lookup"></slot>
+        <lightning-layout-item size="12" if:true={count}>
+            <div class="slds-page-header slds-page-header_joined slds-is-relative">
+                <div class="slds-grid slds-grid--vertical-align-center">
+                    <div class="slds-col slds-wrap slds-text-body--small slds-text-color--weak">
+                        <h2 class="slds-m-bottom--xx-small">
+                            <div class="slds-page-header__title slds-text-color--default">
+                                {resultTitle}
+                            </div>
+                        </h2>
+                        <div class="slds-list_horizontal">
+                            <div class="slds-text-body_small slds-text-color_weak">
+                                <p>{countsLabel}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="lightning-datatable-container">
+                <c-veeva-datatable key-field="id" data={searchRecords} columns={columns}
+                    onrowselection={handleRowSelection} class='slds-m-top_small' max-row-selection=1
+                    min-column-width="100" enable-infinite-loading={enableInfiniteLoading} onloadmore={handleLoadMore}
+                    hide-checkbox-column={hideCheckbox}>
+                </c-veeva-datatable>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" if:true={noResults}
+            class="slds-page-header slds-theme_default slds-p-vertical--xx-large slds-m-top--large">
+            <div class="slds-align_absolute-center slds-p-vertical--xx-large">
+                <img src="/img/search/no-results.png">
+            </div>
+            <div class="slds-text-align_center slds-text-heading_large slds-p-bottom--large slds-text-color_weak">
+                {labelNoRecords}
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

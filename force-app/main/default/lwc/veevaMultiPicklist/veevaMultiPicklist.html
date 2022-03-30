@@ -1,0 +1,12 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <div slot="control">
+            <lightning-dual-listbox source-label={labelAvailable} selected-label={labelSelected} options={options} 
+                value={values} if:true={isDisplayable} onchange={handleChange} size=4 variant='label-hidden'
+                required={ctrl.required} disabled={disabled} disable-reordering>
+            </lightning-dual-listbox>
+            <c-veeva-dependent-picklist-msg ctrl={ctrl} if:false={ctrl.readonly}></c-veeva-dependent-picklist-msg>
+            <lightning-formatted-text value={selectedList} if:true={ctrl.readonly}></lightning-formatted-text>
+        </div>
+    </c-veeva-field-generic>
+</template>

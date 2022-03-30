@@ -1,0 +1,23 @@
+<apex:page standardController="Zip_to_Terr_vod__c" recordSetVar="Zips" extensions="VOD_GetRecordIds">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+    <script>
+        var zipCodes = '{!selectedRecordIds}';
+
+        var params = '&lgtvf=true';
+        var error;
+
+        if (zipCodes.length > 0)  {
+            params += "&zipCodes=" + zipCodes;
+        } else {
+            error = "You must select at least one record to process.";
+        }
+
+        if (!error) {
+            com.vod309.redirect.redirect("assignterritory", params);
+        } else {
+            alert(error);
+            history.go(-1);
+        }
+    </script>
+</apex:page>

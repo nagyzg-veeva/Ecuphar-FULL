@@ -1,0 +1,4 @@
+<apex:component controller="BlockAccessEmbedController">
+   <apex:pageMessage title="{!blockedTitle}" summary="{!systemDown}" severity="warning" rendered="{!systemMaintenance}"/>
+   <apex:pageMessage title="{!blockedTitle}" detail="{!callBlockedDetail}" summary="{!blockedSummary}" severity="warning" rendered="{!NOT(systemMaintenance)}"/>
+</apex:component>

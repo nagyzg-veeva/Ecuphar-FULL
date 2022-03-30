@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <linearGradient id="oh3c0iojxa" x1="81.15%" x2="-88.429%" y1="50%" y2="50%">
+            <stop offset="0%" stop-color="#EAEAEA"/>
+            <stop offset="100%" stop-color="#DADADA"/>
+        </linearGradient>
+        <linearGradient id="75pyfqe4gc" x1="49.738%" x2="49.738%" y1="42.195%" y2="-22.695%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+        <linearGradient id="gefl3rm6pd" x1="-56.631%" x2="44.1%" y1="50.013%" y2="50.013%">
+            <stop offset="0%" stop-color="#CDCDCD"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </linearGradient>
+        <linearGradient id="snurlnzg8e" x1="99.564%" x2="-104.041%" y1="49.876%" y2="49.876%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+        <radialGradient id="0oe235wbeb" cx="-78.844%" cy="50.904%" r="134.399%" fx="-78.844%" fy="50.904%">
+            <stop offset="0%" stop-color="#CDCDCD"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g fill-rule="nonzero">
+            <g transform="translate(-328 -171) translate(328 171)">
+                <circle cx="32" cy="32" r="32" fill="#8A8A8D"/>
+                <path fill="url(#oh3c0iojxa)" d="M49 46.76H14.73v4.03c-.007.687.3 1.339.835 1.77 9.548 7.56 23.042 7.56 32.59 0 .536-.43.847-1.082.845-1.77v-4.03z"/>
+                <path fill="#FFF" d="M38.165 31.5c0 .884.716 1.6 1.6 1.6.884 0 1.6-.716 1.6-1.6 0-.884-.716-1.6-1.6-1.6-.884 0-1.6.716-1.6 1.6z"/>
+                <circle cx="32.58" cy="15.7" r="7.74" fill="url(#0oe235wbeb)"/>
+                <path fill="url(#75pyfqe4gc)" d="M19.09 19.85c-.914.008-1.735.558-2.09 1.4-2.035.124-3.626 1.806-3.635 3.845V40.67h1.715V25.095c.003-1.09.823-2.003 1.905-2.125.421 1.073 1.575 1.664 2.692 1.38 1.116-.286 1.846-1.357 1.702-2.5-.144-1.144-1.117-2.001-2.269-2h-.02z"/>
+                <rect width="44.88" height="8.065" x="9.42" y="40.41" fill="#FFF" rx="2"/>
+                <path fill="url(#gefl3rm6pd)" d="M48.125 42.67c.167-.937.25-1.888.25-2.84.003-2.11-.418-4.2-1.24-6.145-1.207-3.34-3.525-6.164-6.565-8v2.69c1.563.403 2.583 1.905 2.38 3.507-.204 1.601-1.566 2.802-3.18 2.802s-2.976-1.2-3.18-2.802c-.203-1.602.817-3.104 2.38-3.507V24.86c-.74-.331-1.504-.607-2.285-.825-2.584 1.27-5.61 1.27-8.195 0-.646.172-1.28.39-1.895.65v3.62c2.455.565 4.29 3.66 4.29 7.545 0 .442-.358.8-.8.8h-1.62c-.442 0-.8-.358-.8-.8 0-.442.358-.8.8-.8h.765c-.235-2.92-1.705-5.265-3.44-5.265-1.735 0-3.21 2.345-3.445 5.265h.76c.442 0 .8.358.8.8 0 .442-.358.8-.8.8H21.5c-.442 0-.8-.358-.8-.8 0-3.885 1.835-7 4.29-7.545V25.5c-3.234 1.819-5.712 4.732-6.99 8.215-1.187 2.822-1.534 5.926-1 8.94l31.125.015z"/>
+                <circle cx="19.09" cy="22.135" r="2.285" fill="#FFF"/>
+                <path fill="url(#snurlnzg8e)" d="M40.35 48.5H11.42c-1.105 0-2-.895-2-2v-4.09c0-1.105.895-2 2-2h28.93v8.09z"/>
+            </g>
+        </g>
+    </g>
+</svg>

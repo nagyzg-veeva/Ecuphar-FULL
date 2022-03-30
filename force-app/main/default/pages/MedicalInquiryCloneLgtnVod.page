@@ -1,0 +1,23 @@
+<apex:page lightningStylesheets="true" standardController="Medical_Inquiry_vod__c">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script>
+        var ID = '{! Medical_Inquiry_vod__c.Id}';
+        var ACCID = '{!Medical_Inquiry_vod__c.Account_vod__r.Id}';
+
+        var myqueryparms = "&id=" + ID + "&mode=n&clone=1" ;
+        var RecordType ="{!URLENCODE($Request.RecordType)}";
+        myqueryparms += "&RecordType=" + RecordType + "&minframeheight=2000";
+        var retURL = '{!URLENCODE($Request.retURL)}';
+        if (retURL == null || retURL=='') {
+        	retURL = '{!URLFOR( $Action.Medical_Inquiry_vod__c.List , $ObjectType.Medical_Inquiry_vod__c )}';
+        }
+
+        if (ACCID != null ) {
+        	myqueryparms+= "&ACCID=" + ACCID ;
+        }
+
+        myqueryparms+= "&retURL=" + retURL + "&lgtvf=true";
+
+        com.vod309.redirect.redirect("medinq",myqueryparms);
+    </script>
+</apex:page>

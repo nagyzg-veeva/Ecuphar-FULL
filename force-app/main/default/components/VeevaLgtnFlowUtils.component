@@ -1,0 +1,31 @@
+<apex:component >
+    <apex:includeLightning />
+    <apex:slds />
+    <div id="lightningFlow"></div>
+    <script type="text/javascript">
+        var VeevaFlowUtils = {
+            createFlowComponent: function(flowName, inputVariables, inContextOfRef) {
+                $Lightning.use("c:veevaFlowLauncherApp", function() {                
+                    var auraAttributes = {
+                        "flowName": flowName,
+                        "flowVariables": inputVariables,
+                        "inContextOfRef": inContextOfRef
+                    };
+            
+                    $Lightning.createComponent("c:veevaLgtnFlowLauncher", auraAttributes, "lightningFlow",
+                        function() {
+                            console.log("Initializing lightning flow '" + flowName + "'");
+                        }
+                    );
+                });
+            },
+            createFlowVariable: function(name, value, type) {
+                return {
+                    "name": name,
+                    "value": value,
+                    "type": type
+                };
+            }
+        }
+    </script>
+</apex:component>

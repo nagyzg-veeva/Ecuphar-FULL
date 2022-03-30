@@ -1,0 +1,41 @@
+.unscrollable {
+        overflow: hidden;
+    }
+    .disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+    .title {
+        padding-top: 15px;
+        padding-left: 15px;
+    }
+    .subtitle {
+        padding-top: 30px;
+        padding-bottom: 15px;
+    }
+    .veevacrm {
+        width : 400px;
+    }
+    .lightninglogo {
+       width:200px;
+       padding-left : 30px;
+    }
+    .coloring{
+    	fill: rgb(255, 158, 22) !important;
+    }    
+    .arrow{
+        padding-left : 10px;
+        padding-right : 40px;
+    }
+    .big {
+        width: 7rem;
+        height: 7rem;
+    }
+    .containtext {
+        max-width : 700px;
+        text-align: center;
+    }
+    .nodisplay {
+        display: none;
+    }
+    

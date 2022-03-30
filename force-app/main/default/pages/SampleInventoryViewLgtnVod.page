@@ -1,0 +1,19 @@
+<apex:page standardController="Sample_Inventory_vod__c" extensions="VOD_EMBED_CONTROLLER" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+
+    var ID='{!Sample_Inventory_vod__c.Id}';
+    var retURL = '{!URLENCODE($Request.retURL)}';
+
+    var queryParams = "&lgtvf=true&id=" + ID + "&mode=v";
+    if ({!lightningMode}) {
+      queryParams += "&user-theme=true";
+    }
+    queryParams += "&retURL=" + retURL;
+
+    com.vod309.redirect.redirect("sampinv", queryParams);
+
+  </script>
+
+</apex:page>

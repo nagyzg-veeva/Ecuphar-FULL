@@ -1,0 +1,40 @@
+<template>
+    <div if:true={loading}>
+      <div role="status" class="slds-spinner slds-spinner_medium">
+        <span class="slds-assistive-text">Loading</span>
+        <div class="slds-spinner__dot-a"></div>
+        <div class="slds-spinner__dot-b"></div>
+      </div>
+    </div>
+    <c-gas-header accountobjectname={accountObjName} resultcount={resultCount} hide-new-account={cannotCreateAccounts} disable-new-account={disableNewAccount} enable-add-territory={enableAddToTerritory} user-filter-toggled={showUserFilters} onsearch={handleSearchEvent} onnewaccount={createNewAccount} onsearchmodified={searchModified} onaddterritory={addTerritory} ontogglefilter={toggleUserFilters}>
+    </c-gas-header>
+    <div class="search-result-container">
+      <lightning-layout>
+        <lightning-layout-item size={datatableSize}>
+          <div class="slds-p-around_x-small slds-is-relative datatable-container" if:true={searchCalled}>
+            <c-gas-datatable if:false={loading}
+              key-field="Account.Id"
+              data={formattedSearchResults}
+              columns={searchResultColumns}
+              selected-rows={selectedAccountIds}
+              max-row-selection="1"
+              onrowselection={handleRowSelection}
+              column-widths-mode="auto"
+              sorted-by={sortColumn}
+              sorted-direction={sortDirection}
+              onsort={performSort}
+              min-column-width={minColumnWidth}>
+            </c-gas-datatable>
+            <div if:true={noSearchResults} class="no-results-message">
+                <lightning-formatted-text value={noSearchResultsMessage}></lightning-formatted-text>
+            </div>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={showUserFilters} size={userFiltersSize}>
+          <c-gas-user-filters account-object-info={accountObjectInfo} account-picklist-values={accountPicklistValues} onapply={handleApplyUserFilters}></c-gas-user-filters>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+  <c-gas-navigator></c-gas-navigator>
+  <c-gas-add-territory-modal if:true={showAddTerritory} account-id={accountIdToAddToTerritory} onclose={closeAddTerritory} ontoast={showToast} onsuccess={handleAccountAddedToTerritory}></c-gas-add-territory-modal>
+</template>

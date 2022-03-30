@@ -1,0 +1,4 @@
+<!-- Redirect to Record Type Selector for the New EM_Event_vod__c -->
+<!-- Redirect to keep default Rt Selector when "Skip record type selection page" is marked on the action override -->
+<apex:page standardController="EM_Event_vod__c" extensions="EMRedirectController" action="{!redirectNewEvent}">
+</apex:page>

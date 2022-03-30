@@ -1,0 +1,16 @@
+<apex:page standardController="Contract_Line_vod__c" extensions="VODRedirectController">
+    <apex:outputText value="{!Contract_Line_vod__c.Lock_vod__c} {!Contract_Line_vod__c.Contract_vod__r.Status_vod__c} {!Contract_Line_vod__c.Contract_vod__r.Product_Bound_vod__c} {!Contract_Line_vod__c.Contract_vod__r.Agreement_vod__c}"
+        rendered="false" />
+    <apex:form >
+        <apex:actionFunction name="contractEditRedirect" action="{!contractEditRedirect}" immediate="true" />
+    </apex:form>
+    <script type="text/javascript">
+        var locked = {!Contract_Line_vod__c.Lock_vod__c || Contract_Line_vod__c.Contract_vod__r.Status_vod__c == 'Signed_vod' || (Contract_Line_vod__c.Contract_vod__r.Product_Bound_vod__c && Contract_Line_vod__c.Contract_vod__r.Agreement_vod__c)};
+        if (typeof sforce !== 'undefined' && !locked) {
+            sforce.one.navigateToURL('/apex/Contract_Line_Edit_SF_vod?id=' + '{!Contract_Line_vod__c.Id}');
+        }
+        else {
+            contractEditRedirect();
+        }
+    </script>
+</apex:page>

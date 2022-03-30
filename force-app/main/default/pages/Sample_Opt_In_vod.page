@@ -1,0 +1,11 @@
+<apex:page standardController="Account" standardStylesheets="true">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">
+    var queryparams = "{!JSENCODE($CurrentPage.parameters.queryparams)}";
+    if (!queryparams){
+        queryparams = "&acct=" + "{!Account.Id}";
+    }
+    queryparams += '&lgtvf=true';
+    com.vod309.redirect.redirect("sampleOptIn", queryparams);
+</script>
+</apex:page>

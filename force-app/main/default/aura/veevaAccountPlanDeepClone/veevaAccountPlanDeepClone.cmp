@@ -1,0 +1,18 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickAction">
+    <aura:html tag="style">
+        .slds .modal-footer .slds-modal__footer {
+            display:none;
+        }
+        .modal-footer .slds-modal__footer {
+            display:none;
+        }
+        .slds-modal__footer {
+            display:none;
+        }
+        .modal-footer {
+            display:none;
+        }
+    </aura:html>
+    <c:accountPlanDeepClone recordId="{!v.recordId}" oncancel="{!c.closeComponent}">
+    </c:accountPlanDeepClone>
+</aura:component>

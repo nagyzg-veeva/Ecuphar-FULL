@@ -1,0 +1,15 @@
+<!-- data-validity indicates editable fields -->
+<template>
+    <div data-veeva-id={ctrl.fieldApiName}>
+        <c-veeva-field-checkbox ctrl={ctrl} if:true={ctrl.veevaFieldCheckbox} onchange={handleChange} data-validity></c-veeva-field-checkbox>
+        <c-veeva-field-lookup ctrl={ctrl} if:true={isLookup} onchange={handleChange} data-validity></c-veeva-field-lookup>
+        <c-veeva-record-preview ctrl={ctrl} if:true={isPreview}></c-veeva-record-preview>
+        <c-veeva-lightning-input ctrl={ctrl} if:true={ctrl.veevaLightningInput} onchange={handleChange} data-validity></c-veeva-lightning-input>
+        <c-veeva-combobox ctrl={ctrl} if:true={ctrl.veevaCombobox} onchange={handleChange} data-validity></c-veeva-combobox>
+        <c-veeva-multi-picklist ctrl={ctrl} if:true={ctrl.multiPicklist} onchange={handleChange} data-validity></c-veeva-multi-picklist>
+        <c-veeva-field-text ctrl={ctrl} if:true={ctrl.veevaText}></c-veeva-field-text>
+        <c-veeva-field-text-area ctrl={ctrl} if:true={ctrl.veevaTextArea} onchange={handleChange} data-validity></c-veeva-field-text-area>
+        <c-veeva-field-url ctrl={ctrl} if:true={ctrl.veevaUrl}></c-veeva-field-url>
+        <c-veeva-field-formula ctrl={ctrl} if:true={ctrl.veevaFormula}></c-veeva-field-formula>
+    </div>
+</template>

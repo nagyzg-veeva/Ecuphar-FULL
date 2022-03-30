@@ -1,0 +1,11 @@
+h3 {
+    font-size: 13.5px;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+div.lightning-datatable-container {
+    height: 300px;
+    margin: 10px;
+    position:relative;
+    zoom: 87.4%; /* Changes font size of all table elements */
+}

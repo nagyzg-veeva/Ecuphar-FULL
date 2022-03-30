@@ -1,0 +1,7 @@
+<apex:page controller="VODRedirectController" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+  <script>
+    var myqueryparms = "&lgtvf=true&tabURL=" + '{!$CurrentPage.URL}';
+    com.vod309.redirect.redirect("mysamps", myqueryparms);
+  </script>
+</apex:page>

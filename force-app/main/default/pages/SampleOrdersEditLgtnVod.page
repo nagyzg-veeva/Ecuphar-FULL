@@ -1,0 +1,20 @@
+<apex:page standardController="Sample_Order_Transaction_vod__c" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+
+    var ID='{!Sample_Order_Transaction_vod__c.Id}'; 
+    var RecordTypeName ='{!URLENCODE(Sample_Order_Transaction_vod__c.RecordType.Name)}';
+    var RecordType="{!Sample_Order_Transaction_vod__c.RecordTypeId}";
+    var retURL = '{!URLENCODE($Request.retURL)}';
+      if (retURL == null || retURL=='') {
+        retURL = '{!URLFOR( $Action.Sample_Order_Transaction_vod__c.List, $ObjectType.Sample_Order_Transaction_vod__c )}';
+      }
+
+      var queryParams = "&lgtvf=true&id=" + ID + "&mode=e" + '&RecordTypeName=' + RecordTypeName + "&RecordType=" + RecordType + "&retURL=" + retURL;
+
+    com.vod309.redirect.redirect("samporders", queryParams);
+
+  </script>
+
+</apex:page>

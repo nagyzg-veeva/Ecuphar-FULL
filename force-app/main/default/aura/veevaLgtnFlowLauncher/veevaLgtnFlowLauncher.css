@@ -1,0 +1,142 @@
+/* these styles override the .veeva-lgtn, .ltg-reskin classes,
+ * which are classes that are used to make PL1-3 Pages look more like lightning
+ */
+
+
+ /* header */
+
+.THIS .slds-modal .slds-modal__header h2.slds-text-heading--medium * {
+    font-weight: var(--lwc-fontWeightLight,300);
+    /* originally font-size: var(--lwc-fontSize7,1.25rem); */
+    font-size: 1.25rem;
+    line-height: var(--lwc-lineHeightHeading,1.25);
+}
+
+.THIS .slds-button.slds-section__title-action:hover, .THIS .slds-button.slds-section__title-action:focus, .THIS .slds-button.slds-section__title-action:active {
+    background: rgb(238, 241, 246);
+    color: inherit;
+}
+
+.THIS .forcePageError .genericNotification {
+    background: var(--lwc-colorBackgroundToastError,rgb(194, 57, 52));
+    padding: var(--lwc-spacingMedium,1rem);
+    color: var(--lwc-colorTextModal,rgb(255, 255, 255));
+    line-height: var(--lwc-lineHeightHeading,1.25);
+}
+
+/* need specificity over '.lgt-reskin.veeva-lgtn *' identifier */
+.THIS .forcePageError .genericNotification span.genericError {
+    color: var(--lwc-colorTextModal,rgb(255, 255, 255));
+}
+
+.THIS .forcePageError .errorsList {
+    list-style: none;
+    color: var(--lwc-colorTextError,rgb(194, 57, 52));
+    line-height: var(--lwc-lineHeightText,1.5);
+    margin: 0;
+    padding: var(--lwc-spacingXSmall,0.5rem) var(--lwc-spacingMedium,1rem) var(--lwc-spacingXxSmall,0.25rem) var(--lwc-spacingMedium,1rem);
+}
+
+/* need specificity over '.lgt-reskin.veeva-lgtn *' identifier */
+.THIS .forcePageError .errorsList li {
+    color: var(--lwc-colorTextError,rgb(194, 57, 52));
+}
+
+/* buttons */
+
+.THIS button.slds-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 0;
+    background: transparent;
+    background-clip: border-box;
+    border: var(--lwc-borderWidthThin,1px) solid transparent;
+    border-radius: var(--lwc-buttonBorderRadius,.25rem);
+    line-height: var(--lwc-lineHeightButton,1.875rem);
+    text-decoration: none;
+    color: var(--lwc-brandAccessible,rgb(0, 112, 210));
+    -webkit-appearance: none;
+    white-space: normal;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.THIS button.slds-button:hover, .THIS button.slds-button:focus {
+    color: rgb(0, 95, 178);
+    background-color: rgba(255,255,255)
+}
+
+.THIS .slds-button.slds-button_neutral {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    border: 1px solid rgb(217, 219, 221);
+    transition: border .15s linear;
+    border-color: rgb(216, 221, 230);
+    background-color: rgb(255, 255, 255);
+}
+
+.THIS .slds-button.slds-button_neutral:hover, .THIS .slds-button.slds-button_neutral:focus {
+    background-color: rgb(244, 246, 249);
+}
+                                
+.THIS .slds-button.slds-button_brand {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    border: 1px solid rgb(217, 219, 221);
+    transition: border .15s linear;
+    background-color: rgb(0, 112, 210);
+    border-color: rgb(0, 112, 210);
+    color: rgb(255, 255, 255);
+}
+                                
+.THIS .slds-button.slds-button_brand:hover, .THIS .slds-button.slds-button_brand:focus {
+    background-color: rgb(0, 95, 178);
+    border-color: rgb(0, 95, 178);
+    color: rgb(255, 255, 255);
+}
+
+.THIS .slds-button.slds-button_outline-brand {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+    vertical-align: middle;
+    justify-content: center;
+    transition: border .15s linear;
+    background-color: rgb(255, 255, 255);
+    border-color: rgba(1, 118, 211, 1);
+}
+ 
+.THIS .slds-button.slds-button_outline-brand:hover, .THIS .slds-button.slds-button_outline-brand:focus {
+    background-color: rgb(250, 250, 249);
+    border-color: rgba(1, 118, 211, 1);
+}
+
+/* fields */
+
+.THIS .slds-form__item .slds-checkbox [type=checkbox] {
+    width: 1px;
+    height: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    pointer-events: auto;
+}
+
+.THIS .slds-checkbox.slds-checkbox_standalone [type=checkbox] {
+    width: 1rem;
+    height: 1rem;
+    margin: 0;
+    clip: auto;
+    opacity: 0;
+}

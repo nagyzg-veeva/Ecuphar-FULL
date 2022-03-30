@@ -1,0 +1,48 @@
+<apex:component controller="VOD_EMBED_CONTROLLER">
+    <script type="text/javascript">
+    var fileName = "ActivityLog.xls";
+    
+    function handler() {
+        if (this.readyState === this.DONE) {
+            if (this.status === 200) {
+                if (navigator.msSaveOrOpenBlob) {
+                    navigator.msSaveOrOpenBlob(this.response, fileName);
+                } else {
+                    // this.response is a File, because we set responseType above
+                    var data_url = window.URL.createObjectURL(this.response);
+                    var link = document.createElement('a');
+                    link.href = data_url;
+                    link.download = fileName;
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+                window.setTimeout(function() {
+                    window.close();
+                }, 2000);
+            } else {
+                console.error("Error generating Activity Log");
+                alert("Error generating Activity Log");
+            }
+        }
+    }
+    
+    function submit(days) {
+        var sfEndpoint = "{!$Api.Partner_Server_URL_240}";
+        var sfSession = "{!$Api.Session_ID}";
+        var requestUrl = "{!VodUrl}/api/v1/log/activity/{!$CurrentPage.parameters.id}?days=" + days;
+        var userName = '{!JSENCODE($User.Username)}';
+        
+        var request = new XMLHttpRequest();
+        
+        request.open("GET", requestUrl, true);
+        request.setRequestHeader("sfEndpoint", sfEndpoint);
+        request.setRequestHeader("sfSession", sfSession);
+        request.setRequestHeader("Authorization", "Basic " + btoa(userName + ":dummy"));
+        request.onreadystatechange = handler;
+        request.responseType = 'blob';
+        request.send();
+    }
+    </script>
+</apex:component>

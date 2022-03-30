@@ -1,0 +1,8 @@
+<apex:page standardController="Account" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script>
+        var myqueryparams = "&action=acctFromPrac&actid={!Account.Id}&typ=Account&mode=e&rtid=Professional_vod";
+        myqueryparams += "&lgtvf=true";
+        com.vod309.redirect.redirect("newprofessional", myqueryparams);
+    </script>
+</apex:page>

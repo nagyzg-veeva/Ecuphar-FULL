@@ -1,0 +1,22 @@
+<template>
+    <c-veeva-modal onclose={closeAddTerritoryModal} composed="true">
+        <span slot="header">{addToTerritoryLabel}</span>
+        <div slot="content" class="slds-p-vertical--small">
+            <lightning-checkbox-group name="Checkbox Group"
+                class="slds-p-bottom_small"
+                label={selectParentAccountLabel}
+                options={parentAccounts}
+                value={selectedParents}
+                onchange={updateSelectedParents}>
+            </lightning-checkbox-group>
+        </div>
+        <div slot="footer">
+            <lightning-button class="slds-p-horizontal_x-small" variant="neutral" label={cancelButtonLabel}
+                onclick={closeAddTerritoryModal}>
+            </lightning-button>
+            <lightning-button class="slds-p-horizontal_x-small" variant="brand" label={actionButtonLabel}
+                onclick={navigateToTerritoryOptions}>
+            </lightning-button>
+        </div>
+    </c-veeva-modal>
+</template>

@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title={gasImplicitFiltersLabel}>
+        <div slot="actions">
+            <lightning-button label={newButtonLabel} onclick={createNewImplicitFilter}></lightning-button>
+        </div>
+        <div class="slds-text-align--center slds-p-horizontal--small">
+            <c-veeva-spinner if:true={loadingImplicitFilters} class="slds-spinner_container"></c-veeva-spinner>
+            <lightning-datatable
+                if:true={tableMetadataReady}
+                hide-checkbox-column
+                key-field={implicitFilterKey}
+                columns={implicitFiltersColumns}
+                data={implicitFilters}
+                onrowaction={handleImplicitFilterRowAction}>
+            </lightning-datatable>
+        </div>
+    </lightning-card>
+    <c-gas-implicit-filter-detail
+        if:true={showImplicitFilterDetail}
+        action={implicitFilterDetailAction}
+        filter-id={implicitFilterId}
+        onclose={closeImplicitFiltersDetail}
+        ondone={doneModifyingImplicitFilter}>
+    </c-gas-implicit-filter-detail>
+</template>

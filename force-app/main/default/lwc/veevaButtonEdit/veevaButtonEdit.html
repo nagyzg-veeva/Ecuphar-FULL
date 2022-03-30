@@ -1,0 +1,6 @@
+<template>
+    <template if:true={pageCtrl.canEdit}>
+        <lightning-button if:false={isMenu} name={meta.name} title={meta.label} label={meta.label} onclick={handleClick}></lightning-button>
+        <lightning-menu-item if:true={isMenu} label={meta.label} onclick={handleClick}></lightning-menu-item>
+    </template>
+</template>

@@ -1,0 +1,30 @@
+<apex:page standardController="Account" extensions="SMB_iRepDownload_Ext" sidebar="false">
+<apex:sectionHeader title="Download to iRep"/>
+<apex:form >
+<apex:pageblock id="Block_0">
+<apex:panelGrid columns="2" cellspacing="30px">
+    <apex:panelGroup >
+        <h1><apex:outputText value="Download to iRep"/><br/><br/><br/></h1>
+    </apex:panelGroup>
+    <apex:panelgroup >
+        
+            <apex:commandButton action="{!Submit}" value="Submit" reRender="Block_0"></apex:commandButton>                     
+
+ </apex:panelGroup>
+</apex:panelGrid>
+</apex:pageblock>
+
+ <apex:pageBlock mode="edit" id="results">
+        <apex:pageBlockTable value="{!CCGs}" var="ccg">
+            <apex:column >
+                <apex:facet name="header">
+                    <apex:commandLink value="Name" action="{}" rerender="results,debug">
+                        <apex:param name="sortField" value="Name" assignTo="{!sortField}"/>
+                    </apex:commandLink>
+                </apex:facet>
+                <apex:outputField value="{!ccg.Name}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:form>
+</apex:page>

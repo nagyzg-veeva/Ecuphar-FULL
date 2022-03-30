@@ -1,0 +1,4 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForRecordHome">
+    <c:veevaDetailPage recordId="{!v.recordId}" objectApiName="{!v.sObjectName}"></c:veevaDetailPage>
+    <c:veevaLgtnFlowLauncher></c:veevaLgtnFlowLauncher>
+</aura:component>

@@ -1,0 +1,43 @@
+<template>
+    <div class="veeva-app">
+        <div class="contentContainer">
+            <div class="bPageBlock adminSection">
+
+                <!-- Section header -->
+                <div class="pbHeader">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                        <tr>
+                            <td class="pageTitle">
+                                <h3>{tableTitle}</h3>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="clearingBox"></div>
+
+                <!-- Lightning Datatable -->
+                <div class="lightning-datatable-container slds-is-relative" product={product}>
+                    <template if:true={waiting}>
+                        <div class="slds-align--absolute-center">
+                            <lightning-spinner alternative-text="loading" class="slds-spinner_inline"></lightning-spinner>
+                        </div>
+                    </template>
+
+                    <lightning-datatable
+                            key-field="id"
+                            data={displayedTableData}
+                            columns={columns}
+                            onrowaction={handleRowAction}
+                            class="slds-m-top_small"
+                            min-column-width="100"
+                            hide-checkbox-column=true 
+                            enable-infinite-loading={enableInfiniteLoading}
+                            onloadmore={loadMoreData}>
+                    </lightning-datatable>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

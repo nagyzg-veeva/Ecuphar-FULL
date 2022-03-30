@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>The GenericApplyMyAccountsTemplate acts as a Template to facilitate customers creation of buttons that will allow customers to apply a list of Accounts to an Object based upon a My Accounts view.</description>
+    <label>Generic Apply My Accounts Template</label>
+</ApexPage>

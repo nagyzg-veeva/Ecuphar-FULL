@@ -1,0 +1,58 @@
+<template>
+    <div class="slds-page-header">
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-title slds-list_horizontal">
+            <div class="slds-media slds-size_1-of-5">
+              <div class="slds-media__figure">
+                <span class="slds-icon_container">
+                  <lightning-icon icon-name="standard:person_account" alternative-text={accountobjectname} ></lightning-icon>
+                </span>
+              </div>
+              <div class="slds-media__body">
+                <div class="slds-page-header__name">
+                  <div class="slds-page-header__name-title">
+                    <h1>
+                      <span>{accountobjectname}</span>
+                      <span class="slds-page-header__title slds-truncate">{title}</span>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="slds-media slds-media_small slds-size_4-of-5 slds-float_left">
+              <div class="slds-media__figure">
+                <lightning-combobox
+                  name="accountType"
+                  variant="label-hidden"
+                  value={accountTypeFilter}
+                  options={accountTypeOptions}
+                  onchange={handleAccountTypeChange} 
+                  class="slds-float_right">
+                </lightning-combobox>
+              </div>
+              <div class="slds-media__body slds-p-left_small slds-list_horizontal">
+                <lightning-input id="accountInput" name="accountInput" placeholder={accountSearchPlaceholderText} type="search" onchange={updateAccountSearchText} onkeyup={handleKeyUp}
+                  minlength="2" variant="label-hidden" class="slds-size_2-of-7" message-when-too-short={accountSearchBoxValidationMsg} message-when-value-missing={accountSearchBoxValidationMsg} required>
+                </lightning-input>
+                <lightning-input id="addressInput" name="addressInput" placeholder={locationSearchPlaceholderText} type="text" onchange={updateAddressSearchText} onkeyup={handleKeyUp}
+                  variant="label-hidden" class="slds-p-left_small slds-size_2-of-7">
+              </lightning-input>
+              <lightning-button variant="brand" type="submit" label={searchBtnLabel} onclick={handleSearch} class="slds-p-left_small"></lightning-button>
+              </div>
+              <div>
+                <lightning-button class="slds-p-right_small" variant="brand" disabled={disableAddToTerritory} label={addToTerritoryLabel} onclick={handleAddToTerritory}></lightning-button>
+                <lightning-button if:false={hideNewAccount} class="slds-p-right_small" variant="brand" disabled={disableNewAccount} label={newButtonLabel} onclick={createNewAccount}></lightning-button>
+              </div>
+              </div>    
+          </div>
+        </div>
+        <div class="slds-page-header__row">
+          <div class="slds-page-header__col-meta">
+            <p class="slds-page-header__meta-text">{resultcount} {itemsLabel}</p>
+          </div>
+          <div>
+              <lightning-button-icon-stateful class="slds-p-right_small" variant="border-filled" icon-name="utility:filterList" selected={userFilterToggled} onclick={toggleFilter}></lightning-button-icon-stateful>
+          </div>
+        </div>
+      </div>
+</template>

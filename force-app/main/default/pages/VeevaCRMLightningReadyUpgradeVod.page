@@ -1,0 +1,241 @@
+<apex:page lightningStylesheets="true" applyBodyTag="false" controller="LightningReadyVodController">
+    <apex:stylesheet value="{!$Resource.LightningStylesVod}"/>
+    <apex:slds />
+        <div class="slds-scope" id="basePage">
+            <div class="slds-text-heading_large title slds-box slds-theme_shade">
+                {!VEEVA_CRM_LIGHTNING_READY_UPGRADE_TAB}
+            </div>
+             <div class = "slds-box slds-theme_default">
+
+                 <div class="slds-image slds-align_absolute-center">
+                  <img class = "veevacrm" src="{!$Resource.VeevaCrmVod}"/>
+                  <span class="slds-icon_container slds-icon-utility-chevronright arrow big">
+                        <svg aria-hidden="true" class="slds-icon-text-default coloring big"
+                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                             <use xlink:href="/apexpages/slds/latest/assets/icons/utility-sprite/svg/symbols.svg#chevronright"></use>
+                        </svg>
+                      <span class="slds-assistive-text">Announcement</span>
+                  </span>
+
+                  <img class="lightninglogo" src="{!$Resource.LightningLogoVod}" />
+                </div>
+                <div class="slds-text-heading_medium slds-align_absolute-center slds-m-top--medium subtitle">
+                    {!UNDERSTANDING_CRM_LIGHTNING_READY_UPGRADE_TITLE}
+                </div>
+                <div class="slds-text-body--regular slds-align_absolute-center slds-m-top--small containtext">
+                    {!UNDERSTANDING_CRM_LIGHTNING_READY_UPGRADE_DETAIL }
+                </div>
+                <div class="slds-align_absolute-center slds-m-top--medium">
+                    <button class="slds-button slds-button_brand {!IF((CanUpgrade),"","disabled")}" onclick="openModalReport()">{!RUN_REPORT}</button>
+                </div>
+                <div class = "{!IF((CanUpgrade),"","nodisplay")}" >
+                    <div class="slds-text-heading_medium slds-align_absolute-center slds-m-top--medium subtitle">
+                        {!DEPLOY_CRM_LIGHTNING_READY_UPGRADE_TITLE}
+                    </div>
+                    <div class="slds-text-body--regular slds-align_absolute-center slds-m-top--small containtext">
+                        {!DEPLOY_CRM_LIGHTNING_READY_UPGRADE_DETAIL }
+                    </div>
+                    <div class="slds-align_absolute-center slds-m-top--medium">
+                        <button class="slds-button slds-button_brand" onclick="openModalDeploy()">{!DEPLOY}</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+    <div style="height:640px" class="slds-scope">
+    <section role="dialog" tabindex="-1" aria-label="Confirmation modal for report" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-close" id="idDialogReport">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!CLOSE}">
+                <span class="slds-assistive-text">{!CLOSE}</span>
+            </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-text-heading_medium" id="modal-content-id-1">
+                    {!RUN_CRM_LIGHTNING_READY_REPORT_CONFIRM}
+            </div>
+        <footer class="slds-modal__footer">
+              <div class="slds-button-group slds-float--right" role="group">
+                   <input type="button" class="slds-button slds-button--neutral cancel" onclick="closeModal('Report');" value="{!CLOSE}" />
+               </div>
+
+        </footer>
+        </div>
+    </section>
+     <section role="dialog" tabindex="-1" aria-label="Confirmation Modal 1 for Deploy" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-close" id="idDialogDeploy">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!CLOSE}">
+                <span class="slds-assistive-text">{!CLOSE}</span>
+            </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-text-heading_medium" id="modal-content-id-1">
+                    {!DEPLOY_CRM_LIGHTNING_READY_UPGRADE_CONFIRM}
+            </div>
+        <footer class="slds-modal__footer">
+              <div class="slds-button-group slds-float--right" role="group">
+                   <button class="slds-button slds-button_brand" onclick="openModalDeploy2()">{!DEPLOY}</button>
+                   <input type="button" class="slds-button slds-button--neutral cancel" onclick="closeModal('Deploy');" value="{!CANCEL}" />
+               </div>
+
+        </footer>
+        </div>
+    </section>
+         <section role="dialog" tabindex="-1" aria-label="Confirmation Modal 2 for Deploy" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-close" id="idDialogDeploy2">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!CLOSE}">
+                <span class="slds-assistive-text">{!CLOSE}</span>
+            </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-text-heading_medium" id="modal-content-id-1">
+                    {!DEPLOY_CRM_LIGHTNING_READY_UPGRADE}
+            </div>
+        <footer class="slds-modal__footer">
+              <div class="slds-button-group slds-float--right" role="group">
+                   <input type="button" class="slds-button slds-button--neutral cancel" onclick="closeModal('Deploy2');" value="{!CLOSE}" />
+               </div>
+
+        </footer>
+        </div>
+    </section>
+    <section role="dialog" tabindex="-1" aria-label="Error modal" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-close" id="idDialogError">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!CLOSE}">
+                <span class="slds-assistive-text">{!CLOSE}</span>
+            </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-text-heading_medium" id="modal-content-id-1">
+                    {!SYSTEM_ERROR}
+            </div>
+        <footer class="slds-modal__footer">
+              <div class="slds-button-group slds-float--right" role="group">
+                   <input type="button" class="slds-button slds-button--neutral cancel" onclick="closeModal('Error');" value="{!CLOSE}" />
+               </div>
+
+        </footer>
+        </div>
+    </section>
+    <section role="dialog" tabindex="-1" aria-label="Error modal" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-close" id="idDialogOrgNotFound">
+        <div class="slds-modal__container">
+            <header class="slds-modal__header slds-modal__header_empty">
+            <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="{!CLOSE}">
+                <span class="slds-assistive-text">{!CLOSE}</span>
+            </button>
+            </header>
+            <div class="slds-modal__content slds-p-around_medium slds-text-heading_medium" id="modal-content-id-1">
+                    {!ERROR_VEEVA_SUPPORT_TICKET}
+            </div>
+        <footer class="slds-modal__footer">
+              <div class="slds-button-group slds-float--right" role="group">
+                   <input type="button" class="slds-button slds-button--neutral cancel" onclick="closeModal('OrgNotFound');" value="{!CLOSE}" />
+               </div>
+
+        </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop_open" id="idBackDrop"></div>
+</div>
+<script type="text/javascript">
+    function callEndpoint(urlAddOn) {
+        var VOD_VERSION = "{!VodVersion}";
+        var url = "{!VodUrl}";
+        url += "/api/v1/lightning/" +urlAddOn;
+        var upgradeBody = {};
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState === 4) {
+                if (this.status === 200) {
+                    console.log("Success");
+                } else {
+                    if (urlAddOn === "upgrades") {
+                        closeModal("Deploy2");
+                    } else {
+                        closeModal("Report");
+                    }
+
+                    if (this.status === 404) {
+                        console.log("Could not find org");
+                        openOrgNotFoundModal()
+                    } else {
+                        console.log("Failure");
+                        openErrorModal();
+                    }
+                }
+            }
+        };
+
+        if(urlAddOn === "upgrades") {
+            upgradeBody.details = [];
+            upgradeBody.settings = {};
+            upgradeBody.name = "OrgDeploy";
+            upgradeBody.executionTime = new Date();
+            upgradeBody.batchStatus = "PENDING";
+            upgradeBody.type = "STANDARD";
+            upgradeBody.settings.checkOnly = false;
+            upgradeBody.settings.processMetadata = true;
+            upgradeBody.settings.processMessages = false;
+            upgradeBody.settings.processVMOCs = false;
+            upgradeBody.settings.loadAppLabelData = false;
+            upgradeBody.settings.processVSession = true;
+            upgradeBody.settings.newFieldsOff = true;
+            upgradeBody.settings.setMaintenanceFlag = false;
+            upgradeBody.settings.platformOverride = false;
+            upgradeBody.settings.overwriteAll = false;
+            upgradeBody.settings.languages = [];
+            upgradeBody.email = "";
+        }
+        xhttp.open("POST", url);
+        xhttp.setRequestHeader("sfSession", '{!JSENCODE(SfSession)}');
+        xhttp.setRequestHeader("sfEndpoint", '{!JSENCODE(SfEndpoint)}');
+        xhttp.setRequestHeader('Content-Type', 'application/json');
+        if (urlAddOn === 'upgrades') {
+            xhttp.send(JSON.stringify(upgradeBody));
+        } else {
+            xhttp.send();
+        }
+    }
+</script>
+<script>
+    function openModalReport() {
+        document.getElementById("idDialogReport").className = document.getElementById("idDialogReport").className.replace( /(?:^|\s)slds-fade-in-close(?!\S)/g , ' slds-fade-in-open');
+        document.getElementById("idBackDrop").className += ' slds-backdrop';
+        document.body.className += ' unscrollable';
+        callEndpoint("reports");
+    }
+
+    function openModalDeploy() {
+        document.getElementById("idDialogDeploy").className = document.getElementById("idDialogDeploy").className.replace( /(?:^|\s)slds-fade-in-close(?!\S)/g , ' slds-fade-in-open');
+        document.getElementById("idBackDrop").className += ' slds-backdrop';
+        document.body.className += ' unscrollable';
+    }
+
+    function openModalDeploy2() {
+        document.getElementById("idDialogDeploy").className = document.getElementById("idDialogDeploy").className.replace( /(?:^|\s)slds-fade-in-open(?!\S)/g , ' slds-fade-in-close');
+        document.getElementById("idDialogDeploy2").className = document.getElementById("idDialogDeploy2").className.replace( /(?:^|\s)slds-fade-in-close(?!\S)/g , ' slds-fade-in-open');
+        callEndpoint("upgrades");
+    }
+    
+    function openErrorModal() {
+        document.getElementById("idDialogError").className = document.getElementById("idDialogReport").className.replace( /(?:^|\s)slds-fade-in-close(?!\S)/g , ' slds-fade-in-open');
+        document.getElementById("idDialogError").className += ' slds-backdrop';
+        document.body.className += ' unscrollable';
+    }
+
+    function openOrgNotFoundModal() {
+        document.getElementById("idDialogOrgNotFound").className = document.getElementById("idDialogReport").className.replace( /(?:^|\s)slds-fade-in-close(?!\S)/g , ' slds-fade-in-open');
+        document.getElementById("idDialogOrgNotFound").className += ' slds-backdrop';
+        document.body.className += ' unscrollable';
+    }
+
+    function closeModal(whichModal) {
+            document.getElementById("idDialog"+whichModal).className = document.getElementById("idDialog"+whichModal).className.replace( /(?:^|\s)slds-fade-in-open(?!\S)/g , ' slds-fade-in-close');
+            document.getElementById("idBackDrop").classList.remove("slds-backdrop");
+            document.body.classList.remove('unscrollable');
+    }
+</script>
+</apex:page>

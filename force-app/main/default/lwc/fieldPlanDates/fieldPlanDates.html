@@ -1,0 +1,35 @@
+<template>
+    <lightning-layout class="slds-m-top_small">
+        <template for:each={cycleDates} for:item="cycleDate">
+            <lightning-layout-item if:true={cycleDate.date} key={cycleDate.date} class="slds-m-right_small" size="3">
+                <h2 class="slds-text-title">{cycleDate.label}</h2>
+                <p class="slds-m-top_x-small slds-text-body_regular">
+                    <lightning-formatted-date-time
+                        value={cycleDate.date}
+                        time-zone="UTC"
+                        year="numeric"
+                        month="numeric"
+                        day="numeric">
+                    </lightning-formatted-date-time>
+                </p>
+            </lightning-layout-item>
+        </template>
+
+        <lightning-layout-item class="slds-m-right_large" size="3">
+            <h2 class="slds-text-title">{dueLabel}</h2>
+            <p class="slds-m-top_x-small slds-text-body_regular">
+                <template if:true={dueDate}>
+                    <lightning-formatted-date-time
+                        value={dueDate}
+                        time-zone="UTC"
+                        year="numeric"
+                        month="numeric"
+                        day="numeric">
+                    </lightning-formatted-date-time>
+                </template>
+
+                <template if:false={dueDate}> - </template>
+            </p>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

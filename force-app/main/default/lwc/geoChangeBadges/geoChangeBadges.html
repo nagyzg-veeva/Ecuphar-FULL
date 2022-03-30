@@ -1,0 +1,19 @@
+<template>
+    <slot name="header"></slot>
+
+    <template for:each={geoInfo} for:item="info">
+        <div key={info.header} class="slds-m-top_small slds-m-right_small slds-m-bottom_small">
+            <h2 class="slds-text-title slds-m-bottom_x-small">{info.header}</h2>
+
+            <em if:false={info.geos.length} class="slds-text-body_regular">{noneLabel}</em>
+
+            <lightning-layout multiple-rows="true">
+                <template for:each={info.geos} for:item="geo">
+                    <lightning-layout-item key={geo}>
+                        <lightning-badge label={geo} class="slds-m-top_x-small slds-m-right_x-small"></lightning-badge>
+                    </lightning-layout-item>
+                </template>
+            </lightning-layout>
+        </div>
+    </template>
+</template>

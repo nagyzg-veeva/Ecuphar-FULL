@@ -1,0 +1,20 @@
+<apex:page controller="VOD_WEC_CONTENT_CONTROLLER" >
+      <apex:pageBlock title="Viewing Contents">
+        <apex:form id="theForm">
+            <apex:pageBlockTable value="{!contents}" var="cont">
+                <apex:column headerValue="Action">
+                    <apex:outputLink onclick="window.open('{!cont.url}','','width=414,height=736')" target="_blank">Preview</apex:outputLink>
+                </apex:column>
+                <apex:column value="{!cont.content.Name}"/>
+                <apex:column value="{!cont.content.LastModifiedDate}"/>
+                <apex:column value="{!cont.content.Expired_vod__c}"/> 
+            </apex:pageBlockTable>
+            <apex:panelGrid columns="4">
+                <apex:commandLink action="{!first}">First</apex:commandLink>
+                <apex:commandLink action="{!previous}" rendered="{!hasPrevious}">Previous</apex:commandLink>
+                <apex:commandLink action="{!next}" rendered="{!hasNext}">Next</apex:commandLink>
+                <apex:commandLink action="{!last}">Last</apex:commandLink>
+            </apex:panelGrid>
+        </apex:form> 
+    </apex:pageBlock>
+</apex:page>

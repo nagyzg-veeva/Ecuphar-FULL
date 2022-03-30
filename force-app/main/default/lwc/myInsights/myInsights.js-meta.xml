@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage,lightning__HomePage,lightning__RecordPage">
+            <property label="HTML_Report_vod__c" name="htmlReportId" type="String" datasource="apex://MyInsightsHTMLReportOptions" />
+            <property label="Max Height" name="maxHeight" type="Integer" />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

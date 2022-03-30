@@ -1,0 +1,8 @@
+<apex:page standardController="Survey_Target_vod__c" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+        var queryparams = "&acctid=" + "{!URLENCODE($CurrentPage.parameters.acctid)}";
+        queryparams += "&lgtvf=true";
+        com.vod309.redirect.redirect("addsurveytarget", queryparams);
+    </script>
+</apex:page>

@@ -1,0 +1,32 @@
+<template>
+    <c-veeva-modal id="eventActionDialog" if:true={display} size="small" composed=true onclose={closeModal}>
+        <div slot="content" class={modalContentClass}>
+            <ul class="error-alerts-container">
+                <template if:true={hasErrors}  for:each={errors} for:item="error">
+                    <li key={error.key} class="error-alert slds-theme_error">
+                        <lightning-icon class="slds-p-left_xx-small slds-p-right_xx-small slds-current-color" icon-name="utility:error" size="x-small"></lightning-icon> 
+                        <span>{error.message}</span>
+                    </li>
+                </template>
+            </ul>
+            <ul class="warning-alerts-container">
+                <template if:true={hasWarnings}  for:each={warnings} for:item="warning">
+                    <li key={warning.key} class="warning-alert slds-theme_warning">
+                        <lightning-icon class="slds-p-left_xx-small slds-p-right_xx-small slds-current-color" icon-name="utility:warning" size="x-small"></lightning-icon> 
+                        <span>{warning.message}</span>
+                    </li>
+                </template>
+            </ul>
+            <div class="slds-text-heading_small slds-p-bottom_x-small" if:true={confirmationMessage}>{confirmationMessage}</div>
+            <div if:true={showReschedule}>
+                <lightning-input class={rescheduleInputClass} name={RESCHEDULE_START_DATE_TIME} type="datetime" label={startTimeLabel} value={currentStartTime} onchange={updateModel}></lightning-input>
+                <lightning-input class={rescheduleInputClass} name={RESCHEDULE_END_DATE_TIME} type="datetime" label={endTimeLabel} value={currentEndTime} onchange={updateModel}></lightning-input>    
+            </div>
+            <c-veeva-field-lookup if:true={showApproverLookup} class="approver-lookup" ctrl={approverCtrl} onlookupselection={handleApproverLookup} onclearlookup={clearApproverLookup}></c-veeva-field-lookup>
+            <lightning-textarea if:true={showComments} class="comments-field" name="comment" label={commentsLabel} value={model.comment} onchange={updateModel}></lightning-textarea>
+        </div>
+        <div slot="footer">
+            <lightning-button variant="brand" label={buttonLabel} onclick={confirmation} disabled={disableButton} class="slds-m-left_x-small"></lightning-button>
+        </div>
+    </c-veeva-modal>
+</template>

@@ -1,0 +1,22 @@
+<apex:component controller="Ecuphar_Order_Email_Wholesaler" access="global" >
+   
+    <apex:attribute name="OrderId" type="Id" description="Order lines" assignTo="{!OId}"/>   
+    
+    <table border="1" cellpadding="8" cellspacing="0" align="center">
+        <tr >
+            <th bgcolor="#CCCCCC">Descrizione Articolo</th>
+            <th bgcolor="#CCCCCC">AIC code</th>
+            <th bgcolor="#CCCCCC">PromoVet</th>
+            <th bgcolor="#CCCCCC">Quantità sconto merce</th>
+        </tr>      
+        <apex:repeat value="{!OrderLinesList}" var="ol">
+            <tr >                     
+                <td>{!ol.Product_vod__r.Name}</td>
+                <td>{!ol.Product_vod__r.EP_Material__c}</td>
+                <td>{!ol.Quantity_vod__c} + {!ol.Free_Goods_vod__c}</td>
+                <td>{!ol.Free_Goods_vod__c}</td>
+            </tr>              
+        </apex:repeat>         
+    </table>
+    
+</apex:component>

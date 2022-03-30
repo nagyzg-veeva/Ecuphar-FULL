@@ -1,0 +1,16 @@
+<apex:page standardStylesheets="true" controller="VEEVA_WECHAT_EMBED_CONTROLLER">
+  
+  <apex:iframe id="wcrm"/>
+  
+ <script type="text/javascript">
+    (function() {
+        var wcrmFrame = document.getElementById("wcrm");
+        var param = "?orgId=" + "{!$Organization.Id}";
+        param+= "&ep=" + "{!URLENCODE($Api.Partner_Server_URL_340)}";
+        param+= "&sid=" + "{!$Api.Session_ID}";
+        if(wcrmFrame && "{!fullWcrmUrl}") {
+            wcrmFrame.src = "{!fullWcrmUrl}" + "{!clearCacheEndpoint}" + param;
+        }
+    }());
+</script>
+</apex:page>

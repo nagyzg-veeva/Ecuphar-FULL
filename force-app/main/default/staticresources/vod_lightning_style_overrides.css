@@ -1,0 +1,30 @@
+.tertiaryPalette {
+    background-color: #9494d1;
+        border-color: #9494d1;
+}
+
+#veevaAttachmentRL button, 
+#veevaAttachmentRL .x-btn, 
+#veevaAttachmentRL .btn, 
+#veevaAttachmentRL .btnDisabled, 
+#veevaAttachmentRL .btnCancel, 
+#veevaAttachmentRL .menuButton .menuButtonButton {
+	color: #333;
+	margin: 1px;
+	padding: 2px 3px;
+	border: 1px solid #b5b5b5;
+	border-bottom-color: #7f7f7f;
+	background: #e8e8e9 url(/img/alohaSkin/btn_sprite.png) repeat-x right top;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: .9em;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	display:inline;
+	line-height: inherit;
+}
+
+#veevaAttachmentRL .pbButton {
+	text-align: left;
+}

@@ -1,0 +1,40 @@
+<template>
+    <c-veeva-modal onclose={handleClose}>
+        <span slot='header'>{gasImplicitFiltersLabel}</span>
+        <div slot="content">
+            <p class="title">{detailsSectionLabel}</p>
+            <lightning-layout vertical-align="center">
+                <lightning-layout-item alignment-bump="left">
+                    <lightning-combobox label={locationFieldLabel} disabled={isEditMode} options={locationOptions}
+                        value={selectedLocation} onchange={updateSelectedLocation}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" flexibility="auto">
+                    <lightning-combobox label={appliesToFieldLabel} dropdown-alignment="left" disabled={cannotModifyAppliesTo} options={appliesToOptions}
+                        value={selectedAppliesTo} onchange={updateSelectedAppliesTo}>
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+                <lightning-layout-item padding="around-small" alignment-bump="right">
+                    <lightning-input label={inclusionFieldLabel} type="toggle" message-toggle-active="" message-toggle-inactive=""
+                        disabled={isEditMode} checked={selectedInclusion} onchange={updateSelectedInclusion}>
+                    </lightning-input>
+                </lightning-layout-item>
+            </lightning-layout>
+
+            <p class="title">{filtersSectionLabel}</p>
+            <lightning-dual-listbox label={recordTypeLabel} disable-reordering options={recordTypeOptions}
+                value={selectedRecordTypes} onchange={updateRecordTypesSelected}>
+            </lightning-dual-listbox>
+        </div>
+        <div slot="footer">
+            <lightning-button class="slds-p-horizontal_x-small" variant="neutral" label={cancelButtonLabel}
+                onclick={hideImplicitFilterDetail}>
+            </lightning-button>
+            <lightning-button class="slds-p-horizontal_x-small" variant="brand" label={saveButtonLabel}
+                onclick={saveImplicitFilter}>
+            </lightning-button>
+        </div>
+    </c-veeva-modal>
+</template>

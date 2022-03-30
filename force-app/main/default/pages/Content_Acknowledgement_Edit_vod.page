@@ -1,0 +1,4 @@
+<apex:page standardController="Content_Acknowledgement_vod__c" >
+    <c:VOD_EMBED veevaModule="aoc" veevaPage="edit-aoc" objectType="Content_Acknowledgement_vod__c"
+    queryParams="{!$CurrentPage.parameters.queryParams}&Status={!Content_Acknowledgement_vod__c.Status_vod__c}&AOC={!Content_Acknowledgement_vod__c.Id}"/>
+</apex:page>

@@ -1,0 +1,27 @@
+<template>
+    <span class={typeAttributes.classes}>
+        <template if:true={value}>
+            <lightning-formatted-date-time
+                if:true={typeAttributes.isDateTime}
+                value={value}
+                time-zone="UTC"
+                year="numeric"
+                month="numeric"
+                day="numeric"
+                hour="numeric"
+                minute="numeric">
+            </lightning-formatted-date-time>
+    
+            <lightning-formatted-date-time
+                if:false={typeAttributes.isDateTime}
+                value={value}
+                time-zone="UTC"
+                year="numeric"
+                month="numeric"
+                day="numeric">
+            </lightning-formatted-date-time>
+        </template>
+        
+        <lightning-formatted-text if:false={value} value="-"></lightning-formatted-text>
+    </span>
+</template>

@@ -1,0 +1,42 @@
+.slds-input[readonly] {
+    border: var(--lwc-borderWidthThin, 1px) solid
+        var(--lwc-colorBorderInput, rgb(221, 219, 218));
+    background-color: var(--lwc-colorBackgroundInput,rgb(255, 255, 255));
+}
+
+.veeva-input__icon {
+    width: 0.875rem;
+    height: 0.875rem;
+    position: absolute;
+    top: 1.25em;
+    line-height: 1;
+    border: 0;
+    z-index: 2;
+    fill: var(--lwc-colorTextInputIcon,rgb(176, 173, 171));
+}
+
+.veeva-search__icon {
+    margin-top: -.4375rem;
+}
+
+.veeva-search__icon_label {
+    margin-top: .8rem;
+}
+
+.veeva-input__icon.slds-input__icon_right {
+    right: var(--lwc-spacingSmall, 0.75rem);
+}
+
+.veeva-list-box {
+    position: absolute;
+    top: 2.5em;
+}
+
+.veeva-list-box__lower {
+    top: 4em;
+}
+
+/* Winter 22 release adds "display: flex", mispositioning lookup fields */
+.slds-combobox__form-element {
+    display: block;
+}

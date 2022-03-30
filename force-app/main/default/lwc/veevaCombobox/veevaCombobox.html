@@ -1,0 +1,10 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <div slot="control">
+            <lightning-combobox value={selected} options={options} onchange={handleChange} if:true={isDisplayable}
+                variant='label-hidden' required={ctrl.required} disabled={disabled}></lightning-combobox>
+            <c-veeva-dependent-picklist-msg ctrl={ctrl} if:false={ctrl.readonly}></c-veeva-dependent-picklist-msg>
+            <lightning-formatted-text value={label} if:true={ctrl.readonly}></lightning-formatted-text>
+        </div>
+    </c-veeva-field-generic>
+</template>

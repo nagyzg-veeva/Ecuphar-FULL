@@ -1,0 +1,20 @@
+<apex:page standardController="VMobile_Object_Configuration_vod__c" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+
+    var ID='{!VMobile_Object_Configuration_vod__c.Id}';
+    var RecordTypeName ='{!URLENCODE(VMobile_Object_Configuration_vod__c.RecordType.Name)}';
+    var RecordType="{!VMobile_Object_Configuration_vod__c.RecordTypeId}";
+    var retURL = '{!URLENCODE($CurrentPage.parameters.retURL)}';
+    if (retURL == null || retURL=='') {
+      retURL = '{!URLFOR( $Action.VMobile_Object_Configuration_vod__c.List , $ObjectType.VMobile_Object_Configuration_vod__c )}';
+    }
+
+    var queryParams = "&id=" + ID + "&clone=1&mode=n&lgtvf=true&RecordTypeName=" + RecordTypeName + "&retURL=" + retURL + "&RecordType=" + RecordType ;
+
+    com.vod309.redirect.redirect("tbconf", queryParams);
+
+  </script>
+
+</apex:page>

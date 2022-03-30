@@ -1,0 +1,28 @@
+<apex:page standardController="Account" extensions="FormularyForRepExtensionLgtnVod">
+
+  <div id="output"></div>
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+      var accountId = '{!Account.Id}';
+      var messages = JSON.parse('{!messages}');
+
+      var isOptedOut = false;
+      var jsOptOut = ('{!Account.PDRP_Opt_Out_vod__c}' === '1');
+
+      if ({!Account.IsPersonAccount} && jsOptOut && (("{!Account.PDRP_Opt_Out_Date_vod__c}" === "") || (Date.parse("{!Account.PDRP_Opt_Out_Date_vod__c}") <= Date.parse("{!TODAY()}"))))
+      {
+          isOptedOut = true;
+      }
+
+      if (isOptedOut) {
+          iframeRemoveSpinner();
+          document.getElementById('output').innerHTML = messages['PrescriberOptOut'];
+      } else {
+          if (typeof accountId !== "undefined" && accountId !== "") {
+              com.vod309.redirect.redirect("FormularyForRep", "&accountId="+accountId+"&lgtvf=true");
+          }
+      }
+  </script>
+
+</apex:page>

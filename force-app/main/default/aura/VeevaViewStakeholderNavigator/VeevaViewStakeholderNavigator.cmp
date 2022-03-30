@@ -1,0 +1,11 @@
+<aura:component implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="StakeholderNavigatorController">
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="errorMessage" type="String" default="" />
+    <lightning:navigation aura:id="navService"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <div class="slds-card">
+        <div class="slds-card__body slds-card__body_inner slds-p-top_medium">
+                <lightning:formattedText value="{!v.errorMessage}"></lightning:formattedText>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <c:VeevaLgtnService aura:id="vodService" />
+    <div class="slds-card slds-box">
+        <a href="javascript:void(0)" onclick="{!c.onNavigateToURL}">{!$Label.c.CRM_Host_Install}</a>
+    </div>
+</aura:component>

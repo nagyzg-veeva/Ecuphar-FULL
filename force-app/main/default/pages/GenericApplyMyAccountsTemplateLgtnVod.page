@@ -1,0 +1,22 @@
+<apex:page standardController="Account_Tactic_vod__c" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+    <script type="text/javascript">
+
+        /*
+          Put your queryparms here. Format is &<tag>=value
+          The following parameters are designed to call this Visualforce page from a header object, such as Medical Event to apply Accounts as Attendees on Event Attendees.
+
+          The parameters are:
+
+          id = The SFDC Id of the record of the header object, such as Medical Event
+          robj = The API name of the Object to which the accounts/targets will be inserted, such as Event Attendees
+          rfld = The field API name on the Object that refers to the header record
+          racct = The field API name on the target record that will be populated with the account value
+        */
+
+        var queryParams = "&id=" + id + "&robj=" + robj + "&rfld=" + rfld + "&racct=" + racct;
+        com.vod309.redirect.redirect("addtgt",queryParams);
+    </script>
+
+</apex:page>

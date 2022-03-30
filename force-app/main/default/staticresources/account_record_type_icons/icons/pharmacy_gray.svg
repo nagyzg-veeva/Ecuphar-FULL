@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <defs>
+        <linearGradient id="2vt7elm4ya" x1="49.982%" x2="49.982%" y1="403.385%" y2="-66.084%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+        <linearGradient id="8bee3bc8db" x1="49.961%" x2="49.961%" y1="-12.272%" y2="78.045%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+        <linearGradient id="wgcdyj0jqc" x1="75.148%" x2="-94.157%" y1="50.007%" y2="50.007%">
+            <stop offset="0%" stop-color="#FFF"/>
+            <stop offset="100%" stop-color="#CDCDCD"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g transform="translate(-328 -690) translate(328 690)">
+                <circle cx="32" cy="32" r="32" fill="#666" fill-rule="nonzero"/>
+                <path fill="url(#2vt7elm4ya)" fill-rule="nonzero" d="M26.54 50.23c-.42-.001-.817-.196-1.076-.528-.258-.332-.35-.764-.249-1.172.784-3.175 3.633-5.405 6.902-5.405 3.27 0 6.119 2.23 6.903 5.405.101.408.01.84-.25 1.172-.258.332-.654.527-1.075.528H26.54z"/>
+                <rect width="5.435" height="27.175" x="36.346" y="10.586" fill="url(#8bee3bc8db)" fill-rule="nonzero" rx="2.715" transform="rotate(45 39.064 24.174)"/>
+                <path fill="url(#wgcdyj0jqc)" fill-rule="nonzero" d="M49.565 26.295c.8.004 1.558.358 2.074.969.516.61.74 1.417.611 2.206-1.566 9.907-10.105 17.202-20.135 17.202-10.03 0-18.57-7.295-20.135-17.202-.129-.79.095-1.597.613-2.208.517-.61 1.276-.964 2.077-.967h34.895z"/>
+                <path fill="#666" d="M35 41.065l-1.285-1.66-1.29 1.66h-2.14l2.365-3-2.365-3.08h-1.32v3.11h-1.83v-7.85h3.945c.857-.071 1.695.273 2.255.925.33.43.506.958.5 1.5 0 .237-.042.473-.125.695-.264.68-.839 1.192-1.545 1.375l1.555 2 1.105-1.405h2.065l-.3.385-1.85 2.33 2.36 3-2.1.015z"/>
+                <path fill="#FFF" d="M30.85 31.63h-1.885v1.955h1.885c.805 0 1.17-.47 1.17-1s-.365-.975-1.17-.975"/>
+            </g>
+        </g>
+    </g>
+</svg>

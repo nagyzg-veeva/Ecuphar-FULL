@@ -1,0 +1,24 @@
+<apex:page controller="VODRedirectController">
+    <apex:slds />
+    <div id="vod_spinner" class="slds-scope">
+        <div class="slds-spinner slds-spinner_medium slds-spinner_brand slds-is-fixed">
+            <div class="slds-spinner__dot-a"></div>
+            <div class="slds-spinner__dot-b"></div>
+        </div>
+    </div>
+
+    <iframe width="100%" height='600px' src="" id="vod_iframe" scrolling="auto" frameborder='0' style="{!if($User.UIThemeDisplayed == 'Theme4d','padding:0px 16px;', '')}"/>
+
+    <c:VEEVA_COMMON_JAVASCRIPT />
+    <c:VeevaPostMessage />
+    <script>
+        var iframe = document.getElementById("vod_iframe");
+        var iframeRemoveSpinner = function() {
+            var spinner = document.getElementById("vod_spinner");
+            spinner.parentNode.removeChild(spinner);
+            iframe.removeEventListener("load", iframeRemoveSpinner);
+        };
+        iframe.addEventListener("load", iframeRemoveSpinner);
+        com.vod309.resize.init(iframe);
+    </script>
+</apex:page>

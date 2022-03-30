@@ -1,0 +1,19 @@
+<template>
+    <button
+        if:false={typeAttributes.disabled}
+        type="button"
+        class="slds-button truncate-text"
+        value={typeAttributes.id}
+        onclick={typeAttributes.clickHandler}>
+
+        <template if:false={typeAttributes.isNumeric}>{value}</template>
+
+        <c-formatted-number-or-null if:true={typeAttributes.isNumeric} number={value}></c-formatted-number-or-null>
+    </button>
+
+    <p if:true={typeAttributes.disabled} class="truncate-text">
+        <template if:false={typeAttributes.isNumeric}>{value}</template>
+
+        <c-formatted-number-or-null if:true={typeAttributes.isNumeric} number={value}></c-formatted-number-or-null>
+    </p>
+</template>

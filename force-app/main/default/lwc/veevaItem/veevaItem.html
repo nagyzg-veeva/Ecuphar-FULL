@@ -1,0 +1,7 @@
+<template>
+    <div class={classUndo}>
+        <div class="spacer" if:true={hasBeenUpdated}></div>
+        <lightning-icon class="inline-edit-undo" icon-name="utility:undo" alternative-text="Undo" title="Undo" size="xx-small" onclick={handleUndoClick} if:true={hasBeenUpdated}></lightning-icon>
+        <c-veeva-field class="field-direction" ctrl={ctrl} onfieldchange={handleFieldChange} data-validity></c-veeva-field>
+    </div>
+</template>

@@ -1,0 +1,25 @@
+/* Sets a default offset for calculating the height of the data table */
+:host {
+    --vertical-offset: 400px;
+}
+
+lightning-button {
+    --sds-c-button-text-color: var(--lwc-colorTextIconDefault,rgb(112, 110, 107));
+}
+
+.spinner-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Ensures table and info panel do not grow beyond the viewport */
+.table-panel-container {
+    height: calc(100vh - var(--vertical-offset));
+}
+
+lightning-input.search-input {
+    border: 0px;
+    margin: 0px;
+}

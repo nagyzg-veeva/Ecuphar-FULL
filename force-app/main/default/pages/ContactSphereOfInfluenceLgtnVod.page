@@ -1,0 +1,18 @@
+<apex:page standardController="Contact" extensions="VeevaSphereMessageExtension">
+    <!-- Loads the view button label by way of the extension controller -->
+    <input id="viewbutton" class="btn" onclick="setupPage()" type="button" name="View" value="{!viewButtonLabel}"></input>
+
+    <div id="lightningTemplate" style="display : none;">
+        <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    </div>
+
+    <script>
+        // pop up the sphere when the view button is clicked, saving some expensive loading if it's not needed
+        function setupPage() {
+            document.getElementById('viewbutton').style.display = 'none';
+            document.getElementById('lightningTemplate').style.display = '';
+            var fromId = ("{!Contact.Id}".length > 0) ? "{!Contact.Id}" : "";
+            com.vod309.redirect.redirect("sphere", "&fromId=" + fromId + "&minframeheight=640&lgtvf=true");
+        }
+    </script>
+</apex:page>

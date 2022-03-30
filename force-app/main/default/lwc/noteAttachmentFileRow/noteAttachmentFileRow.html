@@ -1,0 +1,39 @@
+<template>
+    <li data-veeva-id="file_row" class="slds-var-p-horizontal_medium slds-var-p-vertical_xx-small forceContentVirtualRelatedListStencil forceRecordLayout">
+        <a href="javascript:void(0)" title={name} onclick={redirectToDoc}>
+            <div class="filerow">
+                <div class="slds-size_12-of-12 slds-grid">
+                    <div class="slds-show_inline-block slds-float_left slds-align-middle thumbnailImg medium">
+                        <div class="forceContentContentThumbnail">
+                            <div class="thumbnailContainer">
+                                <img if:true={isImageFile} src={thumbUrl} class="thumbnailImg medium" alt={row.FileType}>
+                                <lightning-icon if:false={isImageFile} icon-name={iconSource}></lightning-icon>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-show_inline-block slds-float_left slds-p-left--x-small slds-truncate slds-m-right_x-small">
+                        <span class="itemTitle slds-text-body--regulardesktop uiOutputText" title={name}>
+                                {name}
+                        </span>
+                        <div class="slds-m-around--none secondaryFields slds-text-body--small slds-truncate">
+                            <lightning-formatted-date-time value={lastModifiedDate} class="uiOutputDateTime"></lightning-formatted-date-time>
+                            &nbsp;&bull;&nbsp;
+                            <template if:true={isFile}>
+                                <span class="forceChatterFileSize">
+                                    <div class="fileSize">
+                                        <span class="fileSizeAmount uiOutputNumber" dir="auto">{contentSize}</span>
+                                        <span class="fileSizeUnits uiOutputText">
+                                            {sizeUnits}
+                                        </span>
+                                    </div>
+                                </span>
+                                <span class="itemLabel slds-truncate uiOutputText">{extLowerCase}</span>
+                            </template>
+                            <span if:false={isFile} class="itemLabel uiOutputText" title={objectTypeLabel}>{objectTypeLabel}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>       
+    </li>
+</template>

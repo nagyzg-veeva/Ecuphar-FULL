@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>51.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="fieldPlanId" label="Selected Field Plan Id" type="String" role="inputOnly"/>
+            <property name="selectedFieldForceId" label="Selected Field Force Id" type="String"/>
+            <property name="nextScreenName" label="Next Screen Name" type="String" role="outputOnly"/>
+            <property name="selectedTerritoryModelId" label="Selected Territory Model Id" type="String"/>
+            <property name="selectedAccountsFilter" label="Selected Accounts Filter" type="String" role="outputOnly"/>
+            <property name="forceDisplayFieldPlansPage" label="Force Display of Field Plans Page" type="Boolean" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

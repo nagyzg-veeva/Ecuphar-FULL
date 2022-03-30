@@ -1,0 +1,4 @@
+<apex:page standardController="EM_Expense_Estimate_vod__c" >
+    <c:VOD_EMBED veevaModule="em" veevaPage="expense-estimate-view" objectType="EM_Expense_Estimate_vod__c" queryParams="lgtvf=true" />
+    <c:FilesAttachmentsRelatedListVod objectType="{!EM_Expense_Estimate_vod__c}" />
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page standardController="Order_vod__c" standardStylesheets="true">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">        
+    var queryparams = "&orderid=" + "{!Order_vod__c.id}";  
+    queryparams += '&mode=e&clone=1';
+
+    //flag that determines if frame is in visualforce page
+    queryparams += "&lgtvf=true";
+
+    com.vod309.redirect.redirect("order", queryparams);
+</script>
+</apex:page>

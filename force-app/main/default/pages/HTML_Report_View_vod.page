@@ -1,0 +1,4 @@
+<apex:page standardController="HTML_Report_vod__c" >
+    <c:VOD_EMBED veevaModule="htmlreport" veevaPage="html-report-view" objectType="HTML_Report_vod__c" queryParams="lgtvf=true" />
+    <c:FilesAttachmentsRelatedListVod objectType="{!HTML_Report_vod__c}" />
+</apex:page>

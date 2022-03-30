@@ -1,0 +1,39 @@
+<apex:page standardController="Account">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <c:VOD_BASE_SF_INCLUDES_vod />
+
+    <script>
+
+    var accountOptedOut = false;
+    var optOutChecked = {!IF(Account.PDRP_Opt_Out_vod__c, true, false)};
+    sforce.connection.sessionId='{!GETSESSIONID()}';
+
+    if ({!Account.IsPersonAccount} && optOutChecked) {
+        if (("{!Account.PDRP_Opt_Out_Date_vod__c}" == "") || (Date.parse("{!Account.PDRP_Opt_Out_Date_vod__c}") <= Date.parse("{!TODAY()}"))) {
+            accountOptedOut = true;
+        }
+    }
+
+    if (accountOptedOut) {
+        var user = sforce.connection.getUserInfo();
+        var query = sforce.connection.query("SELECT Name, Text_vod__c FROM Message_vod__c WHERE Language_vod__c='"+user.userLanguage+"' AND Category_vod__c='Analytics' AND Name='OptOut'");
+        var records = query.getArray("records");
+        var message = "opt out";
+        for (var i=0; i<records.length; i++) {
+            if (records[i].Name == "OptOut") {
+                message = records[i].Text_vod__c;
+            }
+        }
+        alert(message);
+        history.go(-1);
+    } else {
+        com.vod309.redirect.redirect("analytics", "&analytic=Account_Summary_vod&today={!TODAY()}&accountId={!Account.Id}&lgtvf=true");
+        // Due to AccountSummary page being initially sized smaller than what is
+        // needed the content is being cut off. So we must statically define the
+        // height.
+        document.getElementById("vod_iframe").style.height = "3600px";
+    }
+
+    </script>
+
+</apex:page>

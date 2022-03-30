@@ -1,0 +1,35 @@
+<apex:page standardController="Account" standardStylesheets="true" sidebar="false">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">
+    // add support for group id
+    var groupId = "{!if($CurrentPage.parameters.groupId== null, "", URLENCODE($CurrentPage.parameters.groupId))}";
+    var actId = "{!Account.Id}";
+    var isPersonAct  = "{!Account.IsPersonAccount}";
+    if (actId !== "" && isPersonAct === 'false') {
+        groupId = "{!Account.Id}";
+    }
+    // for debugging purposes
+    //var actIds = "{!if($CurrentPage.parameters.accts == null, Account.Id, $CurrentPage.parameters.accts)}";
+    //var callIds = "{!if($CurrentPage.parameters.callIds== null, "", $CurrentPage.parameters.callIds)}";
+    //var groupCallId = "{!if($CurrentPage.parameters.groupCallId== null, "", $CurrentPage.parameters.groupCallId)}";
+
+    var queryparams = "&accts=" + "{!if($CurrentPage.parameters.accts == null, Account.Id, URLENCODE($CurrentPage.parameters.accts))}";
+    queryparams += '&mode=e';
+    queryparams += "&location=" + "{!if($CurrentPage.parameters.location == null, "Account_vod", URLENCODE($CurrentPage.parameters.location))}";
+    queryparams += "&productids=" + "{!if($CurrentPage.parameters.productids == null, "", URLENCODE($CurrentPage.parameters.productids))}";
+    queryparams += "&template=" + "{!if($CurrentPage.parameters.template == null, "", URLENCODE($CurrentPage.parameters.template))}";
+    queryparams += "&fragments=" + "{!if($CurrentPage.parameters.fragments == null, "", URLENCODE($CurrentPage.parameters.fragments))}";
+    queryparams += "&callIds=" + "{!if($CurrentPage.parameters.callIds== null, "", URLENCODE($CurrentPage.parameters.callIds))}";
+    queryparams += "&Medical_Inquiry_vod__r.Id=" + "{!if($CurrentPage.parameters.Medical_Inquiry_vod__r.Id== null, "", URLENCODE($CurrentPage.parameters.Medical_Inquiry_vod__r.Id))}";
+    queryparams += "&groupCallId=" + "{!if($CurrentPage.parameters.groupCallId== null, "", URLENCODE($CurrentPage.parameters.groupCallId))}";
+    queryparams += "&groupId=" + groupId;
+    queryparams += "{!if($CurrentPage.parameters.emailType == null, "", "&emailType=" + URLENCODE($CurrentPage.parameters.emailType))}";
+    queryparams += "&suggestionId=" + "{!if($CurrentPage.parameters.suggestionId== null, "", URLENCODE($CurrentPage.parameters.suggestionId))}";
+    queryparams += "&suggestedEmailTemplates=" + "{!if($CurrentPage.parameters.suggestedEmailTemplates== null, "", URLENCODE($CurrentPage.parameters.suggestedEmailTemplates))}";
+    queryparams += "&suggestions=" + "{!if($CurrentPage.parameters.suggestions== null, "", URLENCODE($CurrentPage.parameters.suggestions))}";
+    queryparams += "&minframeheight=2000";
+    queryparams += '&lgtvf=true';
+    queryparams += '&sfPath=' + "{!URLENCODE($CurrentPage.URL)}";
+    com.vod309.redirect.redirect("approvedEmail", queryparams);
+</script>
+</apex:page>

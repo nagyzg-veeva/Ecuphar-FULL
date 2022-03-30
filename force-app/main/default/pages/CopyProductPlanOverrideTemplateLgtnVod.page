@@ -1,0 +1,59 @@
+<apex:page standardController="Account_Plan_vod__c">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+
+    <script>
+        //<!-- Put your queryparams here. Format is &<tag>=value -->
+
+
+        <!-- REQUIRED PARAMETER : This var accPlanName is only required if this Visualforce page is being called from the Account Plan. This variable is the textual name of the Account Plan.-->
+        var acctPlanName = "{!URLENCODE(Account_Plan_vod__c.Name)}";
+
+
+        <!-- REQUIRED PARAMETER : The var acctID is only required if this Visualforce page is being called from the Account Plan. This variable is the SFDC Id of the Account Plan.-->
+        var acctID = '{!Account_Plan_vod__c.Id}';
+
+
+        <!-- REQUIRED PARAMETER : The var accountid is required for all types of usage. This value must contain the SFDC Id of an Account and can be programatically queried or set through a merge parameter.  -->
+        var acccountId = '<REPLACE WITH ACCOUNT ID MERGE FIELD FOR OBJECT>';
+
+
+
+        <!-- THE FOLLOWING THREE PARAMETERS ARE TO BE USED IF LEVERAGING THIS VISUALFORCE PAGE FOR GENERIC APPLY PRODUCT PLAN FUNCTIONALITY FROM AN OBJECT OTHER THAN ACCOUNT PLAN -->
+
+
+        <!-- REQUIRED IF PERFORMING GENERIC: The var ACCTLKUPID represents the SFDC Id for the record of the object where this Visualforce page will be launched from. This SFDC Id will be saved into the Lookup field that the Customer has added to the Account_Tactic_vod object.  -->
+        var ACCTLKUPID='<REPLACE WITH RECORD ID MERGE FIELD FOR OBJECT>';
+
+
+        <!-- REQUIRED IF PERFORMING GENERIC: The var ACCTACTLKUPTBL represents the textual name of the record of the object where this Visualforce page will be launched from. This textual name will be displayed on the Apply Product Plan page. -->
+        var ACCTACTLKUPTBL='<REPLACE WITH RECORD NAME MERGE FIELD FOR OBJECT>';
+
+
+        <!-- REQUIRED IF PERFORMING GENERIC: The var ACCTACTLKUP represents the textual API Field Name of the record Lookup field added to the Account_Tactic_vod object to the object where this Visualforce page will be called from. This API Field Name is used when inserting the Account Tactic records. The SFDC Id field from will be displayed on the Apply Product Plan page. -->
+        var ACCTACTLKUP='<REPLACE WITH THE NAME OF THE LOOKUP FIELD>';
+
+
+        <!-- It is possible to filter by Product. This can be done based on the VOD Product Catalog Id or the Name of the Product. -->
+        <!-- The Name of the product is an exact match. If both the Product ID and Product Name are not provided then all Product Plans will be displayed. The PID variable is the SFDC ID of the Product Catalog record. An example of this would be var PID = "{!Product_vod__c.Id}"; OR the PNAME variable can be used, var PNAME = "Cholecap";-->
+
+        var PID=" +'<SFDC Product_Catalog_vod Record>';
+        var PNAME=" + '<Exact Product Name>';
+
+
+
+        var myqueryparms = "&ACCTPLANID=" +acctID +"&PLNNAME=" +acctPlanName + "&accID=" +acccountId ;
+        myqueryparms += "&ACCTACTLKUPTBL="+ACCTACTLKUPTBL+"&ACCTACTLKUP="+ACCTACTLKUP;
+        myqueryparms += "&ACCTLKUPID=" + ACCTLKUPID;
+        myqueryparms += "&pid=" + PID;
+        myqueryparms += "&pnm=" + PNAME;
+
+        <!-- REQUIRED PARAMETER : The parameter "lgtvf=true" is required for this Visualforce page to work in lightning. -->
+        myqueryparms += "&lgtvf=true";
+
+        com.vod309.redirect.redirect("prdplan", myqueryparms);
+
+    </script>
+
+
+</apex:page>

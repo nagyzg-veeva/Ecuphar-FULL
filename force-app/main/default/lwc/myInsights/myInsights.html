@@ -1,0 +1,19 @@
+<template>
+    <lightning-card if:true={showMyInsightsLWC}>
+        <div if:true={loading} class="spinner-large">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+        <c-my-insights-report-container if:true={htmlReportValidAndLoaded} url={iframeUrl} max-height={maxHeight}
+            html-report-id={htmlReportId} html-report-uuid={uuid}>
+        </c-my-insights-report-container>
+        <c-my-insights-lightning-navigator></c-my-insights-lightning-navigator>
+        <c-my-insights-confirmation-modal html-report-id={htmlReportId} html-report-uuid={uuid}>
+        </c-my-insights-confirmation-modal>
+        <c-my-insights-alert-modal html-report-id={htmlReportId} html-report-uuid={uuid}>
+        </c-my-insights-alert-modal>
+        <c-my-insights-loading-modal html-report-id={htmlReportId} html-report-uuid={uuid}>
+        </c-my-insights-loading-modal>
+        <c-suggestion-survey-modal html-report-id={htmlReportId} html-report-uuid={uuid}>
+        </c-suggestion-survey-modal>
+    </lightning-card>
+</template>

@@ -1,0 +1,9 @@
+<apex:page standardController="Account" standardStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script type="text/javascript">
+    var queryParams =  "&id={!Account.Id}&lgtvf=true";
+    com.vod309.redirect.redirect("mccalendar",queryParams);
+  </script>
+
+</apex:page>

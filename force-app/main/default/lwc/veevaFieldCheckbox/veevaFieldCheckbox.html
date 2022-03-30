@@ -1,0 +1,11 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <div slot="control">
+            <span class="slds-checkbox slds-checkbox_standalone">
+                <input type='checkbox' checked={checked} if:false={ctrl.editable} disabled />
+                <input type='checkbox' checked={checked} if:true={ctrl.editable} onchange={handleChange} />
+                <span class="slds-checkbox_faux"></span>
+            </span>
+        </div>
+    </c-veeva-field-generic>
+</template>

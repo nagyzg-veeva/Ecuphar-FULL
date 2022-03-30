@@ -1,0 +1,24 @@
+<template>
+    <c-veeva-modal if:true={modal.show} onclose={handleModalClose}>
+        <div slot="header">
+            <h2>{modal.title}</h2>
+        </div>
+
+        <div slot="content" class="slds-m-around_xx-large">
+            <template for:each={surveyQuestions} for:item="question">
+                <c-survey-question-item key={question.id} question={question} onupdate={handleQuestionUpdate}>
+                </c-survey-question-item>
+            </template>
+        </div>
+
+        <div slot="footer">
+            <lightning-layout horizontal-align="center">
+                <lightning-button onclick={handleModalClose} label={modal.labels.cancel}
+                    class="slds-m-horizontal_x-small">
+                </lightning-button>
+                <lightning-button onclick={handleModalSubmitted} label={modal.labels.submit} variant="brand"
+                    class="slds-m-horizontal_x-small"></lightning-button>
+            </lightning-layout>
+        </div>
+    </c-veeva-modal>
+</template>

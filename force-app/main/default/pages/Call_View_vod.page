@@ -1,0 +1,4 @@
+<apex:page standardcontroller="Call2_vod__c">
+    <c:VOD_EMBED veevaModule="call" veevaPage="view-call" objectType="Call2_vod__c" queryParams="lgtvf=true&{!$CurrentPage.parameters.queryParams}"/>
+    <c:FilesAttachmentsRelatedListVod objectType="{!Call2_vod__c}" />
+</apex:page>

@@ -1,0 +1,8 @@
+<template>
+    <c-gas-add-territory-parents-modal if:true={showAddTerritoryParentSelect} parent-accounts={parentAccounts} has-more-than-one-territory={hasMoreThanOneTerritory}
+        onclose={closeAddTerritoryParentsModal} ontoast={showToast} onnavigatetoterrselect={showTerrSelectModal}>
+    </c-gas-add-territory-parents-modal>
+    <c-gas-add-territory-options-modal if:true={showAddTerritoryOptions} user-territories={userTerritories}
+        onclose={closeAddTerritoryOptionsModal} ontoast={showToast} onaddterritories={addTerritory}>
+    </c-gas-add-territory-options-modal>
+</template>

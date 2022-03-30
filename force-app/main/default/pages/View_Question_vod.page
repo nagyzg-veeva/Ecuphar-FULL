@@ -1,0 +1,10 @@
+<apex:page standardController="Question_vod__c" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+        var queryparams = "&id=" + "{!Question_vod__c.id}";
+        queryparams += '&mode=v';
+        queryparams += '&lgtvf=true';
+        queryparams += '&minframeheight=4000';
+        com.vod309.redirect.redirect("question", queryparams);
+    </script>
+</apex:page>

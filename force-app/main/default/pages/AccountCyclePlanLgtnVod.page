@@ -1,0 +1,51 @@
+<apex:page standardController="Account" >
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <apex:includeScript value="/soap/ajax/44.0/connection.js" />
+    <apex:includeScript value="/soap/ajax/44.0/apex.js" />
+    <script>
+    var showTotalCalls = false;
+    var showActualCalls = false;
+    var showProdDetails = false;
+    sforce.connection.sessionId='{!GETSESSIONID()}';
+    var result = sforce.connection.describeLayout("Cycle_Plan_vod__c");
+    var layouts = result.getArray("layouts");
+
+    if (layouts && (layouts.length > 0)) {
+        var sections = layouts[0].relatedLists;
+        //sections may or may not be an array with the ajax toolkit
+        if (sections && (sections.length > 0)) {
+            for (var i=0;i<sections.length;i++) {
+                var section = sections[i];
+                if (section.sobject == 'Cycle_Plan_Target_vod__c') {
+                    for (var j=0;j<section.columns.length;j++) {
+                        var field = section.columns[j].field;
+                        if (field == 'Cycle_Plan_Target_vod__c.Actual_Calls_vod__c') {
+                            showActualCalls = true;
+                        }
+                        if (field == 'Cycle_Plan_Target_vod__c.Total_Actual_Calls_vod__c') {
+                            showTotalCalls = true;
+                        }
+                        if (field == 'Cycle_Plan_Target_vod__c.zvod_Display_Product_Details_vod__c') {
+                            showProdDetails = true;
+                        }
+                    }
+                }
+            }
+        } else if (sections && (sections.sobject == 'Cycle_Plan_Target_vod__c')) {
+            for (var j=0;j<sections.columns.length;j++) {
+                if (sections.columns[j].field == 'Cycle_Plan_Target_vod__c.Actual_Calls_vod__c') {
+                    showActualCalls = true;
+                }
+                if (sections.columns[j].field == 'Cycle_Plan_Target_vod__c.Total_Actual_Calls_vod__c') {
+                    showTotalCalls = true;
+                }
+                if (sections.columns[j].field == 'Cycle_Plan_Target_vod__c.zvod_Display_Product_Details_vod__c') {
+                    showProdDetails = true;
+                }
+            }
+        }
+    }
+    document.getElementById("vod_iframe").src = "/apex/Account_Cycle_Plan_vod?id={!Account.Id}&sac="+showActualCalls+"&stc="+showTotalCalls+"&spd="+showProdDetails;
+    </script>
+
+</apex:page>

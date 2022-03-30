@@ -1,0 +1,9 @@
+<apex:page controller="TerritoryUtilitiesExtensionController">
+  <apex:composition template="{!$Page.VODRedirectCustom_vod}"/>
+
+  <script type="text/javascript">
+    com.vod309.redirect.redirect("territoryadmin", "&tabUrl="+encodeURIComponent(parent.location.href)
+      + "&isSandbox={!isSandbox}");
+  </script>
+
+</apex:page>

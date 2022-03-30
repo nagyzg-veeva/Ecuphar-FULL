@@ -1,0 +1,9 @@
+<apex:page standardController="Child_Account_vod__c" standardStylesheets="true">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">
+    var queryparams = "&recordtypeid=" + "{!URLENCODE($CurrentPage.parameters.RecordType)}";
+    queryparams += "&mode=n";
+    queryparams += "&lgtvf=true";
+    com.vod309.redirect.redirect("childAccount", queryparams);
+</script>
+</apex:page>

@@ -1,0 +1,18 @@
+.undo {
+    position: relative;
+    background-color: var(--lwc-colorBackgroundHighlight);
+}
+.inline-edit-undo {
+    position: absolute;
+    top: 0.10rem;
+    right: 0.10rem;
+}
+.field-direction {
+    bottom: 0;
+}
+.spacer {
+    position: relative;
+    top: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+}

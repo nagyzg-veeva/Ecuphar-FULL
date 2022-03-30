@@ -1,0 +1,10 @@
+<template>
+    <div>
+        <c-veeva-open-road-illustration if:true={showAsyncProcessRunning} header={error.errorHeader} body={error.errorBody}></c-veeva-open-road-illustration>
+        <c-veeva-page-not-available-illustration if:true={showPageNotAvailableError} header={error.errorHeader} body={error.errorBody}></c-veeva-page-not-available-illustration>
+        <c-veeva-no-connection-illustration if:true={showTimeoutOrConnectionError} header={error.errorHeader} body={error.errorBody}></c-veeva-no-connection-illustration>
+        <c-session-timeout-illustration if:true={showUnauthorizedError} header={error.errorHeader} body={error.errorBody}></c-session-timeout-illustration>
+        <c-veeva-no-content-illustration if:true={showNoFieldPlansError} header={error.errorHeader}></c-veeva-no-content-illustration>
+        <c-veeva-no-access-illustration if:true={showNotManagerError} header={error.errorHeader}></c-veeva-no-access-illustration>
+    </div>
+</template>

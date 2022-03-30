@@ -1,0 +1,19 @@
+<template>
+  <div class="slds-panel slds-panel_docked slds-panel_docked-right slds-is-open">
+    <div class="slds-panel__header">
+      <h2 class="slds-panel__header-title slds-text-heading_small slds-truncate" title="Filter">{filtersLabel}</h2>
+      <div class="slds-panel__header-actions">
+        <lightning-button class="slds-p-right_small" label={clearFilterLabel} onclick={clearFilters}></lightning-button>
+        <lightning-button class="slds-p-right_small" variant="brand" label={applyLabel} onclick={applyFilters}></lightning-button>
+      </div>
+    </div>
+    <div class="slds-panel__body">
+      <div class="slds-filters">
+        <template for:each={filters} for:item="filter">
+          <c-gas-user-filter-item key={filter.key} data-key={filter.key} label={filter.label} options={filter.options}
+            selected-options={filter.selectedOptions} onadd={handleAddFilterItemSelected} onremove={handleRemoveFilterItemSelected}></c-gas-user-filter-item>
+        </template>
+      </div>
+    </div>
+  </div>
+</template>

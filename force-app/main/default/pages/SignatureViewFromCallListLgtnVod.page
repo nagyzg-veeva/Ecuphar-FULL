@@ -1,0 +1,8 @@
+<apex:page standardController="Call2_vod__c" recordSetVar="Calls" extensions="VOD_GetRecordIds" action="{!initPerson}">
+  <apex:composition template="{!$Page.RedirectLgtnVod}" rendered="{!isPerson}"/>
+  <script type="text/javascript">
+    if ({!isPerson}) {
+        com.vod309.redirect.redirect("SIGSERVIEW", "&ACCID={!$CurrentPage.parameters.id}&lgtvf=true");
+    }
+  </script>
+</apex:page>

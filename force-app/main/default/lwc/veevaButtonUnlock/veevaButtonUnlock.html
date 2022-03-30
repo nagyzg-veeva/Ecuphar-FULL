@@ -1,0 +1,4 @@
+<template>
+    <lightning-button if:false={isMenu} name="Unlock" title={label} label={label} onclick={handleClick}></lightning-button>
+    <lightning-menu-item if:true={isMenu} label={label} onclick={handleClick}></lightning-menu-item>
+</template>

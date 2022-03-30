@@ -1,0 +1,29 @@
+<apex:page standardController="Medical_Inquiry_vod__c">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script>
+    	var ID= '{!Medical_Inquiry_vod__c.Id}';
+        var ACCID = '{!Medical_Inquiry_vod__c.Account_vod__c}';
+            if (ACCID == null || ACCID == '') {
+            ACCID = '{!URLENCODE($Request.ACCID)}'
+        }
+
+        var myqueryparms = "&id=" + ID + "&mode=n" ;
+        var RecordType="{!URLENCODE($Request.RecordType)}";
+        myqueryparms+= "&RecordType=" + RecordType
+        var callId = '{!URLENCODE($Request.callId)}';
+        if (callId != null && callId != ''){
+        	myqueryparms+= "&Call2_vod__r.Id=" + callId;
+        }
+        var retURL = '{!URLENCODE($Request.retURL)}';
+        if (retURL == null || retURL=='') {
+            retURL = '{!URLFOR( $Action.Medical_Inquiry_vod__c.List , $ObjectType.Medical_Inquiry_vod__c )}';
+        }
+
+        if (ACCID != null ) {
+        	myqueryparms+= "&ACCID=" + ACCID ;
+        }
+        myqueryparms+= "&retURL=" + retURL + "&lgtvf=true";
+
+		com.vod309.redirect.redirect("medinq",myqueryparms);
+    </script>
+</apex:page>

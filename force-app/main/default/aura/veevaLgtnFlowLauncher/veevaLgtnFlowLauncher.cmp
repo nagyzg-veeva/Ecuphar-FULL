@@ -1,0 +1,13 @@
+<aura:component controller="VeevaMessageController" implements="lightning:isUrlAddressable">
+    <aura:attribute name="flowName" type="String" />
+    <aura:attribute name="flowVariables" type="Object" />
+    <aura:attribute name="inContextOfRef" type="Object" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <lightning:navigation aura:id="navService"/>
+    <lightning:flow aura:id="flow" onstatuschange="{!c.handleFlowStatusChange}"/>
+    <lightning:messageChannel type="Start_Flow__c" onMessage="{!c.handleMessage}"/>
+
+    {!v.body}
+</aura:component>

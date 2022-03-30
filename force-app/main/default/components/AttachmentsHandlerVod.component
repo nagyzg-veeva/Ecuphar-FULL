@@ -1,0 +1,200 @@
+<apex:component >
+    <script type="text/javascript">
+        var com = com || {};
+        com.vod309 = com.vod309 || {};
+        com.vod309.attachments = {};
+
+        var attachHandler = com.vod309.attachments;
+
+        attachHandler.addAttachRLListener = function(attachRL, attachmentData) {
+            if (!attachRL) {
+                return;
+            }
+            //add listener, if the user clicks "Show More", which redraws the related list
+            var observer = new MutationObserver(function(mutationList){
+                for (var i=0; i<mutationList.length; i++) {
+                    var mutation = mutationList[i];
+                    if (mutation.type === 'childList') {
+                        attachHandler.handleAttachmentRL(attachRL, attachmentData);
+                    }
+                }
+            });
+            observer.observe(attachRL, {childList: true, subtree: true});
+        }
+
+        attachHandler.handleAttachmentRL = function(attachmentRL, attachmentData) {
+            if (attachmentRL) {
+                var isLgtnTheme = {!$User.UIThemeDisplayed == 'Theme4d'};
+                attachmentRL.style.display = '';
+
+                var iframe = document.getElementById('vod_iframe');
+                if (isLgtnTheme && iframe) {
+                    attachmentRL.style.padding = iframe.style.padding;
+                }
+
+                if (attachmentData.isContentNote) {
+                    if(isLgtnTheme) {
+                        var editLinkHrefContentNotePattern = /^[^?]*\/069.*(\?|$)/;
+                        removeActionLinks(attachmentRL, editLinkHrefContentNotePattern);
+                        modifyRelatedListButton(attachmentRL, 'attachFile');
+                        modifyRelatedListButton(attachmentRL, 'NewFile');
+                        modifyTitle(attachmentRL);
+                        modifyColumnWrap(attachmentRL);
+                    }
+                } else {
+                    if (isLgtnTheme || attachmentData.hideNewNoteButton) {
+                        removeRelatedListButton(attachmentRL, 'newNote');
+                    }
+                    if (attachmentData.hideAttachFileButton) {
+                        //remove "Attach File button in Classic
+                        removeRelatedListButton(attachmentRL, 'attachFile');
+                        //remove "Upload File" button in Lightning
+                        removeRelatedListButton(attachmentRL, 'NewFile');
+                    }
+
+                    var editLinkHrefPattern = /^[^?]*\/e(\?|$)/;
+                    var deleteLinkHrefPattern = /^[^?]*\/deleteredirect\.jsp(\?|$)/;
+                    if (isLgtnTheme || attachmentData.hideEditActionLinks) {
+                        removeActionLinks(attachmentRL, editLinkHrefPattern);
+                    }
+                    if (attachmentData.hideDeleteActionLinks) {
+                        removeActionLinks(attachmentRL, deleteLinkHrefPattern);
+                    }
+                }
+
+                if (isLgtnTheme) {
+                    modifyAttachRLForLightning(attachmentRL);
+                }
+            }
+
+            function modifyTitle(noteRL) {
+                var table = noteRL.getElementsByClassName('list')[0];
+                var rows = table.getElementsByTagName('tr');
+                for(i = 1; i < rows.length; i++) {
+                    var currentRow = table.rows[i];
+                    var column = currentRow.getElementsByTagName('th')[0];
+                    if(column) {
+                        column.classList.add("note-column-wrap");
+                        var cell = column.getElementsByTagName('a')[0];
+                        if(cell) {
+                            cell.addEventListener('click', clickHandler(cell));
+                        }
+                    }
+                }
+            }
+
+            function clickHandler(cell) {
+                return function() {
+                    event.preventDefault();
+                    var hrefVal = cell.getAttribute("href");
+                    window.location = hrefVal;
+                }
+            }
+
+            function modifyColumnWrap(noteRL) {
+                var table = noteRL.getElementsByClassName('list')[0];
+                var rows = table.getElementsByTagName('tr');
+                for(i = 1; i < rows.length; i++) {
+                    var currentRow = table.rows[i];
+                    var columns = currentRow.getElementsByTagName('td');
+                    for(var j = 0; j < columns.length; j++) {
+                        columns[j].classList.add("note-column-wrap");
+                    }
+                }
+            }
+
+            function modifyRelatedListButton(relatedList, buttonName) {
+                var rlButton = getButtonFromRelatedList(relatedList, buttonName);
+                if(rlButton) {
+                    var viewAllMsg = veeva.getMessage("View_All","Common");
+                    rlButton.value = rlButton.title = viewAllMsg ? viewAllMsg : "View All";
+                    rlButton.name ="ViewAllContentNote";
+                    rlButton.onclick = function() {navigateToUrl("/lightning/r/AttachedContentNote/"+veeva.bind.recordId+"/related/AttachedContentNotes/view")};
+                    var newContentNoteBtn = rlButton.cloneNode();
+                    var newContentNoteMsg = veeva.getMessage("New_Note","Common");
+                    newContentNoteBtn.value = newContentNoteBtn.title = newContentNoteMsg ? newContentNoteMsg : "New Note";
+                    newContentNoteBtn.name= "NewContentNote";
+                    newContentNoteBtn.onclick = function() {
+                        newContentNoteBtn.disabled = true;
+                        veeva.createContentNote(veeva.bind.recordId, __sfdcSessionId, __sfdcSessionURL, newContentNoteBtn)
+                    };
+                    rlButton.parentElement.insertBefore(newContentNoteBtn, rlButton);
+                 }
+            }
+
+            function modifyAttachRLForLightning(attachRL) {
+                //replace 'Attach File' button with 'Upload Files' button
+                var fileRL = document.getElementById('veevaFileRL');
+                if (fileRL) {
+                    var uploadFiles = getButtonFromRelatedList(fileRL, 'NewFile');
+                    var attachFile = getButtonFromRelatedList(attachRL, 'attachFile');
+                    if (uploadFiles && attachFile && attachFile.parentNode) {
+                        //need to replace "Attach File" with a cloned button,
+                        // because we need the button again, if the user clicks "Show More" which redraws the related list
+                        attachFile.parentNode.replaceChild(uploadFiles.cloneNode(), attachFile);
+                    }
+                } else {
+                    //if veevaFileRL isn't found and we're on lightning, then we don't have access
+                    removeRelatedListButton(attachRL, 'attachFile');
+                    removeRelatedListButton(attachRL, 'viewAll');
+                }
+
+                //remove Preview links
+                removeActionLinks(attachRL, /OverlayDialogElement\.showFilePreview/);
+
+                //remove '|' separator and 'Go To List' link
+                var showMoreContainers = attachRL.getElementsByClassName('pShowMore');
+                if (showMoreContainers && showMoreContainers[0] &&
+                        showMoreContainers[0].children && showMoreContainers[0].children[0]) {
+                    var showMore = showMoreContainers[0].children[0];
+                    var showMoreSibling = showMore.nextSibling;
+                    while (showMoreSibling) {
+                        showMoreSibling.remove();
+                        showMoreSibling = showMore.nextSibling;
+                    }
+                }
+            }
+
+
+            function removeRelatedListButton(relatedList, buttonName) {
+                var rlButton = getButtonFromRelatedList(relatedList, buttonName);
+
+                if (rlButton) {
+                    rlButton.remove();
+                }
+            }
+
+            function getButtonFromRelatedList(relatedList, buttonName) {
+                return relatedList.getElementsByTagName('input') ?
+                    relatedList.getElementsByTagName('input')[buttonName] : undefined;
+            }
+
+
+            function removeActionLinks(relatedList, hrefPattern) {
+                var links = relatedList.getElementsByClassName('actionLink');
+
+                var toRemove = [];
+                for (var i=0; i<links.length; i++) {
+                    var link = links[i];
+                    var hrefToTest = decodeURIComponent(link.href);
+                    if (hrefPattern.test(hrefToTest)) {
+                        toRemove.push(link);
+                    }
+                }
+                for (var j=0; j<toRemove.length; j++) {
+                    var removeLink = toRemove[j];
+                    // remove the separator text before and after the link
+                    var separators = [removeLink.previousSibling, removeLink.nextSibling];
+                    for (var k=0; k<2; k++) {
+                        var separator = separators[k];
+                        if (separator && separator.textContent === '\xa0|\xa0') {
+                            separator.remove();
+                        }
+                    }
+                    //remove edit/del link (depending on the hrefPattern)
+                    removeLink.remove();
+                }
+            }
+        }
+  </script>
+</apex:component>

@@ -1,0 +1,10 @@
+.no-line-height {
+    line-height: unset;
+}
+.truncate-text {
+    display: inline;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

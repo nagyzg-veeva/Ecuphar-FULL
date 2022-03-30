@@ -1,0 +1,6 @@
+<apex:page standardController="Address_vod__c" standardStylesheets="true">
+  <c:VOD_EMBED_VUE veevaModule="office-best-times"
+                     veevaPage="office-best-times"
+                     objectType="Address_vod__c"
+                     queryParams="{!$CurrentPage.parameters.queryParams}"></c:VOD_EMBED_VUE>
+</apex:page>

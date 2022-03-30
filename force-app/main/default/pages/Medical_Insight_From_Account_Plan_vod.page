@@ -1,0 +1,27 @@
+<apex:page controller="VOD_SObjectNewRedirectController" action="{! IF(($User.UIThemeDisplayed == 'Theme4d') || ($User.UIThemeDisplayed == 'Theme4u'), null, sObjectNewRedirect)}">
+    <c:VOD_EMBED skipVeevaPage="{!$User.UIThemeDisplayed == 'Theme4d' || $User.UIThemeDisplayed == 'Theme4u'}" veevaModule="" veevaPage="" objectType="Medical_Insight_vod__c" queryParams="{!$CurrentPage.parameters.queryParams}&RecordType={!$CurrentPage.parameters.RecordType}"/>
+    <script type="text/javascript">
+        if (typeof VeevaFlowUtils !== "undefined") {       
+            var inputVariables = [VeevaFlowUtils.createFlowVariable("objectApiName", "Medical_Insight_vod__c", "String")];
+            
+            var defaultFieldValues = {
+                "Account_Plan_vod__c": {
+                    "value": "{!$CurrentPage.parameters.id}"
+                }
+            };
+            inputVariables.push(VeevaFlowUtils.createFlowVariable("defaultFieldValues", JSON.stringify(defaultFieldValues),
+                "String"));
+            
+            var inContextOfRef = {
+                "type": "standard__recordPage",
+                "attributes": {
+                    "recordId": "{!$CurrentPage.parameters.id}",
+                    "actionName": "view",
+                    "objectApiName": "Medical_Event_vod__c"
+                }
+            };
+            
+            VeevaFlowUtils.createFlowComponent('VeevaRecordTypeSelectorFlow', inputVariables, inContextOfRef);
+        }
+    </script>
+</apex:page>

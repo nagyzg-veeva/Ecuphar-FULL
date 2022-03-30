@@ -1,0 +1,11 @@
+<!-- todo: tooltip panel-->
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <span slot="readonlyText" if:true={name}>
+            <lightning-formatted-url value={url} label={name} if:false={isRecordType}>
+            </lightning-formatted-url>
+            <lightning-formatted-text value={name} if:true={isRecordType}></lightning-formatted-text>
+            <lightning-formatted-text value={extra} if:true={extra}></lightning-formatted-text>
+        </span>
+    </c-veeva-field-generic>
+</template>

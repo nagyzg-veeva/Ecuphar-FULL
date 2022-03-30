@@ -1,0 +1,30 @@
+<template>
+    <div class={comboBoxGroupClass}>
+        <div class="slds-combobox_object-switcher">
+            <div if:true={isMultilookup} class="slds-combobox_container slds-combobox-addon_start">
+                <div class={objectListDropdownClass}>
+                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right">
+                        <input type="text" placeholder="Object" value={ctrl.selectedObject.label} class="slds-input slds-combobox__input slds-combobox__input-value" onfocus={handleObjectListFocus} onblur={handleObjectListClose}/>
+                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                            <lightning-icon icon-name="utility:down" size="x-small"></lightning-icon>
+                        </span>
+                    </div>
+                    <div class="slds-dropdown slds-dropdown_length-5 slds-dropdown_x-small slds-dropdown_left" >
+                        <ul class="slds-listbox slds-listbox_vertical" if:true={objectListFocus}>
+                            <template for:each={objectList} for:item="object">
+                                <li key={object.value} class="slds-listbox__item">
+                                    <div onclick={handleObjectListClick} data-objectname={object.value} class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                        <span class="slds-media__body">
+                                            <span class="slds-truncate">{object.label}</span>
+                                        </span>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <c-veeva-lookup class="veeva-lookup" ctrl={ctrl} start-term={startTerm} onlookupselection={bubbleLookupSelection} onsearchmode={bubbleSearchMode} onclearlookup={bubbleClearLookup}></c-veeva-lookup>
+    </div>
+</template>

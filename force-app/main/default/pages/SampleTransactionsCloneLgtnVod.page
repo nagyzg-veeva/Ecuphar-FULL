@@ -1,0 +1,18 @@
+<apex:page standardController="Sample_Transaction_vod__c" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+
+    var ID='{!Sample_Transaction_vod__c.Id}';
+    var GroupId='{!URLENCODE(Sample_Transaction_vod__c.Group_Transaction_Id_vod__c)}';
+    var RecordTypeName ='{!URLENCODE(Sample_Transaction_vod__c.RecordType.Name)}';
+    var RecordType="{!Sample_Transaction_vod__c.RecordTypeId}";
+    var retURL = '{!URLENCODE($CurrentPage.parameters.retURL)}';
+
+    var queryParams = "&lgtvf=true&clone=1&id=" + ID + "&groupId=" + GroupId + "&mode=n" + '&RecordTypeName=' + RecordTypeName + "&RecordType=" + RecordType + "&retURL=" + retURL;
+
+    com.vod309.redirect.redirect("samptrans", queryParams);
+
+  </script>
+
+</apex:page>

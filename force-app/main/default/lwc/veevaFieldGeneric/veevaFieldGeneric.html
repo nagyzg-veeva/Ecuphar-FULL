@@ -1,0 +1,21 @@
+<template>
+    <!-- Use veevaFieldGeneric for consistent display of label, field and error -->
+    <div class="slds-form-element slds-grow">
+        <template if:false={labelHidden}>
+            <div class="slds-form-element__label slds-no-flex">
+                <abbr class="slds-required" if:true={ctrl.required}>*</abbr>
+                <slot name="label">{ctrl.label}</slot>
+            </div>
+            <lightning-helptext content={ctrl.helpText} if:true={ctrl.helpText}></lightning-helptext>
+        </template>
+        <div class="slds-form-element__control slds-grow">
+            <slot name="control">
+                <div class={sldsText}>
+                    <slot name="readonlyText">
+                        <lightning-formatted-text value={ctrl.displayValue}></lightning-formatted-text>
+                    </slot>
+                </div>
+            </slot>
+        </div>
+    </div>
+</template>

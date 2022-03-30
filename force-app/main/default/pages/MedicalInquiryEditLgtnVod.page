@@ -1,0 +1,17 @@
+<apex:page standardController="Medical_Inquiry_vod__c">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script>
+        var myqueryparms = "&id={!Medical_Inquiry_vod__c.Id}&mode=e";
+        myqueryparms += "&RecordType={!Medical_Inquiry_vod__c.RecordTypeId}" ;
+        myqueryparms += "&ACCID={!Medical_Inquiry_vod__c.Account_vod__c}";
+
+        var retURL = '{!URLENCODE($Request.retURL)}';
+        if ((retURL == null) || (retURL == '')) {
+        	retURL = '/{!Medical_Inquiry_vod__c.Id}';
+        }
+
+		myqueryparms += "&retURL="+retURL+"&lgtvf=true";
+
+        com.vod309.redirect.redirect("medinq", myqueryparms);
+    </script>
+</apex:page>

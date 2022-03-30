@@ -1,0 +1,3 @@
+<apex:page lightningStylesheets="true" standardController="Medical_Inquiry_Fulfillment_Response_vod__c">
+  <c:BlockAccessEmbedLgtnVod />
+</apex:page>

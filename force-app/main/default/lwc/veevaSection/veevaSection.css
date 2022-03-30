@@ -1,0 +1,8 @@
+.slds-button {
+    color: rgb(62, 62, 60);
+}
+
+div[data-variant~="top-border"] {
+    border-top: 2px solid rgb(221, 219, 218);
+    margin-top: 0px;
+}

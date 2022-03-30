@@ -1,0 +1,34 @@
+.compact-layout-header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+    height: calc( (2*var(--lwc-varSpacingHorizontalMedium,0.75rem)) + (var(--lwc-lineHeightHeading,1.2em)*var(--lwc-formLabelFontSize,0.75rem)) + var(--lwc-spacingXxSmall,0.25rem) + var(--lwc-spacingXxxSmall,0.125rem) + (var(--lwc-lineHeightHeading,1.2)*var(--lwc-inputStaticFontSize, 0.875rem)) );
+}
+
+.compact-layout-item {
+    min-width: min-content;
+    white-space: nowrap;
+    padding-top: var(--lwc-varSpacingHorizontalMedium);
+    padding-bottom: var(--lwc-varSpacingHorizontalMedium);
+}
+
+.highlight-panel{
+    border-radius: 0px;
+    transition: left .05s, right .05s, margin-top .05s;
+    left: 11px;
+    right: 11px;
+}
+
+.highlight-panel-buttons{
+    transition: padding-left .05s, padding-right .05s;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.slds-page-header{
+    min-height: 52px;
+}

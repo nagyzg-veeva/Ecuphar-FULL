@@ -1,0 +1,5 @@
+<apex:page standardController="EM_Event_Team_Member_vod__c" >
+    <c:VOD_EMBED veevaModule="em" veevaPage="event-team-member-view" objectType="EM_Event_Team_Member_vod__c"
+    queryParams="{!$CurrentPage.parameters.queryParams}&objectId={!EM_Event_Team_Member_vod__c.Id}&lgtvf=true" />
+    <c:FilesAttachmentsRelatedListVod objectType="{!EM_Event_Team_Member_vod__c}" />
+</apex:page>

@@ -1,0 +1,43 @@
+<template>
+    <c-section-template ctrl={ctrl} open>
+        <div slot='content'>
+            <lightning-button variant="base" label={labelAddSection} if:true={displayAddSectionCopy} onclick={addInquiry}>
+            </lightning-button>
+            <template if:true={records}>
+                <template iterator:it={records} if:true={ctrl.actionView}>
+                    <article key={it.value.id} class="slds-card">
+                        <lightning-layout vertical-align='start' class='slds-p-top_x-small slds-m-horizontal_x-small'>
+                            <c-mpi-buttons-row record={it.value} page-ctrl={ctrl.pageCtrl}></c-mpi-buttons-row>
+                            <lightning-layout-item flexibility="auto" class="slds-m-top_xxx-small">
+                                <template iterator:row={ctrl.meta.layoutRows}>
+                                    <c-veeva-row row={row.value} key={row.value.key} page-ctrl={ctrl.pageCtrl} record={it.value}
+                                        last-row={row.last} record-update-flag={recordUpdateFlag}></c-veeva-row>
+                                </template>
+                            </lightning-layout-item>
+                        </lightning-layout>
+                    </article>
+                </template>
+                <template iterator:it={records} if:false={ctrl.actionView}>
+                    <lightning-layout vertical-align='start' key={it.value.id}
+                        class='slds-border_top slds-p-top_x-small slds-m-horizontal_x-small'>
+                        <lightning-layout-item>
+                            <lightning-button-group>
+                                <lightning-button label={labelCopy} variant='base' class='slds-m-right_x-small'
+                                    onclick={copyInquiry} value={it.value.id} if:true={displayAddSectionCopy}>
+                                </lightning-button>
+                                <lightning-button label={labelDel} variant='base' class='slds-m-right_x-small'
+                                    onclick={deleteInquiry} value={it.value.id} if:true={displayDeleteLink}>
+                                </lightning-button>
+                            </lightning-button-group>
+                        </lightning-layout-item>
+                        <lightning-layout-item flexibility="auto" class="slds-m-top_xxx-small">
+                            <template iterator:row={ctrl.meta.layoutRows}>
+                                <c-veeva-row row={row.value} key={row.value.key} page-ctrl={ctrl.pageCtrl} record={it.value}></c-veeva-row>
+                            </template>
+                        </lightning-layout-item>
+                    </lightning-layout>
+                </template>
+            </template>
+        </div>
+    </c-section-template>
+</template>

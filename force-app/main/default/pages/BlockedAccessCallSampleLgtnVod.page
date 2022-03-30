@@ -1,0 +1,3 @@
+<apex:page lightningStylesheets="true" standardController="Call2_Sample_vod__c">
+  <c:BlockAccessEmbedLgtnVod />
+</apex:page>

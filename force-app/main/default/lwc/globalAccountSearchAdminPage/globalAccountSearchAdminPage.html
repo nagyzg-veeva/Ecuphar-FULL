@@ -1,0 +1,31 @@
+<template>
+  <div class="slds-page-header">
+    <div class="slds-page-header__row">
+      <div class="slds-page-header__col-title slds-list_horizontal">
+        <div class="slds-media slds-size_1-of-5">
+          <div class="slds-media__figure">
+            <span class="slds-icon_container">
+              <lightning-icon icon-name="standard:person_account" alternative-text={title}>
+              </lightning-icon>
+            </span>
+          </div>
+          <div class="slds-media__body">
+            <div class="slds-page-header__name">
+              <div class="slds-page-header__name-title">
+                <h1>
+                  <span class="slds-page-header__title slds-truncate">{title}</span>
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="admin-content">
+    <c-gas-implicit-filters if:true={implicitFiltersVisible}></c-gas-implicit-filters>
+    <div if:true={accessDenied} class="no-access slds-grid slds-grid--vertical-align-center">
+      <c-veeva-no-access-illustration class="slds-col" header={accessDeniedLabel}></c-veeva-no-access-illustration>
+    </div>
+  </div>
+</template>

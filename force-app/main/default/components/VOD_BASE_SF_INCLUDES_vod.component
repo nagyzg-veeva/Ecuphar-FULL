@@ -1,0 +1,12 @@
+<apex:component >
+
+  <apex:includeScript value="/soap/ajax/9.0/connection.js" />
+  <apex:includeScript value="/soap/ajax/9.0/apex.js" />
+  <apex:includeScript value="/js/functions.js" />
+
+  <style type="text/css">
+    body.Theme3_vod { background-color: #F8F8F8 }
+    body.Theme2_vod { background-color: #F3F3EC}
+  </style>
+  
+</apex:component>

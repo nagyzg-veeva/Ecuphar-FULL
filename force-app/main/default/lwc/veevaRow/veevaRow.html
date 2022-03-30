@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-form__row">
+        <template iterator:it={row.layoutItems}>
+            <div class="slds-form__item" key={it.value.key}>
+                <div class={sldsItem} if:true={it.value.label}>
+                    <c-veeva-item item={it.value} page-ctrl={pageCtrl} record={record} record-update-flag={recordUpdateFlag}></c-veeva-item>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,59 @@
+<template>
+    <div class=spacer>
+        <div class="highlight-panel">
+            <div class="slds-page-header slds-clearfix slds-page-header_record-home">
+                <div class="highlight-panel-buttons">
+                    <div class='slds-grid'>
+                        <div data-veeva-id="detail_title" class="slds-col slds-has-flexi-truncate">
+                            <div class="slds-media slds-no-space">
+                                <div class="slds-avatar slds-m-right--small">
+                                    <lightning-icon icon-name={page.icon}></lightning-icon>
+                                </div>
+                                <div class="slds-media__body">
+                                    <p class="slds-breadcrumb__item slds-line-height--reset">{page.title}</p>
+                                    <h1 class="slds-page-header__title slds-m-right--small slds-align-middle">
+                                        <lightning-formatted-text if:false={isSubtitleLookup} value={page.subtitle}>
+                                        </lightning-formatted-text>
+                                        <lightning-formatted-url if:true={isSubtitleLookup} value={page.subtitleUrl}
+                                            label={page.subtitle}></lightning-formatted-url>
+                                    </h1>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col slds-no-flex" if:true={buttons}>
+                            <ul class='slds-button-group-list slds-is-relative'>
+                                <template iterator:it={displayButtons}>
+                                    <li class='slds-truncate' key={it.value.name}>
+                                        <c-veeva-button button={it.value} page-ctrl={pageCtrl}></c-veeva-button>
+                                    </li>
+                                </template>
+                                <li>
+                                    <c-veeva-button-menu if:true={menuButtons.length} menu-alignment="right">
+                                        <div slot="buttons">
+                                            <template iterator:it={menuButtons}>
+                                                <c-veeva-button key={it.value.name} button={it.value}
+                                                    page-ctrl={pageCtrl}></c-veeva-button>
+                                            </template>
+                                        </div>
+                                    </c-veeva-button-menu>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div if:true={showCompactLayout} class="compact_layout slds-page-header__row slds-page-header__row_gutters">
+                        <div class="slds-page-header__col-details">
+                            <div class="compact-layout-header slds-page-header__detail-row">
+                                <template for:each={compactLayoutFields} for:item="field">
+                                    <span key={field.apiName}
+                                        class="compact-layout-item slds-page-header__detail-block slds-p-vertical_small">
+                                        <c-veeva-field ctrl={field.ctrl}></c-veeva-field>
+                                    </span>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<apex:page standardController="Account" extensions="VeevaJourneyStageAccountExtension,VeevaJourneySFSettingExtension,VeevaJourneyUserExtension">
+    <apex:includeScript value="{!andiWidgetURL}/journey-account/static/js/main.js" />
+    <apex:stylesheet value="{!andiWidgetURL}/journey-account/static/css/main.css" />
+
+    <veeva-journey-account
+        sf-endpoint="{!sfEndpoint}"
+        sf-session="{!$Api.Session_ID}"
+        sf-account-id="{!account.id}"
+        sf-remote-actions='{
+            "getJourneyStageAccounts": "{!$RemoteAction.VeevaJourneyStageAccountExtension.getJourneyStageAccounts}",
+            "saveJourneyStageAccount": "{!$RemoteAction.VeevaJourneyStageAccountExtension.saveJourneyStageAccount}",
+            "removeJourneyStageAccount": "{!$RemoteAction.VeevaJourneyStageAccountExtension.removeJourneyStageAccount}",
+            "addJourneyStageAccount": "{!$RemoteAction.VeevaJourneyStageAccountExtension.addJourneyStageAccount}",
+            "lookupJourneys": "{!$RemoteAction.VeevaJourneyStageAccountExtension.lookupJourneys}",
+            "getPermissions": "{!$RemoteAction.VeevaJourneyStageAccountExtension.getPermissions}"
+        }'
+        sf-user-language="{!userLanguage}"
+        sf-user-locale="{!userLocale}"
+        sf-user-timezone="{!userTimezone}"
+        api-domain="{!andiDomain}"
+        api-version="v1"
+        mode="salesforce.lightning"></veeva-journey-account>
+</apex:page>

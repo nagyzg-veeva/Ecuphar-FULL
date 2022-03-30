@@ -1,0 +1,6 @@
+<apex:page standardController="User" lightningStylesheets="true">
+    <c:DownloadActivityLogRestLgtnVod />
+    <script type="text/javascript">
+    submit(1);
+    </script>
+</apex:page>

@@ -1,0 +1,11 @@
+<apex:page standardController="Survey_vod__c" standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+        var queryparams = "&id=" + "{!Survey_vod__c.id}";
+        queryparams += "&RecordType=" + "{!URLENCODE(CASESAFEID($CurrentPage.parameters.RecordType))}";
+        queryparams += '&mode=e';
+        queryparams += '&lgtvf=true';
+        queryparams += "&editAccess=" + "{!URLENCODE($CurrentPage.parameters.editAccess)}";
+        com.vod309.redirect.redirect("survey", queryparams);
+    </script>
+</apex:page>

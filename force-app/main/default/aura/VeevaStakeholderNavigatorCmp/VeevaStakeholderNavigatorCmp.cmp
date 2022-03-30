@@ -1,0 +1,25 @@
+<aura:component implements="force:lightningQuickAction,force:appHostable,lightning:isUrlAddressable" controller="StakeholderNavigatorController">
+    <aura:html tag="style">  
+        .stakeholderNavDisableScroll {
+            overflow-y: hidden !important;
+            height: 100%;
+        }
+    </aura:html> 
+    <lightning:navigation aura:id="navigation"/>
+    <aura:attribute name="rootId" type="String" default=""/>
+    <aura:attribute name="numAcctLoaded" type="String" default="0"/>
+    <aura:attribute name="snMessage" type="String" default="Stakeholder Navigator"/>
+    <aura:attribute name="toggleAffMessage" type="String" default="Toggle Affiliations"/>
+    <aura:handler name="init" value="{!this}" action="{!c.init}"/>
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.onPageReferenceChange}"/>
+    
+    <div class="stakeholderNavDisableScroll">
+      <c:stakeholderNavigatorHeader rootId="{!v.rootId}"
+                                  snMessage="{!v.snMessage}"
+                                  toggleAffMessage="{!v.toggleAffMessage}"
+                                  numAcctLoaded="{!v.numAcctLoaded}"
+                                  ontoggle-affiliations="{!c.toggleAffiliations}">
+    </c:stakeholderNavigatorHeader>
+	<lightning:container aura:id="NavigatorChart" onmessage="{!c.handleMessage}" src="{!$Resource.stakeholder_navigator + '/index.html'}"/>
+    </div>
+</aura:component>

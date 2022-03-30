@@ -1,0 +1,66 @@
+<template>
+    <c-veeva-modal class="forceChangeRecordType" onclose={finishFlow} if:true={showRecordTypeSelector}>
+        <span slot="header">
+            {titleNewObject}
+        </span>
+        <div slot="content">
+            <div class="changeRecordTypeRow" >
+                <fieldset class="slds-form-element slds-no-space firefox-fieldset-bug-fix" >
+                    <legend class="changeRecordTypeLeftColumn form-element__legend" >
+                        {labelSelectRecordType}
+                    </legend>
+                    <div class="changeRecordTypeRightColumn slds-form-element__control" >
+                        <template iterator:it={recordTypeInfos}>
+                            <div key={it.value.value}>
+                                <label class="slds-radio" for={it.value.value} >
+                                    <div class="changeRecordTypeOptionLeftColumn" >
+                                        <input 
+                                            id={it.value.value} 
+                                            class="input uiInput uiInputRadio uiInput--default uiInput--radio" 
+                                            type="radio" 
+                                            value={it.value.value} 
+                                            name="changeRecordTypeRadio"
+                                            checked={it.value.checked}
+                                            onchange={handleRecordTypeChange}>
+                                        <span class="slds-radio--faux" ></span>
+                                    </div>
+                                    <div class="changeRecordTypeOptionRightColumn" >
+                                        <span>{it.value.label}</span>
+                                        <div class="changeRecordTypeItemDescription changeRecordTypeLabel">{it.value.description}</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="clearall" key={it.value.value}></div>
+                        </template>
+                    </div>
+                    <div class="clearall" ></div>
+                </fieldset>
+            </div>
+            <div class="changeRecordTypeRow" ></div>
+        </div>
+        <div slot="footer">
+            <div>
+                <lightning-button
+                    label={labelCancel}
+                    title={labelCancel}
+                    variant="neutral"
+                    onclick={finishFlow}>
+                </lightning-button>
+                <lightning-button
+                    label={labelNext}
+                    title={labelNext}
+                    variant="brand"
+                    class="slds-m-left_x-small"
+                    onclick={goToNext}>
+                </lightning-button>
+            </div>
+        </div>
+    </c-veeva-modal>
+    <c-veeva-modal class="forceChangeRecordType" onclose={finishFlow} if:true={isNotCreateable}>
+        <div slot="content">
+            <div class="insufficientPrivilegesMsg">
+                <lightning-formatted-text value={insufficientPrivilegesMessage}></lightning-formatted-text>
+            </div>
+        </div>
+    </c-veeva-modal>
+</template>

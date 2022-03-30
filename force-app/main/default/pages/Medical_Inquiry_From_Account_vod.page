@@ -1,0 +1,28 @@
+<apex:page standardController="Account">
+    <c:VOD_EMBED skipVeevaPage="{!$User.UIThemeDisplayed == 'Theme4d' || $User.UIThemeDisplayed == 'Theme4u'}" veevaModule="medical_inquiry" veevaPage="medical-inquiry-view" objectType="Medical_Inquiry_vod__c" queryParams="&acctId={!Account.Id}&typ=MedicalInquiry&retUrl={!$CurrentPage.Parameters.retURL}&lgtvf=true"/>
+    <script type="text/javascript">
+        if (typeof VeevaFlowUtils !== "undefined") {       
+            var inputVariables = [VeevaFlowUtils.createFlowVariable("objectApiName", "Medical_Inquiry_vod__c", "String")];
+    
+            var defaultFieldValues = {
+                "Account_vod__c": {
+                    "displayValue": "{!Account.Name}",
+                    "value": "{!Account.Id}"
+                }
+            };
+            inputVariables.push(VeevaFlowUtils.createFlowVariable("defaultFieldValues", JSON.stringify(defaultFieldValues),
+                "String"));
+            
+            var inContextOfRef = {
+                "type": "standard__recordPage",
+                "attributes": {
+                    "recordId": "{!Account.Id}",
+                    "actionName": "view",
+                    "objectApiName": "Account"
+                }
+            };
+            
+            VeevaFlowUtils.createFlowComponent('VeevaRecordTypeSelectorFlow', inputVariables, inContextOfRef);
+        }
+    </script>
+</apex:page>

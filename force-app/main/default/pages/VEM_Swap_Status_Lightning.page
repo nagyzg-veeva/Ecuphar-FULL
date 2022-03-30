@@ -1,0 +1,28 @@
+<apex:page standardController="VEM__Package__c" recordSetVar="vemPackages" extensions="PA_VEMSwapStatus" lightningStylesheets="true">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        function doRedirect(){
+        window.history.back();
+    }
+    </script>
+    <link type="text/css" rel="stylesheet" href="https://www.lightningdesignsystem.com/assets/styles/slds.css"/>    
+    <apex:slds /> 
+    
+    <apex:form >
+        <apex:outputpanel >    
+            <div>
+                {!msgAux} 
+            </div> 
+        </apex:outputpanel>
+        <apex:outputPanel >
+            <apex:pageMessages id="msg"/>
+        </apex:outputPanel>
+        <apex:outputPanel >
+            <div style="text-align: center">
+                <apex:commandButton value="Back" styleClass="slds-button slds-button_neutral" oncomplete="doRedirect();"/>
+                <apex:commandButton disabled="{!isDisabled}" value="Ok" styleClass="slds-button slds-button_success" action="{!updateStatus}" reRender="msg" onclick="this.disabled=true;"/>
+            </div>
+        </apex:outputPanel>
+    </apex:form>
+    
+</apex:page>

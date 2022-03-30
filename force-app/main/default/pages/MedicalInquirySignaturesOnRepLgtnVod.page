@@ -1,0 +1,10 @@
+<apex:page standardController="Rep_Roster_vod__c" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+    var queryParams = "&UN={!URLENCODE(Rep_Roster_vod__c.Username_External_Id_vod__c)}"; 
+    queryParams += "&lgtvf=true";
+    com.vod309.redirect.redirect("inquirySignature",queryParams);
+  </script>
+
+</apex:page>

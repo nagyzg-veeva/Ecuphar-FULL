@@ -1,0 +1,19 @@
+<apex:component >
+    <apex:attribute name="objectType" description="Object type of record" type="sobject" required="true"/>
+    <apex:attribute name="renderAttachmentRL" description="Flag to determine if we should render veevaAttachmentRL" type="boolean" default="true" required="false"/>
+    <apex:outputPanel rendered="{! $User.UITheme == 'Theme4d'
+                                && $ObjectType.ContentDocumentLink.Accessible 
+                                && $ObjectType.ContentDocument.Accessible 
+                                && $ObjectType.ContentVersion.Accessible
+                                && $ObjectType.AttachedContentDocument.Accessible }">
+        <div id="veevaFileRL" style="display:none">
+            <apex:relatedList subject="{!objectType}" list="AttachedContentDocuments"/>
+        </div>
+    </apex:outputPanel>
+    
+    <apex:outputPanel rendered="{!renderAttachmentRL}">
+        <div id="veevaAttachmentRL" style="display:none">
+        <apex:relatedList subject="{!objectType}" list="CombinedAttachments"/>
+    </div>
+    </apex:outputPanel>
+</apex:component>

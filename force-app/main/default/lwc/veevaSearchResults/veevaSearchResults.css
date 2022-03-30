@@ -1,0 +1,4 @@
+div.lightning-datatable-container {
+    height : calc(100vh - 400px);
+    min-height: 100px;
+}

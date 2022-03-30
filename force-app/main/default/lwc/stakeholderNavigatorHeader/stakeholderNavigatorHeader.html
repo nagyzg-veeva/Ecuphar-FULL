@@ -1,0 +1,57 @@
+<template>
+    <div class="slds-page-header--object-home slds-page-header_joined slds-page-header_bleed slds-page-header slds-shrink-none test-headerRegion forceListViewManagerHeader" data-aura-class="forceListViewManagerHeader">
+        <div class="slds-grid">
+            <div class="slds-col slds-has-flexi-truncate firstHeaderRow">
+                <!--THE TOP LEFT SECTION-->
+                <div class="slds-media slds-no-space slds-grow">
+                    <div class="slds-media__body slds-align-middle">
+                        <!--BREADCRUMB-->
+                        <nav aria-label="Breadcrumbs">
+                            <ol class="slds-breadcrumb slds-list--horizontal slds-wrap">
+                                <li class="slds-breadcrumb__item slds-line-height--reset">
+                                    <span if:false={isAccountPlan} class="slds-var-p-right_x-small uiOutputText forceBreadCrumbItem">
+                                        {accountPlural}&nbsp;
+                                    </span>
+                                    <span if:true={isAccountPlan} class="slds-var-p-right_x-small uiOutputText forceBreadCrumbItem">
+                                        {accountPlanPlural}&nbsp;
+                                    </span>
+                                </li>
+                                <li class="slds-breadcrumb__item slds-line-height--reset">
+                                    <span class="slds-var-p-right_x-small uiOutputText forceBreadCrumbItem">
+                                        <a onclick={navigateToObject}>&nbsp;&nbsp;{breadcrumbName}</a>
+                                    </span>
+                                </li>
+                            </ol>
+                        </nav>
+                        <!--STAKERHOLDER NAVIGATOR TITLE-->
+                        <div class="slds-grid">
+                            <h1 class="slds-truncate slds-page-header__title slds-text-color--default">
+                                <span class="triggerLinkText selectedListView uiOutputText forceListViewPicker">
+                                    {stakeholderNavigator}
+                                </span>
+                            </h1>
+                        </div>
+                        <div class="slds-grid">
+                            <h1 class="slds-breadcrumb slds-list--horizontal slds-wrap">
+                                <span class="slds-breadcrumb__item slds-line-height--reset">
+                                    {numberAccounts} {accountPlural}
+                                </span>
+                            </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-no-flex slds-grid slds-align-top slds-p-bottom--xx-small test-lvmForceActionsContainer">
+                <!--THE TOP RIGHT SECTION-->
+                <ul class="branding-actions slds-button-group slds-m-left--xx-small oneActionsRibbon forceActionsContainer">
+                    <li class="slds-button slds-button--neutral">
+                        <a onclick={toggleAffiliationsAction} title="Toggle Affiliations" class="forceActionLink" data-aura-class="forceActionLink" role="button">
+                            <div title="Toggle">{toggleAffiliations}</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="slds-grid"></div>
+    </div>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <c-veeva-field-generic ctrl={ctrl}>
+        <div slot="control">
+            <lightning-textarea if:false={isRichTextArea} value={value} disabled={ctrl.disabled} maxlength={ctrl.maxlength}
+                onchange={handleChange} data-validity readonly={ctrl.readonly} variant='label-hidden'
+                required={ctrl.required}>
+            </lightning-textarea>
+            <lightning-input-rich-text if:true={isRichTextArea} formats={formats}
+                value={value} disabled={ctrl.disabled} onchange={handleChange} 
+                variant='label-hidden' required={ctrl.required} valid={richValid} 
+                message-when-bad-input={invalidRichMessage}>
+            </lightning-input-rich-text>
+        </div>
+    </c-veeva-field-generic>
+</template>

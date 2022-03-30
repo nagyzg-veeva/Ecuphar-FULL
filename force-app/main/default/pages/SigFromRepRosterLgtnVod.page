@@ -1,0 +1,11 @@
+<apex:page standardController="Rep_Roster_vod__c" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+
+    var queryParams = "&lgtvf=true&UN={!URLENCODE(Rep_Roster_vod__c.Username_External_Id_vod__c)}";
+    com.vod309.redirect.redirect("SIGSERVIEW", queryParams);
+
+  </script>
+
+</apex:page>

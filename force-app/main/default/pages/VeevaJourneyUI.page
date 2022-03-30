@@ -1,0 +1,44 @@
+<apex:page standardController="Andi_Journey_vod__c" extensions="VeevaJourneyExtension,VeevaJourneySFSettingExtension,VeevaJourneyUserExtension">
+    <apex:pageMessage id="pageError" severity="error" strength="1" summary="{!unableToDisplayMessage}"/>
+
+    <apex:includeScript value="{!andiWidgetURL}/journey/static/js/main.js" />
+    <apex:stylesheet value="{!andiWidgetURL}/journey/static/css/main.css" />
+
+    <script>
+        var pageError = document.getElementById('{!$Component.pageError}');
+        pageError.style.display = "none";
+        if ('{!andiWidgetURL}' == '') {
+            pageError.style.display = "block";
+        }
+    </script>
+
+    <veeva-journey
+        sf-endpoint="{!sfEndpoint}"
+        sf-session="{!$Api.Session_ID}"
+        sf-remote-actions='{
+            "getJourneys": "{!$RemoteAction.VeevaJourneyExtension.getJourneys}",
+            "getJourneyDetail": "{!$RemoteAction.VeevaJourneyExtension.getJourney}",
+            "saveJourneyDetail": "{!$RemoteAction.VeevaJourneyExtension.saveJourney}",
+            "removeJourney": "{!$RemoteAction.VeevaJourneyExtension.removeJourney}",
+            "getJourneyMetadata": "{!$RemoteAction.VeevaJourneyExtension.getJourneyMetadata}",
+            "saveJourneyStage": "{!$RemoteAction.VeevaJourneyExtension.saveJourneyStage}",
+            "removeJourneyStage": "{!$RemoteAction.VeevaJourneyExtension.removeJourneyStage}",
+            "getProducts": "{!$RemoteAction.VeevaJourneyExtension.getProducts}",
+            "getClmPresentations": "{!$RemoteAction.VeevaJourneyExtension.getClmPresentations}",
+            "getClmPresentationsById": "{!$RemoteAction.VeevaJourneyExtension.getClmPresentationsById}",
+            "getKeyMessages": "{!$RemoteAction.VeevaJourneyExtension.getKeyMessages}",
+            "getKeyMessagesById": "{!$RemoteAction.VeevaJourneyExtension.getKeyMessagesById}",
+            "getApprovedDocuments": "{!$RemoteAction.VeevaJourneyExtension.getApprovedDocuments}",
+            "getApprovedDocumentsById": "{!$RemoteAction.VeevaJourneyExtension.getApprovedDocumentsById}",
+            "getEmCatalogs": "{!$RemoteAction.VeevaJourneyExtension.getEmCatalogs}",
+            "getEmCatalogsById": "{!$RemoteAction.VeevaJourneyExtension.getEmCatalogs}ById",
+            "getEmEvents": "{!$RemoteAction.VeevaJourneyExtension.getEmEvents}",
+            "getMetricConfigurations": "{!$RemoteAction.VeevaJourneyExtension.getMetricConfigurations}",
+            "getEventResponseInfos": "{!$RemoteAction.VeevaJourneyExtension.getEventResponseInfos}"
+        }'
+        sf-user-language="{!userLanguage}"
+        sf-user-locale="{!userLocale}"
+        sf-user-timezone="{!userTimezone}"
+        api-domain="{!andiDomain}"
+        api-version="v1"></veeva-journey>
+</apex:page>

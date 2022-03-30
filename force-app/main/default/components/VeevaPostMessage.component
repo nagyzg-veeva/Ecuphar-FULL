@@ -1,0 +1,73 @@
+<apex:component controller="VODRedirectController">
+    <c:AttachmentsHandlerVod />
+    
+    <script type="text/javascript">
+    var com = com || {};
+    com.vod309 = com.vod309 || {};
+    com.vod309.resize = {};
+    com.vod309.resize.iframe = undefined;
+
+    com.vod309.resize.init = function(iframe) {
+        com.vod309.resize.iframe = iframe;
+        if(window.addEventListener) {
+            window.addEventListener("message", com.vod309.resize.receiveMessage, false);
+        } else if (window.attachEvent) {
+            window.attachEvent("onmessage", com.vod309.resize.receiveMessage);
+        }
+    };
+
+    com.vod309.resize.getDomain = function(url) {
+        var matches = url.match(/^https?\:\/\/([^\/:?#@]+)(?:[\/:?#]|$)/i);
+        // domain will be null if no match is found
+        return matches && matches[1];
+    };
+
+    com.vod309.resize.receiveMessage = function(event) {
+        var domain = com.vod309.resize.getDomain(event.origin);
+        var isValidDomain = false;
+        var validDomains = [".vod309.com", ".veevacrmdev.com", ".veevacrmqa.com", ".veevacrmstage.com", ".veevacrm.com", ".veevacrmdemo.com", ".veevacrmdi.com"];
+        for(var i = 0; i < validDomains.length; i++) {
+            if(domain.indexOf(validDomains[i]) >= 0) {
+                isValidDomain = true;
+                break;
+            }
+        }
+        if(domain && (isValidDomain || domain === "localhost")) {
+            var data = JSON.parse(event.data);
+            if (data) {
+                if(data.height && com.vod309.resize.iframe) {
+                    com.vod309.resize.iframe.height = parseInt(data.height);
+                }
+
+                var attachmentRLElem = document.getElementById('veevaAttachmentRL');
+                if (attachmentRLElem) {
+                    if (data.attachmentRL && com.vod309.attachments) {
+                        com.vod309.attachments.handleAttachmentRL(attachmentRLElem, data);
+                        com.vod309.attachments.addAttachRLListener(attachmentRLElem, data);
+                    }
+                    if (data.hideAttachmentRL) {
+                        attachmentRLElem.style.display = 'none';
+                    }
+                }
+
+                if (data.url) {
+                    if (typeof sforce !== 'undefined' && sforce.one) {
+                        if (data.url.split('?')[0].indexOf("/record-actions") !== -1 && (data.url.indexOf("actionName=edit") !== -1 || data.url.indexOf("actionName=new") !== -1)) {
+                            sforce.one.back(true);
+                        } else {
+                            if (data.url === '/') {
+                                data.url = '/lightning/page/home';
+                            }
+                            sforce.one.navigateToURL(data.url);
+                        }
+                    }
+                    else {
+                        top.location = data.url;
+                    }
+                }
+            }
+        }
+    }
+
+    </script>
+</apex:component>

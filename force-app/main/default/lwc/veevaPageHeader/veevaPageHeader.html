@@ -1,0 +1,42 @@
+<!-- Based on the SLDS page header blueprint -->
+<template>
+  <div class="slds-page-header">
+    <lightning-layout class="slds-page-header__row" vertical-align="center">
+      <lightning-layout-item class="slds-page-header__col-title">
+        <lightning-layout vertical-align="center" class="title-column">
+          <lightning-layout-item>
+            <slot name="body">
+              <lightning-layout class="slds-media" vertical-align="stretch">
+                <lightning-layout-item class="slds-media__figure">
+                  <span class="slds-icon_container" title={iconName}>
+                    <lightning-icon slot="media" size="large" icon-name={iconName}></lightning-icon>
+                    <span class="slds-assistive-text">{title}</span>
+                  </span>
+                </lightning-layout-item>
+
+                <lightning-layout-item class="slds-media__body">
+                  <div class="slds-page-header__name">
+                    <div class="slds-page-header__name-title">
+                      <h1>
+                        <span>
+                          <slot name="breadcrumbs">&nbsp;</slot>
+                        </span>
+
+                        <span class="slds-page-header__title slds-truncate" title={title}>{title}</span>
+                      </h1>
+                    </div>
+                  </div>
+                  <p class="slds-page-header__name-meta">{subtitle}</p>
+                </lightning-layout-item>
+              </lightning-layout>
+            </slot>
+          </lightning-layout-item>
+        </lightning-layout>
+      </lightning-layout-item>
+
+      <lightning-layout-item>
+        <slot name="buttons"></slot>
+      </lightning-layout-item>
+    </lightning-layout>
+  </div>
+</template>

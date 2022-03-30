@@ -1,0 +1,37 @@
+<template>
+    <c-veeva-spinner if:false={page.layout}></c-veeva-spinner>
+    <c-veeva-modal size="medium" composed=true if:true={page.layout}>
+        <span data-veeva-id="modal_header" slot="header">
+            {page.title}
+        </span>
+        <div data-veeva-id="modal_content" slot="content" class='slds-p-around_medium veeva_modal-content'>
+            <div class="desktop forcePageError" if:true={page.reviewError}>
+                <div class="genericNotification">
+                    <span class="genericError">{page.reviewError}</span>
+                </div>
+                <ul class="errorsList" if:true={page.recordErrors}>
+                    <template for:each={page.recordErrors} for:item="error">
+                        <li key={error}>{error}</li>
+                    </template>
+                </ul>
+            </div>
+            <template if:true={page.layout.sections}>
+                <template iterator:it={page.layout.sections}>
+                    <c-veeva-section section={it.value} page-ctrl={pageCtrl} key={it.value.key} first={it.first} record-update-flag='true' open>
+                    </c-veeva-section>
+                </template>
+            </template>
+
+        </div>
+        <c-veeva-spinner if:true={page.requests.length} slot="spinner"></c-veeva-spinner>
+        <div data-veeva-id="modal_footer" slot="footer">
+            <ul if:true={page.modalButtons} class="slds-button-group-row slds-align_absolute-center">
+                <template for:each={page.modalButtons} for:item="btn">
+                    <li key={btn.name} class="slds-button-group-item">
+                        <c-veeva-button button={btn} page-ctrl={pageCtrl} disable-button={disableButton}></c-veeva-button>
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </c-veeva-modal>
+</template>

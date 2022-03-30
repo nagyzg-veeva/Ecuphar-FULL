@@ -1,0 +1,27 @@
+<template>
+    <lightning-layout vertical-align="center" class="slds-p-around_x-small slds-has-flexi-truncate">
+        <lightning-layout-item if:true={typeAttributes.leftAlignIcon}>
+            <lightning-icon
+                if:true={typeAttributes.iconName}
+                icon-name={typeAttributes.iconName}
+                variant={typeAttributes.iconVariant}
+                class={typeAttributes.iconClass}
+                size="x-small">
+            </lightning-icon>
+        </lightning-layout-item>
+
+        <lightning-layout-item class="slds-truncate">
+            <lightning-formatted-text value={value}></lightning-formatted-text>
+        </lightning-layout-item>
+
+        <lightning-layout-item if:false={typeAttributes.leftAlignIcon}>
+            <lightning-icon
+                if:true={typeAttributes.iconName}
+                icon-name={typeAttributes.iconName}
+                variant={typeAttributes.iconVariant}
+                class={typeAttributes.iconClass}
+                size="x-small">
+            </lightning-icon>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,4 @@
+<template>
+    <lightning-button if:false={isMenu} title={meta.label} label={meta.label} onclick={handleClick} variant={variant}></lightning-button>
+    <lightning-menu-item if:true={isMenu} label={meta.label} onclick={handleClick}></lightning-menu-item>
+</template>

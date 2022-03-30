@@ -1,0 +1,5 @@
+.veeva-help-text {
+    font-size: 0.625rem; 
+    margin: 0.25rem 0;
+    color: var(--sds-c-button-text-color, var(--lwc-brandAccessible,rgb(0, 112, 210)));
+}

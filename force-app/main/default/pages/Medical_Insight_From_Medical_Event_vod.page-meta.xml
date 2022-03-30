@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>52.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>When an online user creates a Medical Insight from a Medical Event, this page will route them to either the record type selection screen or new record creation screen appropriately.</description>
+    <label>Medical Insight from Medical Event</label>
+</ApexPage>

@@ -1,0 +1,12 @@
+<template>
+    <lightning-layout vertical-align="center">
+        <lightning-layout-item>
+            <lightning-avatar size="x-small" src={typeAttributes.recordTypeIconUrl} alternative-text={typeAttributes.recordTypeName}></lightning-avatar>
+        </lightning-layout-item>
+        <lightning-layout-item class="slds-truncate">
+            <button if:true={typeAttributes.isButton} class="slds-button no-line-height truncate-text slds-p-left_x-small" type="button" title={typeAttributes.id}
+                onclick={typeAttributes.clickHandler}>{value}</button>
+            <lightning-formatted-text if:false={typeAttributes.isButton} class="slds-p-left_x-small" value={value}></lightning-formatted-text>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

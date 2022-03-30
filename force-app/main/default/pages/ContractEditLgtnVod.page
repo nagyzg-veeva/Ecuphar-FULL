@@ -1,0 +1,15 @@
+<apex:page standardController="Contract_vod__c" extensions="VODRedirectController">
+    <apex:outputText value="{!Contract_vod__c.Lock_vod__c} {!Contract_vod__c.Product_Bound_vod__c} {!Contract_vod__c.Agreement_vod__c}"
+        rendered="false" />
+    <apex:form >
+        <apex:actionFunction name="contractEditRedirect" action="{!contractEditRedirect}" immediate="true" />
+    </apex:form>
+    <script type="text/javascript">
+        if (typeof sforce !== 'undefined' && {!NOT(Contract_vod__c.Lock_vod__c || (Contract_vod__c.Product_Bound_vod__c && Contract_vod__c.Agreement_vod__c))}) {
+            sforce.one.navigateToURL('/apex/Contract_Edit_SF_vod?id=' + '{!Contract_vod__c.Id}');
+        }
+        else {
+            contractEditRedirect();
+        }
+    </script>
+</apex:page>

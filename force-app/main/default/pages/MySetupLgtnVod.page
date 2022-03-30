@@ -1,0 +1,6 @@
+<apex:page lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+  <script type="text/javascript">
+    com.vod309.redirect.redirect("MySetup", "&minframeheight=800");
+  </script>
+</apex:page>

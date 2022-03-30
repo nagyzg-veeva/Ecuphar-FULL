@@ -1,0 +1,88 @@
+<template>
+    <c-veeva-page-header if:false={hidePageContent} icon-name="standard:user" title={pageHeaderTitle} subtitle={pageHeaderSubtitle}>
+        <lightning-breadcrumbs slot="breadcrumbs">
+            <lightning-breadcrumb label={fieldPlansMessage} onclick={handleFieldPlanNavigation}></lightning-breadcrumb>
+            <lightning-breadcrumb label={tableMetadata.fieldPlanName} onclick={handleTerritoriesNavigation}></lightning-breadcrumb>
+        </lightning-breadcrumbs>
+
+        <lightning-layout slot="buttons" horizontal-align="end" vertical-align="center" multiple-rows>
+            <lightning-layout-item size="12">
+                <div class="slds-float_right slds-p-bottom_x-small">
+                    <lightning-button-icon variant="border-filled" icon-name="utility:info" title="More info" onclick={handleInfoEvent}></lightning-button-icon>
+                </div>
+            </lightning-layout-item>
+
+            <lightning-layout-item>
+                <lightning-input
+                    type="search" 
+                    name="search"
+                    variant="label-hidden"
+                    label={searchMessage}
+                    placeholder={searchMessage}
+                    class="search-input"
+                    oncommit={handleSearch}
+                    value={searchQuery}>
+                </lightning-input>
+            </lightning-layout-item>
+
+            <lightning-layout-item if:true={tableMetadata.canReview} class="slds-p-left_x-small">
+                <lightning-button-group if:true={veevaMessagesLoaded}>
+                    <template if:true={selectedRows.length}>
+                        <lightning-button class="header-button" label={acceptMessage} icon-name="utility:success" title={acceptMessage} onclick={handleApproveChallenges}></lightning-button>
+                        <lightning-button class="header-button" label={rejectMessage} icon-name="utility:clear" title={rejectMessage} onclick={handleRejectChallenges}></lightning-button>
+                    </template>
+
+                    <template if:false={selectedRows.length}>
+                        <lightning-button class="header-button" label={acceptMessage} icon-name="utility:success" title={acceptMessage} disabled></lightning-button>
+                        <lightning-button class="header-button" label={rejectMessage} icon-name="utility:clear" title={rejectMessage} disabled></lightning-button>
+                    </template>
+                </lightning-button-group>
+            </lightning-layout-item>
+        </lightning-layout>
+    </c-veeva-page-header>
+
+    <c-territory-feedback-error-handler message-service={messageService}></c-territory-feedback-error-handler>
+
+    <div if:true={loading} class="spinner-container">
+        <lightning-spinner size="large"></lightning-spinner>
+    </div>
+    
+    <lightning-layout if:false={hidePageContent} class="table-panel-container slds-p-top_small">
+        <lightning-layout-item size={accountsTableSize}>
+            <c-territory-table-data-types
+                if:true={tableMetadata.canReview}
+                class='wrapped-header-datatable'
+                min-column-width="100"
+                columns={columns}
+                data={data}
+                key-field="id"
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                selected-rows={selectedAccountIds}
+                onsort={sortData}
+                onrowaction={handleRowAction}
+                onrowselection={handleRowSelection}
+                is-loading={showTableSpinner}>
+            </c-territory-table-data-types>
+
+            <!-- If manager does not have edit permissions, then render a datatable without row actions and row selection -->
+            <c-territory-table-data-types
+                if:false={tableMetadata.canReview}
+                class='wrapped-header-datatable'
+                min-column-width="100"
+                columns={columns}
+                data={data}
+                key-field="id"
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={sortData}
+                hide-checkbox-column
+                is-loading={showTableSpinner}>
+            </c-territory-table-data-types>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="3" class={sidePanelClass}>
+            <c-field-plan-info-panel message-service={messageService} onclose={handlePanelCloseEvent}></c-field-plan-info-panel>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

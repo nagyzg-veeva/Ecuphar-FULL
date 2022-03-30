@@ -1,0 +1,27 @@
+<template>
+    <c-veeva-side-panel onclose={handleCloseEvent}>
+        <span if:true={header} slot="header" class="slds-p-left_small slds-p-right_small">
+            {header}
+        </span>
+
+        <div slot="body" class="slds-p-left_small slds-p-right_small">
+            <c-geo-change-badges if:true={isGeoChangePanel} geo-info={geoInfo} none-label={noneLabel}></c-geo-change-badges>
+
+            <template if:true={isInfoPanel}>
+                <c-field-plan-dates cycle-dates={cycleDates} due-date={dueDate} due-label={dueLabel}></c-field-plan-dates>
+                
+                <template if:true={hasGeoChanges}>
+                    <hr>
+                    <c-geo-change-badges geo-info={geoInfo} none-label={noneLabel}>
+                        <h2 slot="header" class="slds-m-bottom_small slds-text-heading_small">{geoChangesHeader}</h2>
+                    </c-geo-change-badges>
+                </template>
+                
+                <template if:true={instructions}>
+                    <hr>
+                    <c-field-plan-instructions instructions={instructions} instructions-header={instructionsHeader}></c-field-plan-instructions>
+                </template>
+            </template>
+        </div>
+    </c-veeva-side-panel>
+</template>

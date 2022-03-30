@@ -1,0 +1,23 @@
+/* Allows to nest modals inside dropdowns */
+.slds-dropdown {
+    transform: none;
+}
+
+/* Allows to nest modals inside dropdowns */
+.slds-dropdown_right, .slds-dropdown--right {
+    transform: none;
+}
+
+/* Allows to nest modals inside dropdowns */
+.slds-dropdown_left, .slds-dropdown--left {
+    transform: none;
+}
+
+.menu-align.slds-is-open .hideMenu {
+    visibility: hidden;
+}
+
+.menu-align {
+    display: inline-block;
+    position : inherit;
+}

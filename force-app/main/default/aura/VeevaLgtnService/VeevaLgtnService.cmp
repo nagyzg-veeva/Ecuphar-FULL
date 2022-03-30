@@ -1,0 +1,54 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+	<aura:method name="navigateToURL" action="{!c.navigateToURL}"
+  		description="Function to navigate to specified URL">
+	    <aura:attribute name="url" type="String"/>
+	</aura:method>
+
+	<aura:method name="navigateToURLWithCurrentPageReference" action="{!c.navigateToURLWithCurrentPageReference}"
+  		description="Function to navigate to specified URL using current page reference as background context">
+		<aura:attribute name="url" type="String"/>
+		<aura:attribute name="navService" type="Object"/>
+		<aura:attribute name="currentPageRef" type="Object"/>
+	</aura:method>
+
+	<aura:method name="redirectToLgtnEdit" action="{!c.redirectToLgtnEdit}"
+		  description="Function to navigate to standard Salesforce Edit Modal">
+		  <aura:attribute name="navService" type="Object"/>
+		  <aura:attribute name="recordId" type="String"/>
+          <aura:attribute name="recordTypeId" type="String"/>
+	</aura:method>
+
+	<aura:method name="redirectToLgtnEditWithCurrentPageReference" action="{!c.redirectToLgtnEditWithCurrentPageReference}"
+		  description="Function to navigate to standard Salesforce Edit Modal using current page reference as background context">
+		  <aura:attribute name="navService" type="Object"/>
+		  <aura:attribute name="currentPageRef" type="Object"/>
+		  <aura:attribute name="recordId" type="String"/>
+          <aura:attribute name="recordTypeId" type="String"/>
+	</aura:method>
+
+	<aura:method name="redirectToLgtnNewWithCurrentPageReference" action="{!c.redirectToLgtnNewWithCurrentPageReference}"
+	description="Function to navigate to a standard record creation modal with the background context set by currentPageRef">
+		<aura:attribute name="navService" type="Object"/>
+		<aura:attribute name="currentPageRef" type="Object"/>
+		<aura:attribute name="objectInformation" type="Object"/>
+		<aura:attribute name="defaultFieldValues" type="Object"/>
+	</aura:method>
+
+	<aura:method name="showErrorToast" action="{!c.showErrorToast}"
+	description="Function to show error toast to user">
+	<aura:attribute name="response" type="Object"/>
+	</aura:method>
+
+	<aura:method name="getCurrentPageReference" action="{!c.getCurrentPageReference}"
+		description="Get current page as a pageReference">
+		<aura:attribute name="pageRef" type="Object"/>
+		<aura:attribute name="recordId" type="String"/>
+	</aura:method>
+
+    <aura:method name="getRecordTypeId" action="{!c.getRecordTypeId}"
+		  description="Get the Record Type Id from a page reference if it exists">
+		  <aura:attribute name="pageRef" type="Object"/>
+	</aura:method>
+
+	<lightning:pageReferenceUtils aura:id="pageRefUtils"/>
+</aura:component>

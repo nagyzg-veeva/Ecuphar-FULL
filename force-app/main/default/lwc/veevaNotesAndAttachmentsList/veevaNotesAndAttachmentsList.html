@@ -1,0 +1,48 @@
+<template>
+    <div data-veeva-id="notes_and_attachments" if:true={listMeta} class="container forceRelatedListSingleContainer">
+        <article class="slds-card slds-card_boundary headerBottomBorder forceRelatedListCardDesktop">
+            <div class="slds-grid slds-page-header forceRelatedListCardHeader">
+                <header class="slds-media slds-media--center slds-has-flexi-truncate">
+                    <div class="slds-media__figure stencil slds-avatar slds-avatar_small" aria-hidden="true">
+                        <div class="extraSmall forceEntityIcon header-icon">
+                            <span class="uiImage">
+                                <img src="/img/icon/t4v35/standard/file_120.png" class="icon " alt={listMeta.label} title={listMeta.label}>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="slds-media__body">
+                        <h2 class="slds-card__header-title" id="header_303:0">
+                            <a class={headerCss} href="javascript:void(0)" onclick={redirectToListView}>
+                                <span class="slds-truncate slds-m-right--xx-small" title={listMeta.label}>{listMeta.label}</span>
+                                <span class="slds-shrink-none slds-m-right--xx-small" title={recordCount}>{recordCount}</span>
+                            </a>
+                        </h2>
+                    </div>
+                </header>
+                <lightning-file-upload if:false={readOnly}
+                    name="fileUploader"
+                    record-id={recordId}
+                    onuploadfinished={handleUploadFinished}
+                    multiple
+                    class="v-upload-file">
+                </lightning-file-upload>
+            </div>
+            <div class="previewMode LARGE forceRelatedListPreview">
+                <div class="LOADED forceContentFileDroppableZone forceContentRelatedListPreviewFileList">
+                    <div class="slds-file-selector slds-file-selector--integrated slds-file-selector--integrated">
+                        <div class="drag-over-body">
+                            <ul class="uiAbstractList">
+                                <template iterator:it={notesAttachmentsFiles}>
+                                    <c-note-attachment-file-row key={it.value.id} row={it.value}></c-note-attachment-file-row>
+                                </template>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-card__footer">
+                <a class="slds-align_absolute-center" href={viewAllUrl} onclick={handleViewAllClick} if:true={recordCount}>{viewAllText}</a>
+            </div>
+        </article>
+    </div>     
+</template>

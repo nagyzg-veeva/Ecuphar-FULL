@@ -1,0 +1,34 @@
+:root {
+    --transparent-brand-light-active: var(--lwc-brandLightActive, rgba(227, 229, 237, 1));
+}
+
+.wrapped-header-datatable .slds-table .slds-th__action .slds-truncate {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+}
+
+c-territory-table-data-types .last-product-in-group {
+    border-right: 2px solid var(--lwc-brandDisabled, rgb(201, 199, 197));
+}
+
+c-territory-table-data-types .product {
+   background-color: var(--transparent-brand-light-active);
+}
+
+c-territory-table-data-types .first-channel-in-group {
+    border-left: 2px solid var(--lwc-brandDisabled, rgb(201, 199, 197));
+}
+
+c-territory-table-data-types .channel {
+    background-color: var(--lwc-brandLightActive, rgb(227, 229, 237));
+}
+
+c-territory-table-data-types .goal {
+    font-weight: bold;
+}
+
+c-territory-table-data-types .hide-more-actions button {
+    visibility: hidden;
+}

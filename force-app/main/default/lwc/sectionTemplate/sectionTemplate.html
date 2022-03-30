@@ -1,0 +1,20 @@
+<template>
+    <div data-veeva-id={ctrl.meta.rawHeading} class={sectionClass} data-variant={variant}>
+        <h3 class="slds-section__title slds-theme_shade">
+            <button class="slds-button slds-section__title-action" onclick={toggleSection}>
+                <span>
+                    <lightning-icon icon-name={expanderIcon} size='x-small' if:true={expanderIcon}></lightning-icon>
+                </span>
+                <span class='slds-m-left--small'>{ctrl.title}</span>
+            </button>
+        </h3>
+        <div class="slds-section__content slds-p-horizontal--small">
+            <slot name='content'>
+                <template iterator:it={ctrl.meta.layoutRows}>
+                    <c-veeva-row row={it.value} key={it.value.key} page-ctrl={ctrl.pageCtrl} record-update-flag={recordUpdateFlag}>
+                    </c-veeva-row>
+                </template>
+            </slot>
+        </div>
+    </div>
+</template>

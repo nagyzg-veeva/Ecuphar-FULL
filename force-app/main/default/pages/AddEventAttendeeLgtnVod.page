@@ -1,0 +1,11 @@
+<apex:page standardController="Medical_Event_vod__c" standardStylesheets="true" showHeader="false" sidebar="false">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script type="text/javascript">        
+    var medId='{!Medical_Event_vod__c.Id}';
+    var queryParams = "&lgtvf=true&medID=" + medId;
+    queryParams += "&minframeheight=600";
+    com.vod309.redirect.redirect("eAttendee",queryParams); 
+
+  </script>
+</apex:page>

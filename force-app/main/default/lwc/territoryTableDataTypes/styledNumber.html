@@ -1,0 +1,7 @@
+<template>
+    <span class={typeAttributes.classes}>
+        <lightning-formatted-number if:true={value} value={value}></lightning-formatted-number>
+    
+        <lightning-formatted-text if:false={value} value="-"></lightning-formatted-text>
+    </span>
+</template>

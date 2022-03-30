@@ -1,0 +1,39 @@
+<template>
+    <lightning-layout multiple-rows="true">
+        <!-- "Header" of the table containing buttons and name of territory -->
+        <!-- Hidden when the current parent is actually a field force (when manager has >1 top-level territory models) -->
+        <lightning-layout-item class="slds-p-top_small slds-p-bottom_small" size="12">
+            <lightning-layout horizontal-align="spread" vertical-align="center">
+                <lightning-layout-item size="6">
+                    <lightning-button-icon 
+                        if:true={territoryTableMetadata.allowNavigationUp} 
+                        class="slds-m-right_medium"
+                        icon-name="utility:level_up"
+                        onclick={handleNavigateUp}>
+                    </lightning-button-icon>
+
+                    <h1 class="table-title slds-text-heading_small">{territoryTableMetadata.parentTerritoryName}</h1>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6">
+                    <span class="slds-float_right">
+                        <slot name="buttons"></slot>
+                    </span>
+                </lightning-layout-item>
+            </lightning-layout>
+        </lightning-layout-item>
+
+        <lightning-layout-item class="slds-p-top_small table-container" size="12">
+            <c-territory-table-data-types
+                columns={columns}
+                data={data}
+                key-field={id}
+                sorted-direction={sortDirection}
+                sorted-by={sortedBy}
+                onsort={onHandleSort}
+                onrowaction={handleRowAction}
+                hide-checkbox-column="true">
+            </c-territory-table-data-types>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,24 @@
+<apex:page standardController="Lot_Catalog_vod__c" recordSetVar="lots" extensions="VOD_GetRecordIds,VOD_EMBED_CONTROLLER" standardStylesheets="true">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+    <script type="text/javascript">
+        var lotids = "{!selectedRecordIds}";
+        if (lotids != '') {
+            var queryParams = "&usesample=" + "{!$Label.USE_MULTI_SAMPLE_vod}";
+            queryParams += "&lgtvf=true&lotids=" + lotids;
+            if ({!lightningMode}) {
+                queryParams += "&user-theme=true";
+            }
+            com.vod309.redirect.redirect("samplelots", queryParams);
+        }
+        else {
+            var ret = "{!URLENCODE($Request.retURL)}";
+            if (typeof sforce !== 'undefined' && sforce.one) {
+                sforce.one.back(true);
+            }
+            else {
+                parent.frames.location = decodeURIComponent(ret);
+            }
+        }
+    </script>
+
+</apex:page>

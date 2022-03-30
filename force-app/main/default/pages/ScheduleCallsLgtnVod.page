@@ -1,0 +1,18 @@
+<apex:page standardController="Account" recordSetVar="Accounts" extensions="VOD_GetRecordIds">
+
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+      var accIds = '{!selectedRecordIds}';
+
+      var queryParams = '&lgtvf=true';
+      if (accIds.length > 80) {
+          queryParams += '&event=TOOMANYCALLS';
+      } else if (accIds.length > 0) {
+          queryParams += '&thisweek=1&event=SCHED&accs=' + accIds;
+      }
+
+      com.vod309.redirect.redirect('callplan', queryParams);
+  </script>
+
+</apex:page>

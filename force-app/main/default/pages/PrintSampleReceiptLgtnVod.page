@@ -1,0 +1,25 @@
+<apex:page standardController="Call2_vod__c" recordSetVar="Calls" extensions="VOD_GetRecordIds">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+    <script>
+
+    var ids = "{!selectedRecordIds}".split(",");
+    if (ids) {
+      if (ids.length == 1 && ids[0] !== "") {
+        var queryParams = "&lgtvf=true&pdf=file&CID=" + ids[0];
+        com.vod309.redirect.redirect("receipt",queryParams);
+      } else if (ids.length > 1) {
+          alert('You can only select one row');
+          window.history.back();
+        } else {
+          alert('No row has been selected');
+          window.history.back();
+        }
+    } else {
+        alert('Not configured properly')
+        window.history.back();
+    }
+
+  </script>
+
+</apex:page>

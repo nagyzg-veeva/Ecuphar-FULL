@@ -1,0 +1,4 @@
+.THIS .slds-form-element__control {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

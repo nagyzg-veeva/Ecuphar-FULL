@@ -1,0 +1,6 @@
+.spinner-large {
+    position: relative;
+    height: var(--lwc-spacingLarge, 1rem);
+    margin-top: var(--lwc-spacingLarge, 1rem);
+    margin-bottom: var(--lwc-spacingLarge, 1rem);
+}

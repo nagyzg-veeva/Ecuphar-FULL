@@ -1,0 +1,16 @@
+<apex:page standardController="Sample_Inventory_vod__c" lightningStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+
+  <script>
+
+    var ID='{!Sample_Inventory_vod__c.Id}'; 
+    var RecordType="{!URLENCODE($CurrentPage.parameters.RecordType)}"; 
+    var retURL = '{!URLENCODE($CurrentPage.parameters.retURL)}'; 
+
+    var queryParams = "&lgtvf=true&id=" + ID + "&RecordType=" + RecordType + "&retURL=" + retURL + "&mode=n";
+
+    com.vod309.redirect.redirect("sampinv", queryParams);
+
+  </script>
+
+</apex:page>

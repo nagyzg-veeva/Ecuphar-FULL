@@ -1,0 +1,28 @@
+<aura:component controller="RunErrorReportsLgtnVodController"
+ implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="checkboxList" type="List"/>
+    <aura:attribute name="selectedReports" type="List"/>
+    <aura:attribute name="error" type="Boolean" default="false" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="demo-only" style="padding:0.5rem;background:#16325c">
+      <div class="slds-text-color_inverse slds-text-heading_medium">Run Error Reports</div>
+    </div>
+    
+    <div class="slds-m-top_large">
+      <lightning:checkboxGroup 
+        aura:id="reportsCheckboxGroup" 
+        label="Select error report(s) to run."
+        options="{! v.checkboxList }" 
+        value="{! v.selectedReports }" 
+        required="true" 
+        messageWhenValueMissing="Please select an error report to run."/>
+    </div>
+    
+    <div class="slds-m-top_large slds-align_absolute-center">
+      <lightning:button label="Run" title="Run Report" onclick="{! c.handleRunClick }"/>
+    	<lightning:button label="Cancel" title="Cancel" onclick="{! c.handleCancelClick }"/>
+    </div>
+    
+</aura:component>

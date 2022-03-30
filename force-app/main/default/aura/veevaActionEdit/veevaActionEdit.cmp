@@ -1,0 +1,8 @@
+<aura:component implements="force:hasRecordId,lightning:actionOverride,lightning:hasPageReference">
+    <aura:handler name="change" value="{!v.pageReference}" action="{!c.refreshView}" />
+    <c:veevaOverrideEdit recordId="{!v.recordId}" objectApiName="{!v.pageReference.attributes.objectApiName}" 
+        pageReference="{!v.pageReference}">   
+    </c:veevaOverrideEdit>
+
+    <c:veevaLgtnFlowLauncher></c:veevaLgtnFlowLauncher>
+</aura:component>

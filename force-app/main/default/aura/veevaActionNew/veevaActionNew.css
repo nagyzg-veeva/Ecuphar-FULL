@@ -1,0 +1,20 @@
+.THIS .forcePageError .genericNotification {
+    background: var(--lwc-colorBackgroundToastError,rgb(194, 57, 52));
+    padding: var(--lwc-spacingMedium,1rem);
+    color: var(--lwc-colorTextModal,rgb(255, 255, 255));
+    line-height: var(--lwc-lineHeightHeading,1.25);
+}
+
+.THIS .forcePageError.desktop .genericNotification {
+    font-weight: var(--lwc-fontWeightLight,300);
+    border-radius: var(--lwc-borderRadiusMedium,0.25rem);
+    font-size: var(--lwc-fontSizeLarge,1rem);
+}
+
+.THIS .forcePageError .errorsList {
+    list-style: none;
+    color: var(--lwc-colorTextError,rgb(234, 0, 30));
+    line-height: var(--lwc-lineHeightText,1.5);
+    margin: 0;
+    padding: var(--lwc-spacingXSmall,0.5rem) var(--lwc-spacingMedium,1rem) var(--lwc-spacingXxSmall,0.25rem) var(--lwc-spacingMedium,1rem);
+}

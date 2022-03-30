@@ -1,0 +1,23 @@
+<template>
+    <button
+        if:false={typeAttributes.disabled}
+        type="button"
+        class="slds-button truncate-text"
+        value={typeAttributes.id}
+        onclick={typeAttributes.clickHandler}>
+
+        <c-formatted-geo-change
+            num-geos-added={typeAttributes.numGeosAdded}
+            num-geos-dropped={typeAttributes.numGeosDropped}
+            no-change-label={typeAttributes.noChangeLabel}>
+        </c-formatted-geo-change>
+    </button>
+
+    <p if:true={typeAttributes.disabled} class="truncate-text">
+        <c-formatted-geo-change
+            num-geos-added={typeAttributes.numGeosAdded}
+            num-geos-dropped={typeAttributes.numGeosDropped}
+            no-change-label={typeAttributes.noChangeLabel}>
+        </c-formatted-geo-change>
+    </p>
+</template>

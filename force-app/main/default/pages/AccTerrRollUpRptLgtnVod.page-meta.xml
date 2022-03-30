@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>44.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>Button on Analytics_Files_vod__c that generates Territory Rollup Report and emails that report to the user</description>
+    <label>ACC_TERR_ROLLUP_RPT</label>
+</ApexPage>

@@ -1,0 +1,65 @@
+html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    color: black;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+#tree {
+    width: 100%;
+    height: 100%;
+}
+
+#tree>svg {
+    background-color: #e6e6e6;
+}
+
+.node.loadMore:hover .base {
+    fill: #FFCA28;
+}
+
+.node.loadParent:hover circle {
+    fill: #FFCA28;
+}
+
+.load-children-button circle {
+    fill: #ffa52e;
+}
+
+.load-children-button:hover circle {
+    fill: #FFCA28;
+}
+
+.expand-collapse-button:hover circle {
+    fill: #FFCA28;
+}
+
+.node.collapsed .expand {
+    stroke: transparent;
+    fill: transparent;
+}
+
+.node.expanded .collapse {
+    stroke: transparent;
+    fill: transparent;
+}
+
+.node.filterException rect {
+    fill: rgb(255, 204, 204);
+}
+
+.node.initialRoot rect {
+    fill: rgb(255, 228, 188);
+}
+
+.node.keyStakeholder rect {
+    fill: rgb(235, 255, 255);
+}
+
+.node.selected .main-node {
+    stroke-width: 2px;
+    stroke: rgba(0,0,255,.5);
+}

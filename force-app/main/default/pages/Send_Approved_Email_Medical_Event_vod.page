@@ -1,0 +1,9 @@
+<apex:page standardController="Medical_Event_vod__c" standardStylesheets="true" sidebar="false">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">
+    var queryparams = "&lgtvf=true";
+    queryparams += "&medicalEventId=" + "{!Medical_Event_vod__c.Id}";
+    queryparams += "&sfPath=" + "{!URLENCODE($CurrentPage.URL)}";
+    com.vod309.redirect.redirect("approvedEmail", queryparams);
+</script>
+</apex:page>

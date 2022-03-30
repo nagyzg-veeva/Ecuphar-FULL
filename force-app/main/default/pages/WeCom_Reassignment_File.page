@@ -1,0 +1,46 @@
+<apex:page controller="Reassignment_File_Controller">
+<script type="text/javascript">
+function confirmCancel() {
+    if ({!afterUpload}){
+        return confirm('{!confirmBeforeCancelMessage}');
+    }
+    else{
+    return true;
+    }
+
+}
+</script>
+  <apex:form >
+    <apex:pageBlock title="{!uploadUserFileMessage}">
+        <apex:pageBlockButtons location="bottom">
+        <apex:commandButton action="{! reassign }" value="{!startRessaignMessage}" rendered="{!afterUpload}"/>
+        <apex:commandButton action="{! cancel }" value="{!cancelMessage}" onClick="if (!confirmCancel()) return false;"/>
+      </apex:pageBlockButtons>
+        <apex:outputPanel >
+            <apex:outputText style="color: #080707;padding-right:10px;"
+                             value="{! templateInstructionMessage}"></apex:outputText>
+            <apex:commandLink style="font-weight: 600;color: #006dcc;"
+                              onClick="window.open('{!selectedReportDownloadUrl}');"
+                              value="{!templateDownloadMessage}" rel="noopener noreferrer"/>
+          </apex:outputPanel><br/>
+          <apex:outputPanel rendered="{!fileSizeTooBig}">
+            <apex:outputText value="{!onlySupport10MMessage}"></apex:outputText>
+          </apex:outputPanel><br/>
+        <apex:outputPanel rendered="{!uploadFailed}">
+            <apex:outputText value="{!uploadErrorReminderMessage}"></apex:outputText>
+          </apex:outputPanel>
+        <br/>
+      <apex:outputPanel >
+            <apex:inputFile id="csv_file_File" value="{!csvFileBody}" filename="{!csvFileName}"
+                            fileSize="{!csvFileSize}" accept=".csv" contentType="text/csv"/>
+            <apex:actionSupport event="onchange" action="{!upload}"/>
+            <br/><br/>
+            <apex:outputPanel rendered="{!afterUpload}">
+              <apex:outputText style="color: #000000;font-size: 12px;" value="{!csvFileName}"></apex:outputText>
+              <br/>
+              <apex:outputText style="color: #999999;font-size: 12px;" value="({!csvFileSizeStr})"></apex:outputText>
+            </apex:outputPanel>
+          </apex:outputPanel>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

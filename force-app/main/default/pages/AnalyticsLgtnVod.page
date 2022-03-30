@@ -1,0 +1,12 @@
+<apex:page standardStylesheets="true">
+    <apex:composition template="{!$Page.RedirectLgtnVod}"/> 
+    <script>
+        var myqueryparams = "&lgtvf=true&today={!TODAY()}";
+        com.vod309.redirect.redirect("analytics", myqueryparams);
+        // Due to Analaytics page being initially sized smaller than what is
+        // needed the content is being cut off. So we must statically define the
+        // height and width.
+        document.getElementById("vod_iframe").style.height = "3600px";
+        document.getElementById("vod_iframe").style.width = "1700px";
+    </script>
+</apex:page>

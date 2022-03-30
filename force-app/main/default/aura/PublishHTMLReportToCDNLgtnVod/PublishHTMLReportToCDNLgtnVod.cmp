@@ -1,0 +1,22 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" controller="PublishHTMLReportToCDNLgtnVodController">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute name="message" type="String" />
+    <aura:attribute name="spinner" type="boolean" default="TRUE"/>
+    <aura:handler name="init" action="{!c.init}" value="{!this}" />
+    <aura:if isTrue="{!v.spinner}">
+        <div aura:id="spinnerId" class="slds-m-top_large">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <div class="spaceUnder" >
+           {!v.message}
+    </div>
+    <aura:if isTrue="{!v.spinner == false}">
+        <div class="slds-m-top_large slds-align_absolute-center">
+            <lightning:button label="Ok" onclick="{! c.handleCancelClick }"/>
+        </div>
+    </aura:if>
+</aura:component>

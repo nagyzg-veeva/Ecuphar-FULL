@@ -1,0 +1,50 @@
+<template>
+    <div class={containerClass}>
+        <div class={dropdownClass} tabindex="-1" onblur={handleClose}>
+            <div class={comboboxClass}>
+                <lightning-icon icon-name={selected.icon} size="small" if:true={selected.id} class={selectedIconClass}>
+                </lightning-icon>
+                <input type="text" class={inputTextClass} value={selected.name} readonly if:true={selected.id} onkeyup={handleInput} data-select-term/>
+                <lightning-input type="text" required={ctrl.required} autocomplete="none" onfocus={handleFocus} variant={variant} 
+                onkeyup={handleInput} onblur={handleClose} onmousedown={handleMouseDown} onmouseup={handleMouseUp} 
+                    if:false={selected.id} label={label} value={searchTerm} placeholder={suggestion} data-input-term></lightning-input>
+                <button type="button" onclick={handleClearLookup} if:true={selected.id} class={clearButtonClass} onkeyup={handleClearInput}>
+                    <lightning-icon icon-name="utility:close" size="x-small">
+                    </lightning-icon>
+                </button>
+                <lightning-icon icon-name="utility:search" size="x-small" if:false={selected.id}
+                    class={searchIconClass}></lightning-icon>
+            </div>
+            <div class={listboxClass} onmousedown={handleMouseDown} onmouseup={handleMouseUp}>
+                <ul class='slds-listbox slds-listbox_vertical' if:true={searchRecords}>
+                    <template for:each={searchRecords} for:item="result">
+                        <li key={result.id} class="slds-listbox__item">
+                            <span role="presentation" class="slds-listbox__item" if:false={result.icon}>
+                                <div role="presentation" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                    <h3 role="presentation" title={recentLabel}>{recentLabel}</h3>
+                                </div>
+                            </span>
+                            <div class={result.listboxOptionClass} onclick={handleResultClick} data-recordid={result.id} onmouseout={handleMouseOut} if:true={result.icon}>
+                                <span class="slds-media__figure">
+                                    <lightning-icon icon-name={result.icon} size="x-small" if:true={result.xsmall}>
+                                    </lightning-icon>
+                                    <lightning-icon icon-name={result.icon} size="small" if:false={result.xsmall}>
+                                    </lightning-icon>
+                                </span>
+                                <span class="slds-media__body">
+                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity" if:false={result.match}>{result.name}</span>
+                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity" if:true={result.match}>
+                                        {result.preMatch}
+                                        <strong>{result.match}</strong>    
+                                        {result.postMatch}
+                                    </span>
+                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity">{result.DisambiguationField}</span>
+                                </span>
+                            </div>
+                        </li>
+                    </template>
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

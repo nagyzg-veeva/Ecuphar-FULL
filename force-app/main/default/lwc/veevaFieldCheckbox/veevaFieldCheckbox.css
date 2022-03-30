@@ -1,0 +1,10 @@
+.slds-checkbox [type="checkbox"] ~ .slds-checkbox_faux {
+    background-color: var(
+        --lwc-colorBackgroundInputCheckbox,
+        rgb(255, 255, 255)
+    );
+}
+
+.slds-checkbox [type="checkbox"][disabled]:checked ~ .slds-checkbox_faux:after {
+    border-color: var(--lwc-colorTextInputDisabled, rgb(62, 62, 60));
+}

@@ -1,0 +1,11 @@
+<template>
+    <div class="slds-box slds-box_small slds-theme_default page-content">
+        <c-veeva-spinner if:true={waiting}></c-veeva-spinner>
+        <template if:true={show}>
+            <template iterator:it={page.layout.sections}>
+                <c-veeva-section section={it.value} key={it.value.key} first={it.first} page-ctrl={pageCtrl} record-update-flag={recordUpdateFlag} open>
+                </c-veeva-section>
+            </template>
+        </template>
+    </div>
+</template>

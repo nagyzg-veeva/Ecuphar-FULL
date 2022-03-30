@@ -1,0 +1,28 @@
+/* Sets a default offset for use in sizing the data table and info panel container */
+:host {
+    --vertical-offset: 400px;
+}
+
+/* 
+    Ensures the "success" icons in the tabset are filled green, 
+    while other icons in child component(s) remain unaffected
+ */
+lightning-tabset {
+    --sds-c-icon-color-foreground-default: rgb(46, 132, 74);
+}
+
+c-territory-models-table {
+    --sds-c-icon-color-foreground-default: var(--lwc-colorTextIconDefault);
+}
+
+.spinner-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/* Ensures table and info panel do not grow beyond the viewport */
+.body-container {
+    max-height: calc(100vh - var(--vertical-offset));
+}

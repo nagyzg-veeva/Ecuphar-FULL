@@ -1,0 +1,56 @@
+<template>
+    <c-veeva-modal onclose={finishFlow} if:false={showMessageModal}>
+        <span slot="header">
+            {titleNewObject}
+        </span>
+        <div slot="content">
+            <div class="slds-p-top_medium slds-p-bottom_medium">
+                <div class="slds-text-heading_medium slds-p-bottom_xx-small">{labelEventTypePrompt}</div>
+                <template if:false={doneLoading}>
+                    <div class='slds-align--absolute-center slds-p-vertical_medium'>
+                        <lightning-spinner alternative-text='loading' class='slds-spinner_inline' variant='brand'></lightning-spinner>
+                    </div>
+                </template>
+                <template iterator:it={recordTypeInfos} if:true={showRecordTypes}>
+                    <div class="slds-p-top_medium slds-p-horizontal_small" key={it.value.value}>
+                        <button
+                        value={it.value.value}
+                        class={it.value.cssClasses}
+                        onclick={handleClick}>
+                            <div class="slds-text-heading_medium slds-p-bottom_xx-small rtButtonHeader">
+                                {it.value.label}
+                            </div>
+                            <div class="rtButtonDescription slds-text-color_weak">{it.value.description}</div>
+                        </button>
+                    </div>
+                </template>        
+            </div>
+        </div>
+        <div slot="footer">
+            <div class="slds-clearfix">
+                <div>
+                    <lightning-button
+                        label={labelCancel}
+                        title={labelCancel}
+                        variant="neutral"
+                        onclick={finishFlow}>
+                    </lightning-button>
+                    <lightning-button
+                        label={labelNext}
+                        title={labelNext}
+                        variant="brand"
+                        class="slds-m-left_x-small"
+                        onclick={goToNext}>
+                    </lightning-button>
+                </div>
+            </div>
+        </div>
+    </c-veeva-modal>
+    <c-veeva-modal class="slds-align_absolute-center" onclose={finishFlow} if:true={showMessageModal}>
+        <div slot="content">
+            <div class="slds-p-around_medium slds-align_absolute-center">
+                <lightning-formatted-text value={modalMessage}></lightning-formatted-text>
+            </div>
+        </div>
+    </c-veeva-modal>
+</template>

@@ -1,0 +1,21 @@
+<apex:page standardController="Account" standardStylesheets="true" extensions="VEEVA_EmailOptIn_Controller">
+<apex:composition template="{!$Page.RedirectLgtnVod}"/>
+<script type="text/javascript">  
+      
+    var accountId = "{!Account.Id}";
+    var queryparams = "&acct=" + accountId + "&acctname=" + "{!URLENCODE(Account.Formatted_Name_vod__c)}";  
+    var ret = "{!URLENCODE(RefUrl)}";
+    if (!(!!~ret.indexOf(accountId.substring(0, accountId.length - 3)))) {
+        var matches = decodeURIComponent(ret).match(/https:\/\/([^\/]+)\/?/);
+        if (matches) {
+            ret = 'https://' + matches[1] +'/' + accountId;
+        }
+    }
+    queryparams += '&retUrl='+ ret;
+    queryparams += "&minframeheight=2000";
+    queryparams += '&lgtvf=true';
+    com.vod309.redirect.redirect("optIn", queryparams);
+  
+
+</script>
+</apex:page>

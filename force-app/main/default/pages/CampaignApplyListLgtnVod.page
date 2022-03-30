@@ -1,0 +1,11 @@
+<apex:page standardController="Campaign_Target_vod__c" recordSetVar="CampaignTarget" standardStylesheets="true">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+  <script type="text/javascript">
+    var queryparams = '&id={!$CurrentPage.parameters.id}';
+
+    //flag that determines if frame is in lightning enabled visualforce page
+    queryparams += "&lgtvf=true&minframeheight=600";
+
+    com.vod309.redirect.redirect("campaign", queryparams);
+  </script>
+</apex:page>

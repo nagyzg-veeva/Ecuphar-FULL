@@ -1,0 +1,9 @@
+.veeva_modal-content {
+    position: relative;
+    min-height: 6rem;
+}
+
+.slds-button-group-row {
+    justify-content: center;
+    width: 100%;
+}

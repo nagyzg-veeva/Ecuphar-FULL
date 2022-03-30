@@ -1,0 +1,16 @@
+<template>
+    <c-veeva-modal size="large" if:true={showAccountSelector} onclose='{finishFlow}' max-height=true composed=true>
+        <span slot="header">
+            {modalHeader}
+        </span>
+        <lightning-layout slot="content" multiple-rows=true>
+            <c-veeva-search-results message-svc={ctrl.messageSvc} search-records={searchRecords} 
+                columns={columns} result-title={resultTitle} onrowselection={handleRowSelection} hide-checkbox={hideCheckbox}>
+            </c-veeva-search-results>
+        </lightning-layout>
+        <div slot="footer">
+            <lightning-button variant="neutral" label={labelCancel} title={labelCancel} onclick={finishFlow}>
+            </lightning-button>
+        </div>
+    </c-veeva-modal>
+</template>

@@ -1,0 +1,15 @@
+<template>
+    <template if:true={pageCtrl.canDelete}>
+        <lightning-button if:false={isMenu} name={meta.name} title={meta.label} label={meta.label} onclick={handleClick}></lightning-button>
+        <lightning-menu-item if:true={isMenu} label={meta.label} onclick={handleClick}></lightning-menu-item>
+        <c-veeva-modal if:true={show} onclose={handleCancel} composed=true>
+            <span slot='header'>{header}</span>
+            <div slot="content" class="slds-text-align--center slds-p-vertical--small">{confirm}</div>
+            <div slot="footer">
+                <lightning-button name='cancel' label={msgCancel} title={msgCancel} onclick={handleCancel}></lightning-button>
+                <lightning-button name='delete' label={msgDelete} title={msgDelete} disabled={isDeleting} onclick={handleDelete} variant='brand'
+                    class='slds-m-left_x-small'></lightning-button>
+            </div>
+        </c-veeva-modal>
+    </template>
+</template>

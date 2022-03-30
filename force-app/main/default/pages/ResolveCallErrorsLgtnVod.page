@@ -1,0 +1,11 @@
+<apex:page standardController="Call_Error_vod__c" recordSetVar="CallErrors" extensions="VOD_GetRecordIds">
+  <apex:composition template="{!$Page.RedirectLgtnVod}"/>
+  <c:VOD_BASE_SF_INCLUDES_vod />
+
+  <script>
+    var queryParams = "&callErrorIds=" + "{!selectedRecordIds}";
+    com.vod309.redirect.redirect("resolvecallerrors",queryParams);
+
+  </script>
+
+</apex:page>

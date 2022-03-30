@@ -1,0 +1,9 @@
+<template>
+    <template if:true={number}>
+        <lightning-formatted-number value={number}></lightning-formatted-number>
+    </template>
+
+    <template if:false={number}>
+        <p>-</p>
+    </template>
+</template>

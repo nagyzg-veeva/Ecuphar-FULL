@@ -1,0 +1,6 @@
+<apex:page standardController="Contract_Partner_vod__c" extensions="VODRedirectController" standardStylesheets="true">
+    <c:Veeva_Detail_Component_vod VodUrl="{!VodUrl}" recordId="{!Contract_Partner_vod__c.Id}" sObjectType="Contract_Partner_vod__c" beforeReady="veeva.beforeReady" />
+    <apex:includeScript value="{!VodUrl}/js/contract/contractpartnerview.js" />
+    <apex:stylesheet value="{!$Resource.vod_lightning_style_note_column_overrides}"/>
+    <c:FilesAttachmentsRelatedListVod objectType="{!Contract_Partner_vod__c}" renderAttachmentRL="false"/>
+</apex:page>

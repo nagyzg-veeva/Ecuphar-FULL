@@ -1,0 +1,12 @@
+<template>
+    <div class="menu-align slds-dropdown-trigger_click slds-is-open">
+        <lightning-button-icon variant="border-filled" onclick={handleClick} icon-name="utility:down"  alternative-text={title} title={title}>
+        </lightning-button-icon>
+        <div class={dropdownCss} onmouseleave={closeDropdown} onclick={closeDropdown}>
+          <ul class="slds-dropdown__list" role="menu" aria-label="Show More">
+            <slot name="buttons">
+            </slot>
+          </ul>
+        </div>
+      </div>    
+</template>

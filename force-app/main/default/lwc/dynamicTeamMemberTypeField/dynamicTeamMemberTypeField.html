@@ -1,0 +1,17 @@
+<template>
+    <div class={classUndo}>
+        <div class="spacer" if:true={hasBeenUpdated}></div>
+        <lightning-icon class="inline-edit-undo" icon-name="utility:undo" alternative-text="Undo" title="Undo" size="xx-small" onclick={handleUndoClick} if:true={hasBeenUpdated}></lightning-icon>
+        <div>
+            <c-veeva-field class="field-direction" ctrl={ctrl} onfieldchange={handleFieldChange} data-validity></c-veeva-field>
+        </div>
+    </div>
+    <div class="slds-m-top_x-small">
+        <c-veeva-item item={ctrl.teamMemberMeta} page-ctrl={ctrl.pageCtrl} record={ctrl.data} record-update-flag={recordUpdateFlag} if:true={isUser} data-validity></c-veeva-item>
+        <c-veeva-item item={ctrl.groupNameMeta} page-ctrl={ctrl.pageCtrl} record={ctrl.data} record-update-flag={recordUpdateFlag} if:true={isGroup} data-validity></c-veeva-item>
+        <c-veeva-item item={ctrl.firstNameMeta} page-ctrl={ctrl.pageCtrl} record={ctrl.data} record-update-flag={recordUpdateFlag} if:true={isWriteIn} data-validity></c-veeva-item>
+    </div>
+    <div if:true={isWriteIn} class="slds-m-top_x-small">
+        <c-veeva-item item={ctrl.lastNameMeta} page-ctrl={ctrl.pageCtrl} record={ctrl.data} record-update-flag={recordUpdateFlag} if:true={isWriteIn} data-validity></c-veeva-item>
+    </div>
+</template>

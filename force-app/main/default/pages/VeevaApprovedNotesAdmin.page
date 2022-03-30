@@ -1,0 +1,28 @@
+<apex:page standardStylesheets="true" controller="VOD_EMBED_CONTROLLER">
+    <!-- Veeva Connection Management -->
+    <c:VOD_EMBED_MC veevaModule="admin" veevaPage="appnotes" mcEngine="true" />
+
+    <!-- Job History Table Lightning Web Component -->
+    <apex:includeLightning />
+    <div id="job-history-table" />
+    <script>
+        $Lightning.use("c:adminTableApp", function() {
+          $Lightning.createComponent(
+                "c:adminTable",
+                { 
+                    product: "anotes",
+                    rowsDisplayed: 10,
+                    hasDateColumn: true,
+                    tableTitle: "Job History",
+                    tableTitleMessage: "JOB_HISTORY",
+                    tableTitleCategory: "Common",
+                    tableDateColumn: "lastUpdated",
+                    tableResourceFieldName: "jobId",
+                    tableResourceParamName: "resourceParam",
+                    tableResourceTypeName: "resourceType",
+                },
+                "job-history-table",
+            );
+        });
+    </script>
+</apex:page>

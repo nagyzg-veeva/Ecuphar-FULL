@@ -1,0 +1,23 @@
+<template>
+    <div class={modal}>
+        <div class={veevaModalSize}>
+            <slot name="spinner"></slot>
+            <div class={headerClass}>
+                <button class="slds-modal__close slds-button slds-button_icon slds-button_icon-inverse" title={closeWindowLabel} onclick={handleClose}>
+                    <lightning-icon icon-name="utility:close" variant="inverse" size="small"></lightning-icon>
+                    <span class="slds-assistive-text">{closeWindowLabel}</span>
+                </button>
+                <h2 class="slds-text-heading--medium slds-hyphenate">
+                    <slot name='header'></slot>
+                </h2>
+            </div>
+            <div class={contentClass}>
+                <slot name="content"></slot>
+            </div>
+            <div class={footerClass}>
+                <slot name='footer'></slot>
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+</template>

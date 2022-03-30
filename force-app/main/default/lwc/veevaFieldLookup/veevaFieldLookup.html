@@ -1,0 +1,11 @@
+<template>
+    <c-veeva-field-generic if:false={searchTerm} ctrl={ctrl}>
+        <c-veeva-lookup if:false={isMultiobject} ctrl={ctrl} slot="control" onlookupselection={handleSelection} onsearchmode={startSearch}
+            onclearlookup={handleClear}></c-veeva-lookup>
+        <c-veeva-multi-object-lookup if:true={isMultiobject} ctrl={ctrl} slot="control" onlookupselection={handleSelection} onsearchmode={startSearch}
+            onclearlookup={handleClear}></c-veeva-multi-object-lookup>
+    </c-veeva-field-generic>
+    <c-veeva-search ctrl={ctrl} search-term={searchTerm} if:true={searchTerm} onsearchselection={handleSelection}
+        onsearchclose={stopSearch}>
+    </c-veeva-search>
+</template>

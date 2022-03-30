@@ -1,0 +1,15 @@
+lightning-file-upload {
+    height:2em; 
+    position:relative;
+    top:-1.5em;
+}
+
+.header-icon {
+    background-color: #b19f7e;
+}
+
+.link-no-action:hover,:focus {
+    text-decoration: none;
+    color: inherit;
+    cursor: inherit;
+}
